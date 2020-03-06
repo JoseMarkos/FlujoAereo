@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public class Avion
+    public sealed class Avion
     {
         public TipoDeAvion Model { get; set; }
         public Piloto Piloto { get; set; }

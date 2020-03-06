@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public class Aerolinea
+    public sealed class Aerolinea
     {
         public int id { get; set; }
         public string code { get; set; }
