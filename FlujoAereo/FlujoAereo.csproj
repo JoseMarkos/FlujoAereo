@@ -46,10 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\TipoDeAvion.cs" />
+    <Compile Include="Enums\TipoDeGenero.cs" />
     <Compile Include="Enums\TipoDeTicket.cs" />
     <Compile Include="Enums\TiposDeVuelo.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\Piloto.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
