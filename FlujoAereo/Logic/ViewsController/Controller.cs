@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlujoAereo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace FlujoAereo.Logic.ViewsController
     {
         protected CenterElement centerElement = new CenterElement();
         protected Form form = new Form();
+        protected Colors colors = new Colors();
     }
 }

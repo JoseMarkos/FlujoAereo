@@ -1,24 +1,18 @@
-﻿using FlujoAereo.Logic.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
 {
     public sealed class CenterElement
     {
-       public int Center(int elementWidth, ref Form form)
+        public int Horizontal(int elementWidth, int containerWidth)
         {
-            int formWidth = form.ClientSize.Width;
+            return (containerWidth / 2) - (elementWidth / 2);
+        }
 
-            int result = (formWidth / 2) - (elementWidth / 2);
-            form.Text = formWidth.ToString() + "  " + elementWidth.ToString() + " " + result.ToString();
+        public int Vertical(int elementHeight, int containerHeight)
+        {
 
-            return result;
-            //return ((form.ClientSize.Width - form.Padding.Horizontal) / 2) - (elementWidth / 2);
+            return (containerHeight / 2) - (elementHeight / 2);
         }
     }
 }

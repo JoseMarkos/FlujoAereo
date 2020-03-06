@@ -48,10 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Colors.cs" />
-    <Compile Include="Enums\TipoDeAvion.cs" />
-    <Compile Include="Enums\TipoDeGenero.cs" />
-    <Compile Include="Enums\TipoDeTicket.cs" />
-    <Compile Include="Enums\TiposDeVuelo.cs" />
+    <Compile Include="Enums\Airplane.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\Ticket.cs" />
+    <Compile Include="Enums\Flight.cs" />
+    <Compile Include="Logic\FlatLabelTitle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Logic\UI\FlatComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -59,6 +62,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\FlatLabelError.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\FlatPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\FlatTxt.cs">

@@ -12,6 +12,6 @@ namespace FlujoAereo.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public TipoDeGenero Sex { get; set; }
+        public Gender Sex { get; set; }
     }
 }

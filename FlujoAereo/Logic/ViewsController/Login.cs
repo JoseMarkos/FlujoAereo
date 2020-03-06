@@ -1,6 +1,8 @@
-﻿using FlujoAereo.Logic.UI;
+﻿using FlujoAereo.Enums;
+using FlujoAereo.Logic.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,15 +17,26 @@ namespace FlujoAereo.Logic.ViewsController
             SquareForm square = new SquareForm("Login");
             form = (Form)square;
 
-            FlatLabel title = new FlatLabel("Aeorpuerto XYZ", 0, 20); 
-            form.Controls.Add(title);
-            int positionX = centerElement.Center(title.Size.Width, ref form);
-            form.Controls[0].Location = new System.Drawing.Point(positionX, title.Location.Y);
+            FlatPanel flatPanel = new FlatPanel("main")
+            {
+                Dock = System.Windows.Forms.DockStyle.None,
+                BackColor = colors.LighterGray1,
+            };
+
+            form.Controls.Add(flatPanel);
+
+            int faltPanelPositionY = centerElement.Vertical(flatPanel.Size.Height, form.ClientSize.Height);
+            int faltPanelPositionX = centerElement.Horizontal(flatPanel.Size.Width, form.ClientSize.Width);
+
+            flatPanel.Location = new System.Drawing.Point(faltPanelPositionX, faltPanelPositionY);
+
+            FlatLabelTitle title = new FlatLabelTitle("Aeorpuerto XYZ", 0, 20);
+            flatPanel.Controls.Add(title);
+            int positionX = centerElement.Horizontal(title.Size.Width, flatPanel.ClientSize.Width);
+            title.Location = new System.Drawing.Point(positionX, title.Location.Y);
 
             FlatLabel name = new FlatLabel("Name", 20, 70);
-            form.Controls.Add(name);
-
-            //form.Controls[1].Location = new System.Drawing.Point(centerElement.Center(otherLabel.Size.Width, ref form), otherLabel.Location.Y);
+            flatPanel.Controls.Add(name);
         }
 
         public Form GetForm()

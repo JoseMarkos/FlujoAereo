@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Enums
 {
-    public class TipoDeGenero
+    public enum Gender
     {
-        public enum Genero
-        {
-            Male,
-            Famele
-        }
+        Male,
+        Famele
     }
 }

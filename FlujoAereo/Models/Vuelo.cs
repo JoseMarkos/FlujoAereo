@@ -9,7 +9,7 @@ namespace FlujoAereo.Models
 {
     public sealed class Vuelo
     {
-        public TiposDeVuelo Type { get; set; }
+        public Flight Type { get; set; }
 
         public int Pist { get; set; }
 
