@@ -51,7 +51,13 @@
     <Compile Include="Enums\TipoDeGenero.cs" />
     <Compile Include="Enums\TipoDeTicket.cs" />
     <Compile Include="Enums\TiposDeVuelo.cs" />
+    <Compile Include="Logic\UI\LandscapeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logic\UI\Menu.cs" />
+    <Compile Include="Logic\UI\SquareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Avion.cs" />
     <Compile Include="Models\Piloto.cs" />
