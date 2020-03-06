@@ -51,6 +51,15 @@
     <Compile Include="Enums\TipoDeGenero.cs" />
     <Compile Include="Enums\TipoDeTicket.cs" />
     <Compile Include="Enums\TiposDeVuelo.cs" />
+    <Compile Include="Logic\UI\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\FlatLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\FlatTxt.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
