@@ -13,8 +13,8 @@ namespace FlujoAereo.Enums
             FirstClass,
             Executive,
             Turist,
-            Economi,
-            EconomiPlus
+            EconomiPlus,
+            Economi
         }
     }
 }

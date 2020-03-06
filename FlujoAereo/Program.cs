@@ -1,4 +1,5 @@
 ﻿using FlujoAereo.Logic.UI;
+using FlujoAereo.Logic.ViewsController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,10 @@ namespace FlujoAereo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SquareForm("cuadro"));
+
+            Login login = new Login();
+
+            Application.Run(login.GetForm());
         }
     }
 }

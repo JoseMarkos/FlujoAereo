@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Colors.cs" />
     <Compile Include="Enums\TipoDeAvion.cs" />
     <Compile Include="Enums\TipoDeGenero.cs" />
     <Compile Include="Enums\TipoDeTicket.cs" />
@@ -55,6 +56,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\FlatLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\FlatLabelError.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\FlatTxt.cs">
@@ -67,9 +71,13 @@
     <Compile Include="Logic\UI\SquareForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\ViewsController\CenterElement.cs" />
+    <Compile Include="Logic\ViewsController\Controller.cs" />
+    <Compile Include="Logic\ViewsController\Login.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Avion.cs" />
     <Compile Include="Models\Piloto.cs" />
+    <Compile Include="Models\Ususario.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
