@@ -23,6 +23,8 @@ namespace FlujoAereo.Logic.UI
             Name = name;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = name;
+            Padding = new Padding(0);
+
             ResumeLayout(false);
         }
     }

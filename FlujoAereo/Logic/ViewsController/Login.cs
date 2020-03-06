@@ -10,18 +10,20 @@ namespace FlujoAereo.Logic.ViewsController
 {
     public sealed class Login : Controller
     {
-
-
         public Login()
         {
             SquareForm square = new SquareForm("Login");
-            FlatLabel title = new FlatLabel("Aeropuerto XYZ", 0, 0);
-
             form = (Form)square;
-            int positionX = centerElement.Center(title.Width, ref form);
-            title.Location = new System.Drawing.Point(positionX, title.Location.Y);
 
+            FlatLabel title = new FlatLabel("Aeorpuerto XYZ", 0, 20); 
             form.Controls.Add(title);
+            int positionX = centerElement.Center(title.Size.Width, ref form);
+            form.Controls[0].Location = new System.Drawing.Point(positionX, title.Location.Y);
+
+            FlatLabel name = new FlatLabel("Name", 20, 70);
+            form.Controls.Add(name);
+
+            //form.Controls[1].Location = new System.Drawing.Point(centerElement.Center(otherLabel.Size.Width, ref form), otherLabel.Location.Y);
         }
 
         public Form GetForm()

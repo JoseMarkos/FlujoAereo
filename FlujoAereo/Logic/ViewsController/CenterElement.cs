@@ -12,9 +12,13 @@ namespace FlujoAereo.Logic.ViewsController
     {
        public int Center(int elementWidth, ref Form form)
         {
-            int formWidth = form.Width;
+            int formWidth = form.ClientSize.Width;
 
-            return ((formWidth - elementWidth) / 2) - (elementWidth / 2);
+            int result = (formWidth / 2) - (elementWidth / 2);
+            form.Text = formWidth.ToString() + "  " + elementWidth.ToString() + " " + result.ToString();
+
+            return result;
+            //return ((form.ClientSize.Width - form.Padding.Horizontal) / 2) - (elementWidth / 2);
         }
     }
 }

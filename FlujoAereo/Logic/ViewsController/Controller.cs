@@ -9,7 +9,7 @@ namespace FlujoAereo.Logic.ViewsController
 {
     public class Controller
     {
-        public CenterElement centerElement = new CenterElement();
-        public Form form = new Form();
+        protected CenterElement centerElement = new CenterElement();
+        protected Form form = new Form();
     }
 }
