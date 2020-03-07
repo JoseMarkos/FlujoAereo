@@ -67,6 +67,9 @@
     <Compile Include="Logic\UI\FlatPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Logic\UI\FlatTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Logic\UI\FlatTxt.cs">
       <SubType>Component</SubType>
     </Compile>
