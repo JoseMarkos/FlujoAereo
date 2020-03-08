@@ -1,4 +1,6 @@
-﻿using FlujoAereo.Logic.UI;
+﻿using FlujoAereo.Enums;
+using FlujoAereo.Logic.UI;
+using FlujoAereo.Services;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -85,7 +87,13 @@ namespace FlujoAereo.Logic.ViewsController
 
             panelLogin.Controls.Add(panelTxtPassword);
 
+            FlatButton flatButton = new FlatButton("Log in");
+            flatButton.Location = new Point(50, password.Location.Y + 50);
+            flatButton.Dock = DockStyle.Bottom;
 
+            panelLogin.Controls.Add(flatButton);
+
+            panelLogin.Height += flatButton.Height + 30;
 
             int positionX = centerElement.Horizontal(title.Size.Width, panelLogin.ClientSize.Width);
             title.Location = new System.Drawing.Point(positionX, title.Location.Y);
@@ -99,9 +107,18 @@ namespace FlujoAereo.Logic.ViewsController
             panelMain.Location = new Point(panelMainPosiionX, panelMainPosiionY);
         }
 
+        public void Save()
+        {
+            UserDAO userDAO = new UserDAO(Server.MariaDB);
+
+            userDAO.Save();
+        }
+
         public Form GetForm()
         {
             return form;
         }
+
+
     }
 }

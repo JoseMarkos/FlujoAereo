@@ -15,7 +15,7 @@ namespace FlujoAereo.Logic.UI
         {
             AutoSize = true;
             BackColor = Color.Transparent;
-            Font = new System.Drawing.Font("Microsoft YaHei UI", 12.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Font = new System.Drawing.Font("Simplified Arabic Fixed", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ForeColor = Color.Black;
             Location = new System.Drawing.Point(x, y);
             Margin = new Padding(0, 0, 0, 0);
