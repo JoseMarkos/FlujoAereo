@@ -9,6 +9,8 @@ namespace FlujoAereo.Logic.ViewsController
 {
     public sealed class Login : Controller
     {
+        private FlatButton button;
+
         public Login()
         {
             InitializeComponent();
@@ -20,6 +22,8 @@ namespace FlujoAereo.Logic.ViewsController
             form = (Form)square;
             form.Height = 599;
             form.Width = 750;
+
+
 
             Panel panel = new Panel
             {
@@ -99,14 +103,16 @@ namespace FlujoAereo.Logic.ViewsController
 
             panelLogin.Controls.Add(panelTxtPassword);
 
-            FlatButton flatButton = new FlatButton("Log in");
-            flatButton.Location = new Point(50, txtPassword.Location.Y + 50);
-            flatButton.Dock = DockStyle.Bottom;
-            flatButton.Click += new System.EventHandler(Save);
+            button = new FlatButton("Log in");
+            panelLogin.Controls.Add(button);
 
-            panelLogin.Controls.Add(flatButton);
 
-            panelLogin.Height += flatButton.Height + 30;
+            button.Width = panelTxtName.Width;
+            button.Location = new Point(20, button.Parent.Height + 20);
+            button.Click += new System.EventHandler(TryLogin);
+
+
+            panelLogin.Height += button.Height + 30;
 
             int positionX = centerElement.Horizontal(title.Size.Width, panelLogin.ClientSize.Width);
             title.Location = new System.Drawing.Point(positionX, title.Location.Y);
@@ -116,12 +122,25 @@ namespace FlujoAereo.Logic.ViewsController
 
             panelMain.Top = centerElement.Vertical(panelMain.Height, form.ClientSize.Height);
 
+
+            panelLogin.Controls.Add(
+                   new FlatLabelError("Oops! It looks like you may have forgotten your password.", 0, button.Height + 30)
+                   {
+                       Dock = DockStyle.Bottom,
+                       MaximumSize = new Size(panelLogin.Width - 40, 0),
+                       Visible = false
+                   }
+              );
+
         }
 
-        private void Save(object sender, System.EventArgs e)
+        private void TryLogin(object sender, System.EventArgs e)
         {
-            int index = form.Controls[1].Controls[0].Controls[1].Controls.IndexOfKey("Name");
-            int indexPass = form.Controls[1].Controls[0].Controls[2].Controls.IndexOfKey("Password");
+            FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[1];
+            FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
+
+            int index = panelName.Controls.IndexOfKey("Name");
+            int indexPass = panelPass.Controls.IndexOfKey("Password");
 
             form.Controls[1].Controls[0].Controls[0].Text = form.Controls[1].Controls[0].Controls[1].Name;
             form.Text = indexPass.ToString();
@@ -129,7 +148,7 @@ namespace FlujoAereo.Logic.ViewsController
             Usuario user = new Usuario
             {
                 ID = 0,
-                Name = form.Controls[1].Controls[0].Controls[1].Controls[index].Text,
+                Name = panelName.Controls[index].Text,
                 Password = form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text
             };
 
@@ -139,6 +158,11 @@ namespace FlujoAereo.Logic.ViewsController
             {
                 form.Dispose();
                 form.Hide();
+            }
+
+            else
+            {
+                panelName.Parent.Controls[panelName.Parent.Controls.Count - 1].Visible = true;
             }
         }
 
