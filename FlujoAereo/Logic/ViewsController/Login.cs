@@ -18,7 +18,7 @@ namespace FlujoAereo.Logic.ViewsController
             SquareForm square = new SquareForm("Login");
             form = (Form)square;
             form.Height = 599;
-            form.Width = 800;
+            form.Width = 750;
 
             Panel panel = new Panel
             {
@@ -86,12 +86,13 @@ namespace FlujoAereo.Logic.ViewsController
                 AutoSizeMode = new AutoSizeMode(),
                 Dock = System.Windows.Forms.DockStyle.None,
                 BackColor = colors.White1,
-                Padding = new Padding(4)
+                Padding = new Padding(4),
             };
 
             panelTxtPassword.Location = new Point(20, 110);
 
             FlatTextBox txtPassword = new FlatTextBox("Password", 4, 4);
+
             panelTxtPassword.Controls.Add(txtPassword);
 
 
