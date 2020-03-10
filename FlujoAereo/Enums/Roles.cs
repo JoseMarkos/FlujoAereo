@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlujoAereo.Services
+namespace FlujoAereo.Enums
 {
-    class User
+    public enum Roles
     {
-        UserDAO user = new UserDAO(Enums.Server.MariaDB);
-
+        Administrator,
+        ClientService,
+        PaymentService
     }
 }

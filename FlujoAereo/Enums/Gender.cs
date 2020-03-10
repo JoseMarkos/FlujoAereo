@@ -9,6 +9,7 @@ namespace FlujoAereo.Enums
     public enum Gender
     {
         Male,
-        Famele
+        Famele,
+        Other
     }
 }

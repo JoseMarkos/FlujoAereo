@@ -21,7 +21,7 @@ namespace FlujoAereo.Logic.UI
             GotFocus += new EventHandler(NoSelect);
             GotFocus += new EventHandler(RemovePlaceHolder);
             Leave += new System.EventHandler(AddPlaceHolder);
-            KeyPress += new KeyPressEventHandler(PasswordCharToggle);
+            KeyUp += new KeyEventHandler(PasswordCharToggle);
             //TextChanged += new System.EventHandler(this.txtPlateNumber_TextChanged);
         }
 
@@ -29,17 +29,6 @@ namespace FlujoAereo.Logic.UI
         private void NoSelect(object sender, EventArgs e)
         {
             Select(0, 0);
-        }
-
-
-        private void RemovePlaceHolder(object sender, EventArgs e)
-        {
-            if (Name == Text)
-            {
-                Text = "";
-                ForeColor = new Colors().Black1;
-
-            }
         }
 
         private void AddPlaceHolder(object sender, System.EventArgs e)
@@ -51,13 +40,21 @@ namespace FlujoAereo.Logic.UI
             }
         }
 
-        private void PasswordCharToggle(object sender, KeyPressEventArgs e)
+        private void RemovePlaceHolder(object sender, EventArgs e)
+        {
+            if (Name == Text)
+            {
+                Text = "";
+                ForeColor = new Colors().Black1;
+            }
+        }
+
+        private void PasswordCharToggle(object sender, KeyEventArgs e)
         {
             if (Name == "Password")
             {
                 UseSystemPasswordChar = true;
             }
         }
-
     }
 }

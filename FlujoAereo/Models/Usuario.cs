@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public sealed class Ususario
+    public sealed class Usuario
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+
+        public string Role { get; set; }
     }
 }

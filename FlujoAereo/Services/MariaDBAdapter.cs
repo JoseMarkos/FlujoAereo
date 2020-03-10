@@ -14,11 +14,27 @@ namespace FlujoAereo.Services
         private static string Year = DateTime.Now.Year.ToString();
         private static string Month = DateTime.Now.Month.ToString();
         private static string Day = DateTime.Now.Day.ToString();
-        
 
-        Stream IUserAccountAdapter.GetParkingAccountConnection()
+
+        public MySql.Data.MySqlClient.MySqlConnection GetConection()
         {
-            throw new NotImplementedException();
+            MySql.Data.MySqlClient.MySqlConnection conection = new MySql.Data.MySqlClient.MySqlConnection();
+
+            try
+            {
+                string mariadbString = "Server=localhost;User ID=root;Password=mariaroot;Database=flujoaereo";
+
+                conection.ConnectionString = mariadbString;
+
+                conection.Open();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error");
+            }
+
+            return conection;
         }
     }
 }

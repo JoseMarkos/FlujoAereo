@@ -1,4 +1,5 @@
 ﻿using FlujoAereo.Enums;
+using FlujoAereo.Models;
 using FlujoAereo.Logic.UI;
 using FlujoAereo.Services;
 using System.Drawing;
@@ -101,6 +102,7 @@ namespace FlujoAereo.Logic.ViewsController
             FlatButton flatButton = new FlatButton("Log in");
             flatButton.Location = new Point(50, txtPassword.Location.Y + 50);
             flatButton.Dock = DockStyle.Bottom;
+            flatButton.Click += new System.EventHandler(Save);
 
             panelLogin.Controls.Add(flatButton);
 
@@ -114,26 +116,35 @@ namespace FlujoAereo.Logic.ViewsController
 
             panelMain.Top = centerElement.Vertical(panelMain.Height, form.ClientSize.Height);
 
-
-            //int panelMainPosiionY = centerElement.Vertical(panelMain.Size.Height, panel.ClientSize.Height);
-            //int panelMainPosiionX = centerElement.Horizontal(panelMain.Size.Width, panel.ClientSize.Width);
-
-            //panelMain.Location = new Point(panelMainPosiionX, panelMainPosiionY);
-
         }
 
-        public void Save()
+        private void Save(object sender, System.EventArgs e)
         {
+            int index = form.Controls[1].Controls[0].Controls[1].Controls.IndexOfKey("Name");
+            int indexPass = form.Controls[1].Controls[0].Controls[2].Controls.IndexOfKey("Password");
+
+            form.Controls[1].Controls[0].Controls[0].Text = form.Controls[1].Controls[0].Controls[1].Name;
+            form.Text = indexPass.ToString();
+
+            Usuario user = new Usuario
+            {
+                ID = 0,
+                Name = form.Controls[1].Controls[0].Controls[1].Controls[index].Text,
+                Password = form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text
+            };
+
             UserDAO userDAO = new UserDAO(Server.MariaDB);
 
-            userDAO.Save();
+            if (userDAO.GetPassword(user.Name) == user.Password)
+            {
+                form.Dispose();
+                form.Hide();
+            }
         }
 
         public Form GetForm()
         {
             return form;
         }
-
-
     }
 }
