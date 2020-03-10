@@ -49,7 +49,23 @@ namespace FlujoAereo.Services
                     readerString += reader.GetString(0);
 
             return readerString;
-            
+        }
+
+        public int GetRole(string role)
+        {
+            string readerString = String.Empty;
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Role FROM `flujoaereo`.`users` WHERE Name ='" + role + "';";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    readerString += reader.GetString(0);
+
+            return int.Parse(readerString);
         }
     }
 }

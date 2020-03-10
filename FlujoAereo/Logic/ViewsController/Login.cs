@@ -1,6 +1,6 @@
 ﻿using FlujoAereo.Enums;
-using FlujoAereo.Models;
 using FlujoAereo.Logic.UI;
+using FlujoAereo.Models;
 using FlujoAereo.Services;
 using System.Drawing;
 using System.Windows.Forms;
@@ -16,14 +16,12 @@ namespace FlujoAereo.Logic.ViewsController
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        protected override void InitializeComponent()
         {
             SquareForm square = new SquareForm("Login");
             form = (Form)square;
             form.Height = 599;
             form.Width = 750;
-
-
 
             Panel panel = new Panel
             {
@@ -81,9 +79,8 @@ namespace FlujoAereo.Logic.ViewsController
             FlatTextBox txtName = new FlatTextBox("Name", 4, 4);
 
             panelTxtName.Controls.Add(txtName);
-
             panelLogin.Controls.Add(panelTxtName);
-            
+
 
             FlatPanel panelTxtPassword = new FlatPanel("Password")
             {
@@ -111,7 +108,6 @@ namespace FlujoAereo.Logic.ViewsController
             button.Location = new Point(20, button.Parent.Height + 20);
             button.Click += new System.EventHandler(TryLogin);
 
-
             panelLogin.Height += button.Height + 30;
 
             int positionX = centerElement.Horizontal(title.Size.Width, panelLogin.ClientSize.Width);
@@ -122,7 +118,6 @@ namespace FlujoAereo.Logic.ViewsController
 
             panelMain.Top = centerElement.Vertical(panelMain.Height, form.ClientSize.Height);
 
-
             panelLogin.Controls.Add(
                    new FlatLabelError("Oops! It looks like you may have forgotten your password.", 0, button.Height + 30)
                    {
@@ -131,7 +126,6 @@ namespace FlujoAereo.Logic.ViewsController
                        Visible = false
                    }
               );
-
         }
 
         private void TryLogin(object sender, System.EventArgs e)
@@ -141,9 +135,6 @@ namespace FlujoAereo.Logic.ViewsController
 
             int index = panelName.Controls.IndexOfKey("Name");
             int indexPass = panelPass.Controls.IndexOfKey("Password");
-
-            form.Controls[1].Controls[0].Controls[0].Text = form.Controls[1].Controls[0].Controls[1].Name;
-            form.Text = indexPass.ToString();
 
             Usuario user = new Usuario
             {
@@ -156,7 +147,10 @@ namespace FlujoAereo.Logic.ViewsController
 
             if (userDAO.GetPassword(user.Name) == user.Password)
             {
-                form.Dispose();
+
+                Views views = new Views();
+
+                views.dictionary[userDAO.GetRole(user.Name)].Show();
                 form.Hide();
             }
 
@@ -164,11 +158,6 @@ namespace FlujoAereo.Logic.ViewsController
             {
                 panelName.Parent.Controls[panelName.Parent.Controls.Count - 1].Visible = true;
             }
-        }
-
-        public Form GetForm()
-        {
-            return form;
         }
     }
 }

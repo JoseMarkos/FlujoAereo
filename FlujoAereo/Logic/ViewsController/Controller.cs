@@ -8,10 +8,17 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
 {
-    public class Controller
+    public abstract class Controller
     {
         protected CenterElement centerElement = new CenterElement();
         protected Form form = new Form();
         protected Colors colors = new Colors();
+
+        protected abstract void InitializeComponent();
+
+        public Form GetForm()
+        {
+            return form;
+        }
     }
 }
