@@ -21,6 +21,7 @@ namespace FlujoAereo.Logic.UI
             Padding = new Padding(0);
             Name = "label" + name;
             Text = name;
+            
         }
     }
 }

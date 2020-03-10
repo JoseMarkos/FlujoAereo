@@ -10,7 +10,7 @@ namespace FlujoAereo.Services
 {
     public sealed class UserDAO
     {
-        IUserAccountAdapter adapter;
+        private IUserAccountAdapter adapter;
 
         public UserDAO(Server server)
         {

@@ -47,11 +47,6 @@ namespace FlujoAereo.Logic.ViewsController
             FlatLabelTitle title = new FlatLabelTitle("Aeorpuerto XYZ", 0, 20);
             panelLogin.Controls.Add(title);
 
-            FlatLabel user = new FlatLabel("User", 20, 70);
-            panelLogin.Controls.Add(user);
-
-            FlatLabel password = new FlatLabel("Password", 20, user.Location.Y + 40);
-            panelLogin.Controls.Add(password);
 
             FlatPanel panelTxtName = new FlatPanel("Name")
             {
@@ -62,9 +57,10 @@ namespace FlujoAereo.Logic.ViewsController
                 Padding = new Padding(4)
             };
 
-            panelTxtName.Location = new Point(password.Size.Width + 40, user.Location.Y);
+            panelTxtName.Location = new Point(20, 70);
 
             FlatTextBox txtName = new FlatTextBox("Name", 4, 4);
+
             panelTxtName.Controls.Add(txtName);
 
             panelLogin.Controls.Add(panelTxtName);
@@ -79,7 +75,7 @@ namespace FlujoAereo.Logic.ViewsController
                 Padding = new Padding(4)
             };
 
-            panelTxtPassword.Location = new Point(password.Size.Width + 40, password.Location.Y);
+            panelTxtPassword.Location = new Point(20, 110);
 
             FlatTextBox txtPassword = new FlatTextBox("Password", 4, 4);
             panelTxtPassword.Controls.Add(txtPassword);
@@ -88,7 +84,7 @@ namespace FlujoAereo.Logic.ViewsController
             panelLogin.Controls.Add(panelTxtPassword);
 
             FlatButton flatButton = new FlatButton("Log in");
-            flatButton.Location = new Point(50, password.Location.Y + 50);
+            flatButton.Location = new Point(50, txtPassword.Location.Y + 50);
             flatButton.Dock = DockStyle.Bottom;
 
             panelLogin.Controls.Add(flatButton);
