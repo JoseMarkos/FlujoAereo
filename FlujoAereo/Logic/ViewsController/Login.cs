@@ -17,6 +17,19 @@ namespace FlujoAereo.Logic.ViewsController
         {
             SquareForm square = new SquareForm("Login");
             form = (Form)square;
+            form.Height = 599;
+            form.Width = 800;
+
+            Panel panel = new Panel
+            {
+                Name = "logo",
+                BackgroundImageLayout = ImageLayout.Center,
+                BackgroundImage = Image.FromFile("logo.jpg"),
+                Width = 400,
+                Height = 400
+            };
+
+            form.Controls.Add(panel);
 
             FlatPanel panelMain = new FlatPanel("main")
             {
@@ -24,7 +37,8 @@ namespace FlujoAereo.Logic.ViewsController
                 AutoSizeMode = AutoSizeMode.GrowOnly,
                 Dock = System.Windows.Forms.DockStyle.None,
                 BackColor = colors.LightGray1,
-                Padding = new Padding(1)
+                Padding = new Padding(1),
+                Left = panel.Width,
             };
 
             form.Controls.Add(panelMain);
@@ -44,7 +58,7 @@ namespace FlujoAereo.Logic.ViewsController
 
             // Don't touch in order to don't mess the center alignment
 
-            FlatLabelTitle title = new FlatLabelTitle("Aeorpuerto XYZ", 0, 20);
+            FlatLabelTitle title = new FlatLabelTitle("Sign in", 0, 20);
             panelLogin.Controls.Add(title);
 
 
@@ -97,10 +111,14 @@ namespace FlujoAereo.Logic.ViewsController
 
             // ...
 
-            int panelMainPosiionY = centerElement.Vertical(panelMain.Size.Height, form.ClientSize.Height);
-            int panelMainPosiionX = centerElement.Horizontal(panelMain.Size.Width, form.ClientSize.Width);
+            panelMain.Top = centerElement.Vertical(panelMain.Height, form.ClientSize.Height);
 
-            panelMain.Location = new Point(panelMainPosiionX, panelMainPosiionY);
+
+            //int panelMainPosiionY = centerElement.Vertical(panelMain.Size.Height, panel.ClientSize.Height);
+            //int panelMainPosiionX = centerElement.Horizontal(panelMain.Size.Width, panel.ClientSize.Width);
+
+            //panelMain.Location = new Point(panelMainPosiionX, panelMainPosiionY);
+
         }
 
         public void Save()

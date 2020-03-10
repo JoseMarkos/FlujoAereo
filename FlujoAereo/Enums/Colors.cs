@@ -13,7 +13,7 @@ namespace FlujoAereo.Enums
         private readonly Color Black = Color.Black;
         private readonly Color White = Color.White;
         private readonly Color LightGray = Color.FromArgb(188, 181, 188);
-        private readonly Color LighterGray = Color.FromArgb(230, 223, 231);
+        private readonly Color LighterGray = Color.FromArgb(239, 239, 239);
         private readonly Color DarkGray = Color.DarkGray;
         private readonly Color Blue = Color.CadetBlue;
 
