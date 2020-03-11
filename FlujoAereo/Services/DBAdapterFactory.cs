@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Services
 {
-    class UserAccountAdapterFactory
+    class DBAdapterFactory
     {
         public IUserAccountAdapter GetAdapter(Server type)
         {

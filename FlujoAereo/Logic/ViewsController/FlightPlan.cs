@@ -19,6 +19,8 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portrait = new PortraitForm("Flight Plan");
             form = portrait;
+            form.Height = 400;
+            form.Width = 300;
             form.FormClosed += new FormClosedEventHandler(Exit);
 
             // Avoid auto textbox focus
@@ -31,14 +33,21 @@ namespace FlujoAereo.Logic.ViewsController
             
             // Main controls
 
-            FlatPanelTextBox flat = new FlatPanelTextBox("Test");
+            FlatPanelTextBox flat = new FlatPanelTextBox("ID");
             form.Controls.Add(flat);
             flat.Top = 40;
 
-            FlatPanelTextBox flat2 = new FlatPanelTextBox("Test2");
+            FlatPanelTextBox flat2 = new FlatPanelTextBox("Model");
             form.Controls.Add(flat2);
-
             flat2.Top = flat.Top + flat.Height + 20;
+
+            FlatPanelTextBox flat3 = new FlatPanelTextBox("Pilot");
+            form.Controls.Add(flat3);
+            flat3.Top = flat2.Top + flat2.Height + 20;
+
+            FlatPanelTextBox flat4 = new FlatPanelTextBox("Capacity");
+            form.Controls.Add(flat4);
+            flat4.Top = flat3.Top + flat3.Height + 20;
 
             CenterAllControls();
         }

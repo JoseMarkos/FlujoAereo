@@ -16,7 +16,7 @@ namespace FlujoAereo.Services
 
         public UserDAO(Server server)
         {
-            UserAccountAdapterFactory fileFactory = new UserAccountAdapterFactory();
+            DBAdapterFactory fileFactory = new DBAdapterFactory();
 
             adapter = fileFactory.GetAdapter(server);
         }
