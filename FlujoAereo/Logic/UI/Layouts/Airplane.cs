@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlujoAereo.Logic.UI
+namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class Menu
+    public sealed class Airplane
     {
+
     }
 }

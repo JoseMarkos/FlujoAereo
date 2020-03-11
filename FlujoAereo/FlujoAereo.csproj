@@ -91,7 +91,11 @@
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logic\UI\Menu.cs" />
+    <Compile Include="Logic\UI\Layouts\Airplane.cs" />
+    <Compile Include="Logic\UI\Layouts\Menu.cs" />
+    <Compile Include="Logic\UI\PortraitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logic\UI\SquareForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +103,7 @@
     <Compile Include="Logic\ViewsController\FlightPlan.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />
     <Compile Include="Logic\ViewsController\Login.cs" />
+    <Compile Include="Logic\ViewsController\Management.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Avion.cs" />
@@ -143,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Tasks\" />
-    <Folder Include="Logic\UI\Layouts\" />
     <Folder Include="Logic\Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

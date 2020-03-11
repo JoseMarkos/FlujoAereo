@@ -18,10 +18,8 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            LandscapeForm square = new LandscapeForm("Flight Plan");
+            PortraitForm square = new PortraitForm("Flight Plan");
             form = (Form)square;
-            form.Height = 599;
-            form.Width = 750;
             form.FormClosed += new FormClosedEventHandler(Exit);
 
             FlatPanelTexBox flat = new FlatPanelTexBox("Test");
