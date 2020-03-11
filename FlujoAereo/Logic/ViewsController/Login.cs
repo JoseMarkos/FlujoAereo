@@ -133,7 +133,7 @@ namespace FlujoAereo.Logic.ViewsController
             int index = panelName.Controls.IndexOfKey("Name");
             int indexPass = panelPass.Controls.IndexOfKey("Password");
 
-            Usuario user = new Usuario
+            Usuario user = new Usuario(0)
             {
                 ID = 0,
                 Name = panelName.Controls[index].Text,

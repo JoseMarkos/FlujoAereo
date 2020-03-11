@@ -8,6 +8,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 {
     public sealed class Airplane
     {
-
+        
     }
 }

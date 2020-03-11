@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI
 {
-    public partial class FlatPanelTexBox : Panel
+    public partial class FlatPanelTextBox : Panel
     {
-        private Colors colors = new Colors();
-        private FlatTextBox flatTextBox;
+        private readonly Colors colors = new Colors();
+        private readonly FlatTextBox flatTextBox;
 
-        public FlatPanelTexBox(string name)
+        public FlatPanelTextBox(string name)
         {
             AutoSize = true;
             AutoSizeMode = new AutoSizeMode();
