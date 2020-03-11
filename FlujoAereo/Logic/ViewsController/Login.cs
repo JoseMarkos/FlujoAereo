@@ -113,9 +113,6 @@ namespace FlujoAereo.Logic.ViewsController
             int positionX = centerElement.Horizontal(title.Size.Width, panelLogin.ClientSize.Width);
             title.Location = new System.Drawing.Point(positionX, title.Location.Y);
 
-
-            // ...
-
             panelMain.Top = centerElement.Vertical(panelMain.Height, form.ClientSize.Height);
 
             panelLogin.Controls.Add(
