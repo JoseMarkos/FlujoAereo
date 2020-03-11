@@ -8,20 +8,25 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
 {
-    public sealed class ClientService : Controller
+
+    public sealed class FlightPlan : Controller
     {
-        public ClientService()
+        public FlightPlan()
         {
             InitializeComponent();
         }
 
         protected override void InitializeComponent()
         {
-            LandscapeForm square = new LandscapeForm("Client Service");
+            LandscapeForm square = new LandscapeForm("Flight Plan");
             form = (Form)square;
             form.Height = 599;
             form.Width = 750;
             form.FormClosed += new FormClosedEventHandler(Exit);
+
+            FlatPanelTexBox flat = new FlatPanelTexBox("Test");
+
+            form.Controls.Add(flat);
         }
     }
 }
