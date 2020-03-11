@@ -12,7 +12,8 @@ namespace FlujoAereo.Enums
         AirbusA320,
         TúpolevTu204,
         lyushinIl96,
-        BombardierCRJ200
+        BombardierCRJ200,
+        Other
         //Un Bombardier CRJ200 de Delta Airlines.
         // lyushin Il-96 de Aeroflot.
     }

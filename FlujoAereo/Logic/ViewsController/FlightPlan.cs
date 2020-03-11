@@ -1,9 +1,7 @@
 ﻿using FlujoAereo.Logic.UI;
+using FlujoAereo.Models;
+using FlujoAereo.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
@@ -30,39 +28,53 @@ namespace FlujoAereo.Logic.ViewsController
             _.Controls[0].Height = 0;
             _.Controls[0].Width = 0;
             _.Controls[0].MinimumSize = new System.Drawing.Size(0, 0);
-            
-            // Main controls
 
-            FlatPanelTextBox flat = new FlatPanelTextBox("ID");
-            form.Controls.Add(flat);
-            flat.Top = 40;
+            // Main controls
 
             FlatPanelTextBox flat2 = new FlatPanelTextBox("Model");
             form.Controls.Add(flat2);
-            flat2.Top = flat.Top + flat.Height + 20;
+            flat2.Top = 40;
 
-            FlatPanelTextBox flat3 = new FlatPanelTextBox("Pilot");
+            FlatPanelTextBox flat3 = new FlatPanelTextBox("Capacity");
             form.Controls.Add(flat3);
             flat3.Top = flat2.Top + flat2.Height + 20;
 
-            FlatPanelTextBox flat4 = new FlatPanelTextBox("Capacity");
-            form.Controls.Add(flat4);
-            flat4.Top = flat3.Top + flat3.Height + 20;
+            FlatButton btnSave = new FlatButton("Save");
+            form.Controls.Add(btnSave);
+            btnSave.Top = flat3.Top + flat3.Height + 20;
+            btnSave.Click += new EventHandler(Save);
+            btnSave.Width = flat3.Width;
 
             CenterAllControls();
         }
 
         private void CenterAllControls()
         {
-            foreach (var item in form.Controls)
+            foreach (Control item in form.Controls)
             {
-                if (item.GetType().ToString() == "FlujoAereo.Logic.UI.FlatPanelTextBox")
-                {
-                    FlatPanelTextBox ele = (FlatPanelTextBox)item;
-                    int index = form.Controls.IndexOf(ele);
+                int index = form.Controls.IndexOf(item);
+                form.Controls[index].Left = centerElement.Horizontal(form.Controls[index].Width, form.ClientSize.Width);
+            }
+        }
 
-                    form.Controls[index].Left = centerElement.Horizontal(form.Controls[index].Width, form.ClientSize.Width);
-                }
+        private void Save(object sender, System.EventArgs e)
+        {
+            try
+            {
+                Avion avion = new Avion();
+                avion.Model = (Enums.Airplane)int.Parse(form.Controls[1].Controls[0].Text);
+                avion.Capacity = int.Parse(form.Controls[2].Controls[0].Text);
+
+                MessageBox.Show(form.Controls.Count.ToString());
+
+                AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
+
+                dao.Save(avion);
+                form.Controls[form.Controls.Count - 1].Enabled = false;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

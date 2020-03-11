@@ -25,7 +25,7 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`airplane` (`ID`, `Model`, `Pilot`, `Capacity`) VALUES ('"+ airplane.ID + "', '" + airplane.Model + "', '" + airplane.Pilot + "', '" + airplane.Capacity + "');";
+            string sql = "INSERT INTO `flujoaereo`.`airplane` (`ID`, `Model`, `Capacity`) VALUES ('"+ airplane.ID + "', '" + airplane.Model + "', '" + airplane.Capacity + "');";
 
             MySqlCommand insertCommnad = new MySqlCommand(sql);
 
