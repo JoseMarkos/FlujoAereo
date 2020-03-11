@@ -20,5 +20,10 @@ namespace FlujoAereo.Logic.ViewsController
         {
             return form;
         }
+
+        protected void Exit(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(1);
+        }
     }
 }

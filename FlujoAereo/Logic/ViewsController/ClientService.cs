@@ -21,6 +21,7 @@ namespace FlujoAereo.Logic.ViewsController
             form = (Form)square;
             form.Height = 599;
             form.Width = 750;
+            form.FormClosed += new FormClosedEventHandler(Exit);
         }
     }
 }
