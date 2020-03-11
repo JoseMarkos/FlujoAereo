@@ -19,9 +19,12 @@ namespace FlujoAereo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Login login = new Login();
+            //Login login = new Login();
 
-            Application.Run(login.GetForm());
+            //Application.Run(login.GetForm());
+            FlightPlan clientService = new FlightPlan();
+            
+            Application.Run(clientService.GetForm());
         }
     }
 }

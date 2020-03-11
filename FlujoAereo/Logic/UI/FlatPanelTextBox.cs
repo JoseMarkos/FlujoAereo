@@ -11,6 +11,7 @@ namespace FlujoAereo.Logic.UI
     public partial class FlatPanelTexBox : Panel
     {
         private Colors colors = new Colors();
+        private FlatTextBox flatTextBox;
 
         public FlatPanelTexBox(string name)
         {
@@ -24,6 +25,9 @@ namespace FlujoAereo.Logic.UI
             MinimumSize = new System.Drawing.Size(0, 0);
             Name = "panel" + name;
             Padding = new Padding(4);
+
+            flatTextBox = new FlatTextBox(name, 4, 4);
+            this.Controls.Add(flatTextBox);
         }
     }
 }

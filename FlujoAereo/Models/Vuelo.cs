@@ -11,7 +11,7 @@ namespace FlujoAereo.Models
     {
         public Flight Type { get; set; }
 
-        public int Pist { get; set; }
+        public int AsignedPist { get; set; }
 
         public string Origin { get; set; }
 

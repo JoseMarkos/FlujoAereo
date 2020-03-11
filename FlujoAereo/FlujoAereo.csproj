@@ -96,10 +96,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Logic\ViewsController\CenterElement.cs" />
-    <Compile Include="Logic\ViewsController\ClientService.cs" />
+    <Compile Include="Logic\ViewsController\FlightPlan.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />
     <Compile Include="Logic\ViewsController\Login.cs" />
     <Compile Include="Models\Aerolinea.cs" />
+    <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Avion.cs" />
     <Compile Include="Models\Piloto.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Tasks\" />
+    <Folder Include="Logic\UI\Layouts\" />
     <Folder Include="Logic\Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

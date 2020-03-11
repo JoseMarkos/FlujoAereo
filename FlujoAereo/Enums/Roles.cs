@@ -9,7 +9,7 @@ namespace FlujoAereo.Enums
     public enum Roles
     {
         Administrator,
-        ClientService,
-        PaymentService
+        FlightPlan,
+        FlightControl
     }
 }
