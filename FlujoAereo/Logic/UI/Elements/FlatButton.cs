@@ -24,7 +24,6 @@ namespace FlujoAereo.Logic.UI
             Location = new System.Drawing.Point(240, 16);
             Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Size = new System.Drawing.Size(120, 63);
-            TabIndex = 2;
             Text = "Next";
             UseVisualStyleBackColor = true;
             BackColor = new Colors().Blue1;

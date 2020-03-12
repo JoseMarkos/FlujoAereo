@@ -20,13 +20,15 @@ namespace FlujoAereo.Logic.ViewsController
             form.Width = 300;
             form.FormClosed += new FormClosedEventHandler(Exit);
 
-            // Avoid auto textbox focus
+            // Avoid textbox auto focus
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
 
             AddElement(new FlatPanelTextBox("Model"));
             AddElement(new FlatPanelTextBox("Capacity"));
+            AddElement(new FlatPanelTextBox("ICAO"));
+            AddElement(new FlatPanelTextBox("IATA"));
             AddElement(new FlatButton("Save"));
 
             form.Controls[form.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
@@ -51,8 +53,8 @@ namespace FlujoAereo.Logic.ViewsController
                 Avion avion = new Avion();
                 avion.Model = (Enums.Airplane)int.Parse(form.Controls[1].Controls[0].Text);
                 avion.Capacity = int.Parse(form.Controls[2].Controls[0].Text);
-
-                MessageBox.Show(form.Controls.Count.ToString());
+                avion.ICAO = form.Controls[3].Controls[0].Text.ToUpper();
+                avion.IATA = form.Controls[4].Controls[0].Text.ToUpper();
 
                 AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
                     

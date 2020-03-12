@@ -9,7 +9,7 @@ namespace FlujoAereo.Models
         public int Capacity { get; set; }
         public string ICAO { get; set; }
         public string IATA { get; set; }
-        public long Flights { get; set; }
-        public long HoursCount { get; set; }
+        private long Flights { get; set; }
+        private long HoursCount { get; set; }
     }
 }
