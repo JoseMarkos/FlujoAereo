@@ -29,10 +29,5 @@ namespace FlujoAereo.Logic.UI
             BackColor = new Colors().Blue1;
            // Click += new System.EventHandler(this.btnNext_Click);
         }
-
-        public void ClickOnce()
-        {
-            this.Dispose();
-        }
     }
 }

@@ -8,8 +8,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 {
     public class MainSection
     {
-        private FlatPanel MainPanel = new FlatPanel("Main");
-        private int Width = 0;
+        private readonly FlatPanel MainPanel = new FlatPanel("Main");
 
         public MainSection(int width)
         {

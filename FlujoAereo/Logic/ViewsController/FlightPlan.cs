@@ -1,4 +1,5 @@
 ﻿using FlujoAereo.Logic.UI;
+using FlujoAereo.Logic.UI.Layouts;
 using FlujoAereo.Models;
 using FlujoAereo.Services;
 using System;
@@ -15,56 +16,16 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            PortraitForm portrait = new PortraitForm("Flight Plan");
-            form = portrait;
-            form.Width = 300;
-            form.FormClosed += new FormClosedEventHandler(Exit);
+            PortraitForm portraitForm = new PortraitForm("test");
+            form = portraitForm;
 
-            // Avoid textbox auto focus
-            AddElement(new FlatTextBoxAutoFocus("_"));
+            FlatPanel panel = new AirplanePanel().GetPanel();
 
-            // Main controls
+            MessageBox.Show(panel.ClientSize.Width.ToString());
+            form.Controls.Add(panel);
 
-            AddElement(new FlatPanelTextBox("Model"));
-            AddElement(new FlatPanelTextBox("Capacity"));
-            AddElement(new FlatPanelTextBox("ICAO"));
-            AddElement(new FlatPanelTextBox("IATA"));
-            AddElement(new FlatButton("Save"));
-
-            form.Controls[form.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            form.Controls[form.Controls.IndexOfKey("btnSave")].Width = form.Controls[form.Controls.IndexOfKey("btnSave") - 1].Width;
-
-            CenterAllControls();
-        }
-
-        private void CenterAllControls()
-        {
-            foreach (Control item in form.Controls)
-            {
-                int index = form.Controls.IndexOf(item);
-                form.Controls[index].Left = centerElement.Horizontal(form.Controls[index].Width, form.ClientSize.Width);
-            }
-        }
-
-        private void Save(object sender, System.EventArgs e)
-        {
-            try
-            {
-                Avion avion = new Avion();
-                avion.Model = (Enums.Airplane)int.Parse(form.Controls[1].Controls[0].Text);
-                avion.Capacity = int.Parse(form.Controls[2].Controls[0].Text);
-                avion.ICAO = form.Controls[3].Controls[0].Text.ToUpper();
-                avion.IATA = form.Controls[4].Controls[0].Text.ToUpper();
-
-                AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
-                    
-                dao.Save(avion);
-                form.Controls[form.Controls.Count - 1].Enabled = false;
-            }
-            catch (Exception)
-            {
-                throw new OperationCanceledException("Wrong field.");
-            }
+            form.Controls[0].Left = centerElement.Horizontal(form.Controls[0].Width, form.ClientSize.Width);
+            form.Controls[0].BackColor = colors.Black1;
         }
     }
 }

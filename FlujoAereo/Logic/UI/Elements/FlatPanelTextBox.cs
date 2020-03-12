@@ -17,7 +17,7 @@ namespace FlujoAereo.Logic.UI
         {
             AutoSize = true;
             AutoSizeMode = new AutoSizeMode();
-            BackColor = colors.White1;
+            BackColor = colors.Blue1;
             Dock = System.Windows.Forms.DockStyle.None;
             ForeColor = System.Drawing.Color.White;
             Location = new System.Drawing.Point(0, 0);

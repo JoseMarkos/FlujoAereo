@@ -19,7 +19,6 @@ namespace FlujoAereo.Logic.UI
             Name = "panel" + name;
             Padding = new System.Windows.Forms.Padding(0);
             MinimumSize = new System.Drawing.Size(0, 0);
-            
         }
     }
 }
