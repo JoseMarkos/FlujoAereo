@@ -86,7 +86,7 @@
     <Compile Include="Logic\UI\Elements\FlatTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\Elements\FlatTxt.cs">
+    <Compile Include="Logic\UI\Elements\FlatTextBoxAutoFocus.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\LandscapeForm.cs">

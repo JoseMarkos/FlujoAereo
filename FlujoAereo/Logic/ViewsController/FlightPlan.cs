@@ -17,33 +17,20 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portrait = new PortraitForm("Flight Plan");
             form = portrait;
-            form.Height = 400;
             form.Width = 300;
             form.FormClosed += new FormClosedEventHandler(Exit);
 
             // Avoid auto textbox focus
-            FlatPanelTextBox _ = new FlatPanelTextBox("_");
-            form.Controls.Add(_);
-            _.BackColor = colors.Transparent1;
-            _.Controls[0].Height = 0;
-            _.Controls[0].Width = 0;
-            _.Controls[0].MinimumSize = new System.Drawing.Size(0, 0);
+            AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
 
-            FlatPanelTextBox flat2 = new FlatPanelTextBox("Model");
-            form.Controls.Add(flat2);
-            flat2.Top = 40;
+            AddElement(new FlatPanelTextBox("Model"));
+            AddElement(new FlatPanelTextBox("Capacity"));
+            AddElement(new FlatButton("Save"));
 
-            FlatPanelTextBox flat3 = new FlatPanelTextBox("Capacity");
-            form.Controls.Add(flat3);
-            flat3.Top = flat2.Top + flat2.Height + 20;
-
-            FlatButton btnSave = new FlatButton("Save");
-            form.Controls.Add(btnSave);
-            btnSave.Top = flat3.Top + flat3.Height + 20;
-            btnSave.Click += new EventHandler(Save);
-            btnSave.Width = flat3.Width;
+            form.Controls[form.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
+            form.Controls[form.Controls.IndexOfKey("btnSave")].Width = form.Controls[form.Controls.IndexOfKey("btnSave") - 1].Width;
 
             CenterAllControls();
         }
