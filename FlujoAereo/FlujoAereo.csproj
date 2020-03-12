@@ -61,36 +61,37 @@
     <Compile Include="Enums\Flight.cs" />
     <Compile Include="Enums\Views.cs" />
     <Compile Include="Interfaces\IUserAccountAdapter.cs" />
-    <Compile Include="Logic\UI\FlatButton.cs">
+    <Compile Include="Logic\UI\Elements\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatLabelTitle.cs">
+    <Compile Include="Logic\UI\Elements\FlatLabelTitle.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatComboBox.cs">
+    <Compile Include="Logic\UI\Elements\FlatComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatLabel.cs">
+    <Compile Include="Logic\UI\Elements\FlatLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatLabelError.cs">
+    <Compile Include="Logic\UI\Elements\FlatLabelError.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatPanel.cs">
+    <Compile Include="Logic\UI\Elements\FlatPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatPanelTextBox.cs">
+    <Compile Include="Logic\UI\Elements\FlatPanelTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatTextBox.cs">
+    <Compile Include="Logic\UI\Elements\FlatTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatTxt.cs">
+    <Compile Include="Logic\UI\Elements\FlatTxt.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\UI\Layouts\Main.cs" />
     <Compile Include="Logic\UI\Layouts\Menu.cs" />
     <Compile Include="Logic\UI\PortraitForm.cs">
       <SubType>Form</SubType>

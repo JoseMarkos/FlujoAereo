@@ -8,22 +8,24 @@ namespace FlujoAereo.Logic.UI
 {
     public sealed class Menu
     {
-        private FlatPanel sidebar = new FlatPanel("Sidebar");
+        private FlatPanel SidebarPanel = new FlatPanel("Sidebar");
+        private int Width = 0;
 
-        public Menu()
+        public Menu(int width)
         {
+            SidebarPanel.Width = width;
+            SidebarPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            SidebarPanel.Padding = new System.Windows.Forms.Padding(20);
             InitializeLayout();
         }
 
         private void InitializeLayout()
         {
-            sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            sidebar.Padding = new System.Windows.Forms.Padding(20);
         }
 
         public FlatPanel GetSidebar()
         {
-            return sidebar;
+            return SidebarPanel;
         }
     }
 }
