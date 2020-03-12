@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Enums\Colors.cs" />
     <Compile Include="Enums\Airplane.cs" />
+    <Compile Include="Enums\Fields.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Enums\Server.cs" />

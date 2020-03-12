@@ -14,7 +14,6 @@ namespace FlujoAereo.Logic.ViewsController
             InitializeComponent();
         }
 
-
         protected override void InitializeComponent()
         {
             MenuSection menu = new MenuSection(100);

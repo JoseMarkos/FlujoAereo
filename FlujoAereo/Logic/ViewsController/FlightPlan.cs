@@ -68,13 +68,13 @@ namespace FlujoAereo.Logic.ViewsController
                 MessageBox.Show(form.Controls.Count.ToString());
 
                 AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
-
+                    
                 dao.Save(avion);
                 form.Controls[form.Controls.Count - 1].Enabled = false;
             }
             catch (Exception)
             {
-                throw;
+                throw new OperationCanceledException("Wrong field.");
             }
         }
     }

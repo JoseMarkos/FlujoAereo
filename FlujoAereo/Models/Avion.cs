@@ -1,9 +1,4 @@
 ﻿using FlujoAereo.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
@@ -12,5 +7,9 @@ namespace FlujoAereo.Models
         public int ID { get; set; }
         public Airplane Model { get; set; }
         public int Capacity { get; set; }
+        public string ICAO { get; set; }
+        public string IATA { get; set; }
+        public long Flights { get; set; }
+        public long HoursCount { get; set; }
     }
 }
