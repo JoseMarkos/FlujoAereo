@@ -11,7 +11,6 @@ namespace FlujoAereo.Logic.ViewsController
 
         public int Vertical(int elementHeight, int containerHeight)
         {
-
             return (containerHeight / 2) - (elementHeight / 2);
         }
     }

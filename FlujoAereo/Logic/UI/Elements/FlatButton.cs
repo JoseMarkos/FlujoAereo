@@ -21,7 +21,7 @@ namespace FlujoAereo.Logic.UI
             FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ForeColor = System.Drawing.Color.White;
-            Location = new System.Drawing.Point(240, 16);
+            Location = new System.Drawing.Point(0, 0);
             Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Size = new System.Drawing.Size(120, 63);
             Text = "Next";

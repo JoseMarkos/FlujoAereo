@@ -21,7 +21,6 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-
             AddElement(new FlatPanelTextBox("Model"));
             AddElement(new FlatPanelTextBox("Capacity"));
             AddElement(new FlatPanelTextBox("ICAO"));

@@ -18,14 +18,12 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portraitForm = new PortraitForm("test");
             form = portraitForm;
-
-            FlatPanel panel = new AirplanePanel().GetPanel();
-
-            MessageBox.Show(panel.ClientSize.Width.ToString());
+            form.Width = 1600;
+           
+            FlatPanel panel = new AirplanePanel().GetPanel("Hola");
             form.Controls.Add(panel);
 
             form.Controls[0].Left = centerElement.Horizontal(form.Controls[0].Width, form.ClientSize.Width);
-            form.Controls[0].BackColor = colors.Black1;
         }
     }
 }

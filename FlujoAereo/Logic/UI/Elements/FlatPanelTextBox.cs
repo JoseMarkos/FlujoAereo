@@ -16,8 +16,8 @@ namespace FlujoAereo.Logic.UI
         public FlatPanelTextBox(string name)
         {
             AutoSize = true;
-            AutoSizeMode = new AutoSizeMode();
-            BackColor = colors.Blue1;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackColor = colors.White1;
             Dock = System.Windows.Forms.DockStyle.None;
             ForeColor = System.Drawing.Color.White;
             Location = new System.Drawing.Point(0, 0);
