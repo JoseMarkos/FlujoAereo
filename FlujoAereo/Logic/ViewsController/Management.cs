@@ -17,7 +17,7 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            Menu menu = new Menu();
+            MenuSection menu = new MenuSection(100);
 
             FlatPanel sidebar = menu.GetSidebar();
 

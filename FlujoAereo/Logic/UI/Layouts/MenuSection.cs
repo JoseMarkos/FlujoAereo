@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Logic.UI
 {
-    public sealed class Menu
+    public sealed class MenuSection
     {
         private FlatPanel SidebarPanel = new FlatPanel("Sidebar");
         private int Width = 0;
 
-        public Menu(int width)
+        public MenuSection(int width)
         {
             SidebarPanel.Width = width;
             SidebarPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            SidebarPanel.Padding = new System.Windows.Forms.Padding(20);
+            SidebarPanel.Padding = new System.Windows.Forms.Padding(40);
             InitializeLayout();
         }
 
