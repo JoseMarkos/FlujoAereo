@@ -8,8 +8,7 @@ namespace FlujoAereo.Logic.UI
 {
     public sealed class MenuSection
     {
-        private FlatPanel SidebarPanel = new FlatPanel("Sidebar");
-        private int Width = 0;
+        private readonly FlatPanel SidebarPanel = new FlatPanel("Sidebar");
 
         public MenuSection(int width)
         {

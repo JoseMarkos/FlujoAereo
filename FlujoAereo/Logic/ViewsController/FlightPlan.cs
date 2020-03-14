@@ -18,7 +18,7 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portraitForm = new PortraitForm("test");
             form = portraitForm;
-            form.Width = 1600;
+            form.Width = 1000;
            
             FlatPanel panel = new AirplanePanel().GetPanel("Hola");
             form.Controls.Add(panel);

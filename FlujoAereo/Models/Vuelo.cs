@@ -20,5 +20,7 @@ namespace FlujoAereo.Models
         public DateTime Arrival { get; set; }
 
         public DateTime Departure { get; set; }
+
+        public Status FlightStatus { get; set; }
     }
 }

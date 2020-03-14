@@ -135,7 +135,6 @@ namespace FlujoAereo.Logic.ViewsController
 
             Usuario user = new Usuario(0)
             {
-                ID = 0,
                 Name = panelName.Controls[index].Text,
                 Password = form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text
             };

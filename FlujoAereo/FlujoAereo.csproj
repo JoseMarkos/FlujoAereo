@@ -96,6 +96,7 @@
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
     <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
+    <Compile Include="Logic\UI\Layouts\Toolbar.cs" />
     <Compile Include="Logic\UI\PortraitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,7 +111,11 @@
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Piloto.cs" />
+    <Compile Include="Models\Pist.cs" />
+    <Compile Include="Models\UserAbstract.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Register.cs">

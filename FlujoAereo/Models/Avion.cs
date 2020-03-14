@@ -11,5 +11,6 @@ namespace FlujoAereo.Models
         public string IATA { get; set; }
         private long Flights { get; set; }
         private long HoursCount { get; set; }
+        public Status AirplaneStatus { get; set; }
     }
 }

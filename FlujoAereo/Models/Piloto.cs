@@ -11,7 +11,7 @@ namespace FlujoAereo.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-
         public Gender Sex { get; set; }
+        public Status PilotStatus { get; set; }
     }
 }
