@@ -11,8 +11,10 @@ namespace FlujoAereo.Models
     {
         public int Role { get; set; }
         
-        public Usuario(int role)
+        public Usuario(string name, string password, int role)
         {
+            Name = name;
+            Password = password;
             Role = role;
         }
     }

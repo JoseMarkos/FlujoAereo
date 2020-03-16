@@ -15,7 +15,9 @@ namespace FlujoAereo.Logic.UI.Layouts
 
         protected override void InitializeComponent()
         {
-            throw new NotImplementedException();
+            panel.Dock = System.Windows.Forms.DockStyle.Top;
+
+            AddElement(new FlatLabel("label in toolbar", 0, 0));
         }
     }
 }

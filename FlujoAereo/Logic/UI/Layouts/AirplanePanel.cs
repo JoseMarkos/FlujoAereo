@@ -30,7 +30,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             panel.Controls[panel.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panel.Controls[panel.Controls.IndexOfKey("btnSave")].Width = panel.Controls[panel.Controls.IndexOfKey("btnSave") - 1].Width;
 
-            CenterAllControls();
+            //CenterAllControls();
         }
 
         private void Save(object sender, System.EventArgs e)

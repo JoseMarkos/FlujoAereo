@@ -18,8 +18,7 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            SquareForm square = new SquareForm("Login");
-            form = (Form)square;
+            form = new SquareForm("Login shit");
             form.Height = 599;
             form.Width = 750;
 
@@ -127,25 +126,26 @@ namespace FlujoAereo.Logic.ViewsController
 
         private void TryLogin(object sender, System.EventArgs e)
         {
+            MessageBox.Show(form.Controls[1].Controls[0].Controls[2].Name);
+
             FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[1];
             FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
 
             int index = panelName.Controls.IndexOfKey("Name");
             int indexPass = panelPass.Controls.IndexOfKey("Password");
 
-            Usuario user = new Usuario(0)
-            {
-                Name = panelName.Controls[index].Text,
-                Password = form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text
-            };
+            Usuario user = new Usuario(
+                panelName.Controls[index].Text,
+                form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text,
+                0);
 
             UserDAO userDAO = new UserDAO(Server.MariaDB);
 
             if (userDAO.GetPassword(user.Name) == user.Password)
             {
-
                 Views views = new Views();
-
+                user.LoginState = LoginState.Login;
+                Program.user = user;
                 views.dictionary[userDAO.GetRole(user.Name)].Show();
                 form.Hide();
             }

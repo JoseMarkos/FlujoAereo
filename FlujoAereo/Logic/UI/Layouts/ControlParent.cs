@@ -22,6 +22,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             panel.Name = name;
             panel.AutoSize = true;
             panel.Dock = DockStyle.None;
+            panel.DockChanged += new EventHandler(SetFillWidth);
             return panel;
         }
 
@@ -57,12 +58,21 @@ namespace FlujoAereo.Logic.UI.Layouts
             }
         }
 
-        protected void CenterAllControls()
+        public void CenterAllControls()
         {
+            panel.Refresh();
+
             foreach (Control item in panel.Controls)
             {
+                MessageBox.Show(item.Width + " " + panel.ClientSize.Width.ToString());
+                MessageBox.Show(centerElement.Horizontal(item.Width, panel.ClientSize.Width).ToString());
                 item.Left = centerElement.Horizontal(item.Width, panel.ClientSize.Width);
             }
+        }
+
+        public void SetFillWidth(object sender, System.EventArgs e)
+        {
+            //panel.Width = panel.Parent.Width;
         }
     }
 }

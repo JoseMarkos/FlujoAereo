@@ -13,7 +13,8 @@ namespace FlujoAereo.Logic.ViewsController
     {
         protected CenterElement centerElement = new CenterElement();
         protected Colors colors = new Colors();
-        protected static Form form = new Form();
+        // Make sure not set as static in order to close from  class and not for instance
+        protected Form form = new Form();
         protected abstract void InitializeComponent();
 
         public Form GetForm()

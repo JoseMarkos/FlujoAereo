@@ -1,5 +1,6 @@
 ﻿using FlujoAereo.Logic.UI;
 using FlujoAereo.Logic.ViewsController;
+using FlujoAereo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace FlujoAereo
 {
     static class Program
     {
+        public static Usuario user;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,12 +22,14 @@ namespace FlujoAereo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Login login = new Login();
+            Login login = new Login();
+            Form form = login.GetForm();
+            form.Text = "shit";
+            Application.Run(form);
 
-            //Application.Run(login.GetForm());
-            FlightPlan clientService = new FlightPlan();
-            
-            Application.Run(clientService.GetForm());
+            //FlightPlan clientService = new FlightPlan();
+
+            //Application.Run(clientService.GetForm());
         }
     }
 }

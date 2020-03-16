@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Enums
 {
-    public enum Flight
+    public enum LoginState
     {
-        FirstClass,
-        Executive,
-        Turist,
-        EconomiPlus,
-        Economi
+        Logout,
+        Login
     }
 }

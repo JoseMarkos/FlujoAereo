@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlujoAereo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace FlujoAereo.Models
         public int ID;
         public string Name;
         public string Password;
+        public LoginState LoginState;
     }
 }

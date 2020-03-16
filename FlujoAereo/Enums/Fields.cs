@@ -10,6 +10,7 @@ namespace FlujoAereo.Enums
     {
         TextBox,
         Select,
-        Image
+        Image,
+        CheckBox
     }
 }
