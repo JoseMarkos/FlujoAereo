@@ -10,7 +10,7 @@ namespace FlujoAereo.Services
 {
     class DBAdapterFactory
     {
-        public IUserAccountAdapter GetAdapter(Server type)
+        public IDBAdapter GetAdapter(Server type)
         {
             return type switch
             {

@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace FlujoAereo.Interfaces
 {
-    public interface IUserAccountAdapter
+    public interface IDBAdapter
     {
         MySqlConnection GetConection();
     }

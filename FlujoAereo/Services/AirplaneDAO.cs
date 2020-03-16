@@ -12,7 +12,7 @@ namespace FlujoAereo.Services
 {
     public sealed class AirplaneDAO
     {
-        private IUserAccountAdapter adapter;
+        private IDBAdapter adapter;
 
         public AirplaneDAO(Server server)
         {

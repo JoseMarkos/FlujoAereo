@@ -62,7 +62,7 @@
     <Compile Include="Enums\Ticket.cs" />
     <Compile Include="Enums\Flight.cs" />
     <Compile Include="Enums\Views.cs" />
-    <Compile Include="Interfaces\IUserAccountAdapter.cs" />
+    <Compile Include="Interfaces\IDBAdapter.cs" />
     <Compile Include="Logic\UI\Elements\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Services
 {
-    class MariaDBAdapter : IUserAccountAdapter
+    class MariaDBAdapter : IDBAdapter
     {
 
         private static string Year = DateTime.Now.Year.ToString();
