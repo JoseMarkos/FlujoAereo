@@ -14,58 +14,58 @@ namespace FlujoAereo.Logic.UI.Layouts
         protected CenterElement centerElement = new CenterElement();
         protected Colors colors = new Colors();
         protected FlatPanel panel = new FlatPanel("_");
+        protected FlatPanel panelChild = new FlatPanel("__");
 
-        protected abstract void InitializeComponent();
-
-        public FlatPanel GetPanel(string name)
+        protected void InitializeComponent()
         {
-            panel.Name = name;
             panel.AutoSize = true;
             panel.Dock = DockStyle.None;
             panel.DockChanged += new EventHandler(SetFillWidth);
+
+            panel.Controls.Add(panelChild);
+        }
+
+        public FlatPanel GetPanel(string name)
+        {
             return panel;
         }
 
         protected void AddElement(Control element)
         {
-            panel.Controls.Add(element);
+            panelChild.Controls.Add(element);
 
-            if (panel.Controls.Count == 1 & element.GetType().ToString() != "FlujoAereo.Logic.UI.FlatTextBoxAutoFocus")
+            if (panelChild.Controls.Count == 1 & element.GetType().ToString() != "FlujoAereo.Logic.UI.FlatTextBoxAutoFocus")
             {
                 element.Top = 40;
             }
 
-            else if (panel.Controls.Count == 2 & panel.Controls[0].GetType().ToString() == "FlujoAereo.Logic.UI.FlatTextBoxAutoFocus")
+            else if (panelChild.Controls.Count == 2 & panelChild.Controls[0].GetType().ToString() == "FlujoAereo.Logic.UI.FlatTextBoxAutoFocus")
             {
                 element.Top = 40;
             }
 
-            if (panel.Controls.Count > 2)
+            if (panelChild.Controls.Count > 2)
             {
-                int index = panel.Controls.IndexOf(element);
+                int index = panelChild.Controls.IndexOf(element);
 
-                panel.Controls[index].Top = panel.Controls[index - 1].Top + panel.Controls[index - 1].Height + 50;
+                panelChild.Controls[index].Top = panelChild.Controls[index - 1].Top + panelChild.Controls[index - 1].Height + 50;
             }
 
             CheckWidth();
 
             void CheckWidth()
             {
-                if (panel.Width < element.Width)
+                if (panelChild.Width < element.Width)
                 {
-                    panel.Width = element.Width;
+                    panelChild.Width = element.Width;
                 }
             }
         }
 
         public void CenterAllControls()
         {
-            panel.Refresh();
-
             foreach (Control item in panel.Controls)
             {
-                MessageBox.Show(item.Width + " " + panel.ClientSize.Width.ToString());
-                MessageBox.Show(centerElement.Horizontal(item.Width, panel.ClientSize.Width).ToString());
                 item.Left = centerElement.Horizontal(item.Width, panel.ClientSize.Width);
             }
         }

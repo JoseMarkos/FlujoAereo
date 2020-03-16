@@ -24,29 +24,33 @@ namespace FlujoAereo.Logic.ViewsController
             AirplanePanel panelControl = new AirplanePanel();
             FlatPanel AirplanePanelForm = panelControl.GetPanel("AirplaneForm");
             mainPanel.Controls.Add(AirplanePanelForm);
-            //mainPanel.Padding = new Padding(30);
-            //mainPanel.BackColor = colors.Blue1;
+           // mainPanel.BackColor = colors.BlueHover1;
 
-            //AirplanePanelForm.BackColor = colors.Black1;
+           // AirplanePanelForm.BackColor = colors.Blue1;
+            AirplanePanelForm.Left = 0;
+            AirplanePanelForm.Dock = DockStyle.Left;
+            AirplanePanelForm.Padding = new Padding(40, 0, 0, 20);
 
-            AirplanePanelForm.MaximumSize = new System.Drawing.Size(1000, 1000);
-            AirplanePanelForm.Dock = DockStyle.Top;
-
-           // panelControl.CenterAllControls();
-
-            FlatPanel toolbar = new FlujoAereo.Logic.UI.Layouts.Toolbar().GetPanel("Toolbar");
+            Toolbar toolbarController = new FlujoAereo.Logic.UI.Layouts.Toolbar();
+            FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
             form.Controls.Add(toolbar);
 
-            //toolbar.BackColor = colors.LightGray1;
-            toolbar.Dock = DockStyle.Top;
+            toolbar.Height = 200;
+            toolbar.Height = toolbar.Controls[0].Height;
+            toolbar.Controls[0].Dock = DockStyle.None;
+            toolbar.Controls[0].Width = toolbar.Width;
+            toolbarController.AlignElementsRight(toolbar.Controls[0].Controls);
 
+            FlatPanel menuWrapper = new FlatPanel("MenuWrapper");
             FlatPanel menu = new MenuSection(200).GetSidebar();
-            form.Controls.Add(menu);
-            //menu.BackColor = colors.Black1;
+            menuWrapper.Controls.Add(menu);
+            mainPanel.Controls.Add(menuWrapper);
 
-            //MessageBox.Show(mainPanel.Width.ToString() + " main panel");
-            //MessageBox.Show(menu.Width.ToString() + " Sidebar panel");
+            menuWrapper.Dock = DockStyle.Left;
+            menuWrapper.Left = 0;
+            menuWrapper.BackColor = colors.Black1;
 
+            AirplanePanelForm.Width = mainPanel.Width - menuWrapper.Width;
         }
     }
 }

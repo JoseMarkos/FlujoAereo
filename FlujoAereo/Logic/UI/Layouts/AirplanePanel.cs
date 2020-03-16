@@ -15,8 +15,11 @@ namespace FlujoAereo.Logic.UI.Layouts
             InitializeComponent();
         }
 
-        protected override void InitializeComponent()
+        protected void InitializeComponent()
         {
+
+            panel.Controls.Add(panelChild);
+
             // Avoid textbox auto focus
             AddElement(new FlatTextBoxAutoFocus("_"));
 
@@ -27,10 +30,10 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatPanelTextBox("IATA"));
             AddElement(new FlatButton("Save"));
 
-            panel.Controls[panel.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            panel.Controls[panel.Controls.IndexOfKey("btnSave")].Width = panel.Controls[panel.Controls.IndexOfKey("btnSave") - 1].Width;
+            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
+            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 1].Width;
 
-            //CenterAllControls();
+            CenterAllControls();
         }
 
         private void Save(object sender, System.EventArgs e)

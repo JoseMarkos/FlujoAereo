@@ -16,6 +16,7 @@ namespace FlujoAereo.Enums
         private readonly Color LighterGray = Color.FromArgb(239, 239, 239);
         private readonly Color DarkGray = Color.DarkGray;
         private readonly Color Blue = Color.CadetBlue;
+        private readonly Color BlueHover = Color.CornflowerBlue;
 
         public Color Transparent1 => Transparent;
 
@@ -30,5 +31,7 @@ namespace FlujoAereo.Enums
         public Color Blue1 => Blue;
 
         public Color LighterGray1 => LighterGray;
+
+        public Color BlueHover1 => BlueHover;
     }
 }

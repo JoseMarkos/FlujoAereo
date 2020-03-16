@@ -16,8 +16,8 @@ namespace FlujoAereo.Logic.UI
             //FlatAppearance.BorderColor = System.Drawing.Color.White;
             FlatAppearance.BorderSize = 0;
 
-            FlatAppearance.MouseDownBackColor = System.Drawing.Color.CornflowerBlue;
-            FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            FlatAppearance.MouseDownBackColor = new Colors().BlueHover1;
+            FlatAppearance.MouseOverBackColor = new Colors().BlueHover1;
             FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ForeColor = System.Drawing.Color.White;

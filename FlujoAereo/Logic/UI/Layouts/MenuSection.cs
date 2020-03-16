@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlujoAereo.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,13 @@ namespace FlujoAereo.Logic.UI
     public sealed class MenuSection
     {
         private readonly FlatPanel SidebarPanel = new FlatPanel("Sidebar");
-
+        private Colors colors = new Colors();
         public MenuSection(int width)
         {
             SidebarPanel.Width = width;
             SidebarPanel.Dock = System.Windows.Forms.DockStyle.Left;
             SidebarPanel.Padding = new System.Windows.Forms.Padding(40);
+            SidebarPanel.BackColor = colors.Blue1;
             InitializeLayout();
         }
 
