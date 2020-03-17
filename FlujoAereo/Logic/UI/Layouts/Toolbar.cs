@@ -26,7 +26,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panel.Controls.Add(panelChild);
 
-            AddElement(new FlatLabel(userDao.GetLoggedUserName() + " s ", 0, 60));
+            AddElement(new FlatLabel(userDao.GetLoggedUserName(), 0, 60));
             panel.Controls[0].Controls[0].Text = "Hi, " + panel.Controls[0].Controls[0].Text;
           
             AddElement(new FlatButton("Logout"));

@@ -56,10 +56,7 @@ namespace FlujoAereo.Logic.ViewsController
 
             AirplanePanelForm.Width = mainPanel.Width - menuWrapper.Width;
 
-            //foreach (Control item in AirplanePanelForm.Controls[0].Controls)
-            //{
-            //    item.Left = centerElement.Horizontal(item.Width, AirplanePanelForm.ClientSize.Width);
-            //}
+            //AirplanePanelForm.Dispose();
         }
 
         private void SetLogout(object seter, EventArgs e)
