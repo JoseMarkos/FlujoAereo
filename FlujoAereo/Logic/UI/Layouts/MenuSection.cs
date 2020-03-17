@@ -29,12 +29,24 @@ namespace FlujoAereo.Logic.UI
             AddElement(new FlatButton("Create Airplane", true, System.Drawing.ContentAlignment.MiddleLeft));
             AddElement(new FlatButton("Airplanes", true, System.Drawing.ContentAlignment.MiddleLeft));
 
-            AddElement(new FlatLabel("Airport", 10, 0));
-            AddElement(new FlatButton("Crate Airport", true, System.Drawing.ContentAlignment.MiddleLeft));
-            AddElement(new FlatButton("Airports", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatLabel("Airline", 10, 0));
+            AddElement(new FlatButton("Create Airline", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatButton("Airlines", true, System.Drawing.ContentAlignment.MiddleLeft));
+
+            AddElement(new FlatLabel("Pilot", 10, 0));
+            AddElement(new FlatButton("Create Pilot", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatButton("Pilots", true, System.Drawing.ContentAlignment.MiddleLeft));
+
+            AddElement(new FlatLabel("Pist", 10, 0));
+            AddElement(new FlatButton("Create Pist", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatButton("Pists", true, System.Drawing.ContentAlignment.MiddleLeft));
+
+            //AddElement(new FlatLabel("Airport", 10, 0));
+            //AddElement(new FlatButton("Crate Airport", true, System.Drawing.ContentAlignment.MiddleLeft));
+            //AddElement(new FlatButton("Airports", true, System.Drawing.ContentAlignment.MiddleLeft));
 
             AddElement(new FlatLabel("Flight Plan", 10, 0));
-            AddElement(new FlatButton("Create Flightst Plan", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatButton("Create Flight", true, System.Drawing.ContentAlignment.MiddleLeft));
             AddElement(new FlatButton("Flightst this week", true, System.Drawing.ContentAlignment.MiddleLeft));
         }
 
