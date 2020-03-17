@@ -1,32 +1,40 @@
 ﻿using FlujoAereo.Enums;
+using FlujoAereo.Logic.UI.Layouts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI
 {
-    public sealed class MenuSection
+    public sealed class MenuSection : ControlParent
     {
-        private readonly FlatPanel SidebarPanel = new FlatPanel("Sidebar");
-        private Colors colors = new Colors();
         public MenuSection(int width)
         {
-            SidebarPanel.Width = width;
-            SidebarPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            SidebarPanel.Padding = new System.Windows.Forms.Padding(40);
-            SidebarPanel.BackColor = colors.Blue1;
+            panel.Width = width;
+            panel.Dock = System.Windows.Forms.DockStyle.Left;
+            //panel.Padding = new System.Windows.Forms.Padding(40);
+            panel.BackColor = colors.Blue1;
             InitializeLayout();
         }
 
         private void InitializeLayout()
         {
+            panel.Controls.Add(panelChild);
+            panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
+
+            AddElement(new FlatButton("Create Airplane"));
+            AddElement(new FlatButton("Flight Plan"));
         }
 
-        public FlatPanel GetSidebar()
+        public void SetMenuItemsWidth(int parentWidth)
         {
-            return SidebarPanel;
+            foreach (Control item in panelChild.Controls)
+            {
+                item.Width = parentWidth;
+            }
         }
     }
 }

@@ -16,9 +16,8 @@ namespace FlujoAereo.Logic.UI.Layouts
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
-
             panel.Controls.Add(panelChild);
 
             // Avoid textbox auto focus

@@ -44,12 +44,16 @@ namespace FlujoAereo.Logic.UI.Layouts
                 element.Top = 40;
             }
 
+            else if (panelChild.Controls.Count == 2)
+            {
+                SetLocationY();
+            }
+
             if (panelChild.Controls.Count > 2)
             {
-                int index = panelChild.Controls.IndexOf(element);
-
-                panelChild.Controls[index].Top = panelChild.Controls[index - 1].Top + panelChild.Controls[index - 1].Height + 50;
+                SetLocationY();
             }
+
 
             CheckWidth();
 
@@ -59,6 +63,13 @@ namespace FlujoAereo.Logic.UI.Layouts
                 {
                     panelChild.Width = element.Width;
                 }
+            }
+
+            void SetLocationY()
+            {
+                int index = panelChild.Controls.IndexOf(element);
+
+                panelChild.Controls[index].Top = panelChild.Controls[index - 1].Top + panelChild.Controls[index - 1].ClientSize.Height + 20;
             }
         }
 

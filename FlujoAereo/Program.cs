@@ -11,8 +11,6 @@ namespace FlujoAereo
 {
     static class Program
     {
-        public static Usuario user;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

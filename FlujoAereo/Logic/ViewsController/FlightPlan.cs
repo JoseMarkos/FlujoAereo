@@ -46,13 +46,16 @@ namespace FlujoAereo.Logic.ViewsController
             toolbar.Controls[0].Controls[1].Click += new EventHandler(SetLogout);
 
             FlatPanel menuWrapper = new FlatPanel("MenuWrapper");
-            FlatPanel menu = new MenuSection(200).GetSidebar();
+            MenuSection menuController = new MenuSection(200);
+            FlatPanel menu = menuController.GetPanel("Menu");
             menuWrapper.Controls.Add(menu);
-            mainPanel.Controls.Add(menuWrapper);
-
             menuWrapper.Dock = DockStyle.Left;
             menuWrapper.Left = 0;
             menuWrapper.BackColor = colors.Black1;
+
+            mainPanel.Controls.Add(menuWrapper);
+            menuController.SetMenuItemsWidth(menuWrapper.Width);
+
 
             AirplanePanelForm.Width = mainPanel.Width - menuWrapper.Width;
 

@@ -63,6 +63,8 @@ namespace FlujoAereo.Logic.ViewsController
             FlatLabelTitle title = new FlatLabelTitle("Sign in", 0, 20);
             panelLogin.Controls.Add(title);
 
+            FlatTextBoxAutoFocus _ = new FlatTextBoxAutoFocus("_");
+            panelLogin.Controls.Add(_);
 
             FlatPanel panelTxtName = new FlatPanel("Name")
             {
@@ -126,15 +128,15 @@ namespace FlujoAereo.Logic.ViewsController
 
         private void TryLogin(object sender, System.EventArgs e)
         {
-            FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[1];
-            FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
+            FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
+            FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[3];
 
             int index = panelName.Controls.IndexOfKey("Name");
             int indexPass = panelPass.Controls.IndexOfKey("Password");
 
             Usuario user = new Usuario(
                 panelName.Controls[index].Text,
-                form.Controls[1].Controls[0].Controls[2].Controls[indexPass].Text,
+                panelPass.Controls[indexPass].Text,
                 0);
 
             UserDAO userDAO = new UserDAO(Server.MariaDB);
