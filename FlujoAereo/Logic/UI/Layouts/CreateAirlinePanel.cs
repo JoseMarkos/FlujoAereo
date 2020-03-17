@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class CreateAirplanePanel : ControlParent
+    public sealed class CreateAirlinePanel : ControlParent
     {
-        public CreateAirplanePanel()
+        public CreateAirlinePanel()
         {
             InitializeComponent();
         }
@@ -27,10 +27,12 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Model"));
-            AddElement(new FlatPanelTextBox("Capacity"));
+            AddElement(new FlatPanelTextBox("Code"));
             AddElement(new FlatPanelTextBox("ICAO"));
             AddElement(new FlatPanelTextBox("IATA"));
+            AddElement(new FlatPanelTextBox("Name"));
+            AddElement(new FlatPanelTextBox("Logo"));
+            AddElement(new FlatPanelTextBox("Country"));
             AddElement(new FlatButton("Save"));
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);

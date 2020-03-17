@@ -15,7 +15,6 @@ namespace FlujoAereo.Logic.UI
         {
             panel.Width = width;
             panel.Dock = System.Windows.Forms.DockStyle.Left;
-            //panel.Padding = new System.Windows.Forms.Padding(40);
             panel.BackColor = colors.Blue1;
             InitializeLayout();
         }
@@ -23,7 +22,7 @@ namespace FlujoAereo.Logic.UI
         private void InitializeLayout()
         {
             panel.Controls.Add(panelChild);
-            panelChild.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelChild.Dock = System.Windows.Forms.DockStyle.Right;
 
             AddElement(new FlatLabel("Airplane", 10, 0));
             AddElement(new FlatButton("Create Airplane", true, System.Drawing.ContentAlignment.MiddleLeft));
@@ -57,5 +56,19 @@ namespace FlujoAereo.Logic.UI
                 item.Width = parentWidth;
             }
         }
+
+        public void ShowPanel(ref FlatPanel panel, ItemMenuType menuType)
+        {
+            if (panel.Controls.Count > 1)
+            {
+                panel.Controls.RemoveAt(1);
+            }
+
+            LayoutsDictionary layouts = new LayoutsDictionary();
+
+            panel.Controls.Add(layouts.dictionary[(int)menuType]);
+        }
+
+
     }
 }

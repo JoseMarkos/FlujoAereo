@@ -24,16 +24,13 @@ namespace FlujoAereo.Logic.ViewsController
             form.Controls.Add(mainPanel);
             mainPanel.Dock = DockStyle.Fill;
 
-            CreateAirplanePanel panelControl = new CreateAirplanePanel();
-            FlatPanel AirplanePanelForm = panelControl.GetPanel("AirplaneForm");
-            mainPanel.Controls.Add(AirplanePanelForm);
-           // mainPanel.BackColor = colors.BlueHover1;
+            // ----
 
-           // AirplanePanelForm.BackColor = colors.Blue1;
-            AirplanePanelForm.Left = 0;
-            AirplanePanelForm.Dock = DockStyle.Left;
-            AirplanePanelForm.Padding = new Padding(40, 0, 0, 20);
-
+            //CreateAirplanePanel panelControl = new CreateAirplanePanel();
+            //FlatPanel AirplanePanelForm = panelControl.GetPanel("AirplaneForm");
+            //mainPanel.Controls.Add(AirplanePanelForm);
+            // ----
+           
 
             Toolbar toolbarController = new FlujoAereo.Logic.UI.Layouts.Toolbar();
             FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
@@ -51,15 +48,17 @@ namespace FlujoAereo.Logic.ViewsController
             menuWrapper.Controls.Add(menu);
             menuWrapper.Dock = DockStyle.Left;
             menuWrapper.Left = 0;
-            menuWrapper.BackColor = colors.Black1;
 
             mainPanel.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAeroline);
 
 
-            AirplanePanelForm.Width = mainPanel.Width - menuWrapper.Width;
+            mainPanel.Controls.Add(new FlatLabel("test", 0, 0) { 
+                Text = mainPanel.Controls.Count.ToString(),
+            });
 
-            //AirplanePanelForm.Dispose();
+            mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
         }
 
         private void SetLogout(object seter, EventArgs e)

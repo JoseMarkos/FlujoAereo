@@ -19,7 +19,8 @@ namespace FlujoAereo.Logic.UI.Layouts
         protected void InitializeComponent()
         {
             panel.AutoSize = true;
-            panel.Dock = DockStyle.None;
+            panel.Dock = DockStyle.Right;
+            panel.Padding = new Padding(40, 0, 0, 20);
             panel.DockChanged += new EventHandler(SetFillWidth);
 
             panel.Controls.Add(panelChild);
