@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
 {
-    public sealed class FlightPlan : Controller
+    public sealed class Management : Controller
     {
-        public FlightPlan()
+        public Management()
         {
             InitializeComponent();
         }
@@ -38,10 +38,9 @@ namespace FlujoAereo.Logic.ViewsController
             FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
             form.Controls.Add(toolbar);
 
-            toolbar.Height = 200;
-            toolbar.Height = toolbar.Controls[0].Height;
             toolbar.Controls[0].Dock = DockStyle.None;
             toolbar.Controls[0].Width = toolbar.Width;
+            toolbar.Controls[0].Height = 70;
             toolbarController.AlignElementsRight(toolbar.Controls[0].Controls);
             toolbar.Controls[0].Controls[1].Click += new EventHandler(SetLogout);
 

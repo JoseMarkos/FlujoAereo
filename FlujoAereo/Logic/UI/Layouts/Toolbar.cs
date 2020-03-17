@@ -29,7 +29,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatLabel(userDao.GetLoggedUserName(), 0, 60));
             panel.Controls[0].Controls[0].Text = "Hi, " + panel.Controls[0].Controls[0].Text;
           
-            AddElement(new FlatButton("Logout"));
+            AddElement(new FlatButton("Logout", true));
         }
 
         public void AlignElementsRight (Control.ControlCollection collection)
