@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
@@ -15,7 +16,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             InitializeComponent();
         }
 
-        protected void InitializeComponent()
+        private void InitializeComponent()
         {
 
             panel.Controls.Add(panelChild);
@@ -33,7 +34,6 @@ namespace FlujoAereo.Logic.UI.Layouts
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 1].Width;
 
-            CenterAllControls();
         }
 
         private void Save(object sender, System.EventArgs e)

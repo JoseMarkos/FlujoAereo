@@ -126,8 +126,6 @@ namespace FlujoAereo.Logic.ViewsController
 
         private void TryLogin(object sender, System.EventArgs e)
         {
-            MessageBox.Show(form.Controls[1].Controls[0].Controls[2].Name);
-
             FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[1];
             FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
 
@@ -143,11 +141,11 @@ namespace FlujoAereo.Logic.ViewsController
 
             if (userDAO.GetPassword(user.Name) == user.Password)
             {
+                userDAO.SetLogin(userDAO.GetID(user.Name));
+
                 Views views = new Views();
-                user.LoginState = LoginState.Login;
-                Program.user = user;
-                views.dictionary[userDAO.GetRole(user.Name)].Show();
                 form.Hide();
+                views.dictionary[userDAO.GetRole(user.Name)].Show();
             }
 
             else

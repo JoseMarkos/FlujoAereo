@@ -108,7 +108,6 @@
     <Compile Include="Logic\ViewsController\FlightPlan.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />
     <Compile Include="Logic\ViewsController\Login.cs" />
-    <Compile Include="Logic\ViewsController\Management.cs" />
     <Compile Include="Models\Aerolinea.cs" />
     <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Avion.cs" />

@@ -62,14 +62,6 @@ namespace FlujoAereo.Logic.UI.Layouts
             }
         }
 
-        public void CenterAllControls()
-        {
-            foreach (Control item in panel.Controls)
-            {
-                item.Left = centerElement.Horizontal(item.Width, panel.ClientSize.Width);
-            }
-        }
-
         public void SetFillWidth(object sender, System.EventArgs e)
         {
             //panel.Width = panel.Parent.Width;

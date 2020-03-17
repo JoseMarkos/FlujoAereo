@@ -24,7 +24,7 @@ namespace FlujoAereo.Logic.UI
             Location = new System.Drawing.Point(0, 0);
             Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             Size = new System.Drawing.Size(120, 63);
-            Text = "Next";
+            Text = name;
             UseVisualStyleBackColor = true;
             BackColor = new Colors().Blue1;
            // Click += new System.EventHandler(this.btnNext_Click);

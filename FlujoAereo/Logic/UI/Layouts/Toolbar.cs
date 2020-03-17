@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlujoAereo.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +10,14 @@ namespace FlujoAereo.Logic.UI.Layouts
 {
     public sealed class Toolbar : ControlParent
     {
+        private UserDAO userDao = new UserDAO(Enums.Server.MariaDB);
+
         public Toolbar()
         {
             InitializeComponent();
         }
 
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
             panel.Dock = System.Windows.Forms.DockStyle.Top;
             panel.BackColor = colors.White1;
@@ -23,9 +26,10 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panel.Controls.Add(panelChild);
 
-            //AddElement(new FlatLabel("label in toolbar", 0, 0));
+            AddElement(new FlatLabel(userDao.GetLoggedUserName() + " s ", 0, 60));
+            panel.Controls[0].Controls[0].Text = "Hi, " + panel.Controls[0].Controls[0].Text;
+          
             AddElement(new FlatButton("Logout"));
-            //AddElement(new FlatLabel("label in toolbar 3", 0, 0));
         }
 
         public void AlignElementsRight (Control.ControlCollection collection)
@@ -34,7 +38,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             foreach (Control item in collection)
             {
-                item.Top = 20;
                 item.Dock = DockStyle.Right;
             }
         }

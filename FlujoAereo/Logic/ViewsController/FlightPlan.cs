@@ -1,5 +1,7 @@
 ﻿using FlujoAereo.Logic.UI;
 using FlujoAereo.Logic.UI.Layouts;
+using FlujoAereo.Services;
+using System;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.ViewsController
@@ -31,6 +33,7 @@ namespace FlujoAereo.Logic.ViewsController
             AirplanePanelForm.Dock = DockStyle.Left;
             AirplanePanelForm.Padding = new Padding(40, 0, 0, 20);
 
+
             Toolbar toolbarController = new FlujoAereo.Logic.UI.Layouts.Toolbar();
             FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
             form.Controls.Add(toolbar);
@@ -40,6 +43,7 @@ namespace FlujoAereo.Logic.ViewsController
             toolbar.Controls[0].Dock = DockStyle.None;
             toolbar.Controls[0].Width = toolbar.Width;
             toolbarController.AlignElementsRight(toolbar.Controls[0].Controls);
+            toolbar.Controls[0].Controls[1].Click += new EventHandler(SetLogout);
 
             FlatPanel menuWrapper = new FlatPanel("MenuWrapper");
             FlatPanel menu = new MenuSection(200).GetSidebar();
@@ -51,6 +55,23 @@ namespace FlujoAereo.Logic.ViewsController
             menuWrapper.BackColor = colors.Black1;
 
             AirplanePanelForm.Width = mainPanel.Width - menuWrapper.Width;
+
+            //foreach (Control item in AirplanePanelForm.Controls[0].Controls)
+            //{
+            //    item.Left = centerElement.Horizontal(item.Width, AirplanePanelForm.ClientSize.Width);
+            //}
+        }
+
+        private void SetLogout(object seter, EventArgs e)
+        {
+            UserDAO userDao = new UserDAO(Enums.Server.MariaDB);
+
+            userDao.SetLogout(userDao.GetID(userDao.GetLoggedUserName()));
+            form.Close();
+            form.Dispose();
+
+            Login login = new Login();
+            login.GetForm().Show();
         }
     }
 }

@@ -22,13 +22,13 @@ namespace FlujoAereo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Login login = new Login();
-            //Form form = login.GetForm();
-            //Application.Run(form);
+            Login login = new Login();
+            Form form = login.GetForm();
+            Application.Run(form);
 
-            FlightPlan clientService = new FlightPlan();
+            //FlightPlan clientService = new FlightPlan();
 
-            Application.Run(clientService.GetForm());
+            //Application.Run(clientService.GetForm());
         }
     }
 }
