@@ -10,6 +10,7 @@ namespace FlujoAereo.Enums
     {
         Administrator,
         FlightPlan,
-        FlightControl
+        FlightControl,
+        Client
     }
 }

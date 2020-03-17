@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class AirplanePanel : ControlParent
+    public sealed class CreateAirplanePanel : ControlParent
     {
-        public AirplanePanel()
+        public CreateAirplanePanel()
         {
             InitializeComponent();
         }

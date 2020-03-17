@@ -23,7 +23,7 @@ namespace FlujoAereo.Logic.ViewsController
             form.Controls.Add(mainPanel);
             mainPanel.Dock = DockStyle.Fill;
 
-            AirplanePanel panelControl = new AirplanePanel();
+            CreateAirplanePanel panelControl = new CreateAirplanePanel();
             FlatPanel AirplanePanelForm = panelControl.GetPanel("AirplaneForm");
             mainPanel.Controls.Add(AirplanePanelForm);
            // mainPanel.BackColor = colors.BlueHover1;
