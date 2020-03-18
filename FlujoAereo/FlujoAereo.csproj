@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
+    <Compile Include="Logic\UI\Layouts\CreatePilotPanel.cs" />
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
     <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
@@ -130,8 +131,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AirlineDAO.cs" />
     <Compile Include="Services\AirplaneDAO.cs" />
     <Compile Include="Services\MariaDBAdapter.cs" />
+    <Compile Include="Services\PilotDAO.cs" />
     <Compile Include="Services\UserDAO.cs" />
     <Compile Include="Services\DBAdapterFactory.cs" />
     <EmbeddedResource Include="Register.resx">

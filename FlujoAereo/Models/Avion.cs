@@ -10,10 +10,11 @@ namespace FlujoAereo.Models
         public int MaximunCargo { get; set; }
         public string ICAO { get; set; }
         public string IATA { get; set; }
-        public string AircraftRegistration { get; set; }
         private long Flights { get; set; }
         private long HoursCount { get; set; }
         public Status AirplaneStatus { get; set; }
         public int Enabled { get; set; }
+        public string AircraftRegistration { get; set; }
+        public int AirlineID { get; set; }
     }
 }

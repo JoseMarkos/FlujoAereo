@@ -24,8 +24,8 @@ namespace FlujoAereo.Logic.UI
             panel.Controls.Add(panelChild);
             panelChild.Dock = System.Windows.Forms.DockStyle.Right;
 
-            AddElement(new FlatLabel("Airplane", 10, 0));
-            AddElement(new FlatButton("Create Airplane", true, System.Drawing.ContentAlignment.MiddleLeft));
+            AddElement(new FlatLabel("Airplane", 10, 0)); // 0
+            AddElement(new FlatButton("Create Airplane", true, System.Drawing.ContentAlignment.MiddleLeft)); // 1
             AddElement(new FlatButton("Airplanes", true, System.Drawing.ContentAlignment.MiddleLeft));
 
             AddElement(new FlatLabel("Airline", 10, 0));

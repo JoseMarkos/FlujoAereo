@@ -33,39 +33,5 @@ namespace FlujoAereo.Services
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }
-
-        //public string GetPassword(string name)
-        //{
-        //    string readerString = String.Empty;
-
-        //    MySqlConnection connection = adapter.GetConection();
-        //    string sql = "SELECT Password FROM `flujoaereo`.`users` WHERE Name ='" + name + "';";
-
-
-        //    using (var command = new MySqlCommand(sql, connection))
-
-        //    using (var reader = command.ExecuteReader())
-        //        while (reader.Read())
-        //            readerString += reader.GetString(0);
-
-        //    return readerString;
-        //}
-
-        //public int GetRole(string role)
-        //{
-        //    string readerString = String.Empty;
-
-        //    MySqlConnection connection = adapter.GetConection();
-        //    string sql = "SELECT Role FROM `flujoaereo`.`users` WHERE Name ='" + role + "';";
-
-
-        //    using (var command = new MySqlCommand(sql, connection))
-
-        //    using (var reader = command.ExecuteReader())
-        //        while (reader.Read())
-        //            readerString += reader.GetString(0);
-
-        //    return int.Parse(readerString);
-        //}
     }
 }

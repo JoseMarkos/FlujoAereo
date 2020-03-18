@@ -15,27 +15,20 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            PortraitForm portraitForm = new PortraitForm("test");
+            PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
             form.Width = 1000;
             form.Height = 850;
 
+            // Main panel
             FlatPanel mainPanel = new FlatPanel("Main");
             form.Controls.Add(mainPanel);
             mainPanel.Dock = DockStyle.Fill;
-
-            // ----
-
-            //CreateAirplanePanel panelControl = new CreateAirplanePanel();
-            //FlatPanel AirplanePanelForm = panelControl.GetPanel("AirplaneForm");
-            //mainPanel.Controls.Add(AirplanePanelForm);
-            // ----
            
 
             Toolbar toolbarController = new FlujoAereo.Logic.UI.Layouts.Toolbar();
             FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
             form.Controls.Add(toolbar);
-
             toolbar.Controls[0].Dock = DockStyle.None;
             toolbar.Controls[0].Width = toolbar.Width;
             toolbar.Controls[0].Height = 70;
@@ -49,14 +42,36 @@ namespace FlujoAereo.Logic.ViewsController
             menuWrapper.Dock = DockStyle.Left;
             menuWrapper.Left = 0;
 
+            menu.Controls[0].Controls[1].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAvion);
+                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                }
+                );
+
+            menu.Controls[0].Controls[4].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAeroline);
+                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                }
+                );
+
+            menu.Controls[0].Controls[7].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
+                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                }
+                );
+
             mainPanel.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
+
+            // Default panel
             menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAvion);
 
-
-            mainPanel.Controls.Add(new FlatLabel("test", 0, 0) { 
-                Text = mainPanel.Controls.Count.ToString(),
-            });
 
             mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
         }

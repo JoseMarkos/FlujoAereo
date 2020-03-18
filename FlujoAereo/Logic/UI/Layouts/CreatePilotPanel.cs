@@ -1,17 +1,17 @@
-﻿using FlujoAereo.Models;
+﻿using FlujoAereo.Enums;
+using FlujoAereo.Models;
 using FlujoAereo.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class CreateAirlinePanel : ControlParent
+
+
+
+    public sealed class CreatePilotPanel : ControlParent
     {
-        public CreateAirlinePanel()
+        public CreatePilotPanel()
         {
             InitializeComponent();
         }
@@ -27,10 +27,8 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Code"));
             AddElement(new FlatPanelTextBox("Name"));
-            AddElement(new FlatPanelTextBox("Country"));
-            AddElement(new FlatPanelTextBox("Region"));
+            AddElement(new FlatPanelTextBox("Sexo"));
             AddElement(new FlatLabel("Active", 0, 0));
             AddElement(new RadioButton()
             {
@@ -57,25 +55,18 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             try
             {
-                RadioButton myRadio = (RadioButton)panelChild.Controls[6];
+                // Use trim for filelds names
+                RadioButton myRadio = (RadioButton)panelChild.Controls[4];
 
-                Aerolinea aerolinea = new Aerolinea
+                Piloto piloto = new Piloto
                 {
-                    Code = panelChild.Controls[1].Controls[0].Text,
-                    Name = panelChild.Controls[2].Controls[0].Text,
-                    Country = panelChild.Controls[3].Controls[0].Text,
-                    Region = panelChild.Controls[4].Controls[0].Text,
-                    AirlineStatus = (myRadio.Checked) ? 1 : 0,
+                    Name = panelChild.Controls[1].Controls[0].Text,
+                    Sex = (Gender)int.Parse(panelChild.Controls[2].Controls[0].Text),
+                    PilotStatus = (myRadio.Checked) ? 1 : 0,
                 };
 
-                MessageBox.Show(aerolinea.Code);
-                MessageBox.Show(aerolinea.Name);
-                MessageBox.Show(aerolinea.Country);
-                MessageBox.Show(aerolinea.Region);
-                MessageBox.Show(aerolinea.AirlineStatus.ToString());
-
-                AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
-                dao.Save(aerolinea);
+                //AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
+                //dao.Save(piloto);
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
@@ -87,3 +78,4 @@ namespace FlujoAereo.Logic.UI.Layouts
         }
     }
 }
+
