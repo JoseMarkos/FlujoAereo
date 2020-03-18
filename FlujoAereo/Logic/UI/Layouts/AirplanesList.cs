@@ -1,10 +1,5 @@
-﻿using FlujoAereo.Models;
-using FlujoAereo.Services;
+﻿using FlujoAereo.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
@@ -23,6 +18,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panel.Dock = DockStyle.Right;
             panel.Padding = new Padding(40, 0, 0, 20);
+            panel.BackColor = colors.White1;
 
             // DAO
 
@@ -36,13 +32,40 @@ namespace FlujoAereo.Logic.UI.Layouts
                 DataSource = airplaneDAO.GetAirplanesIDs()
             };
 
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = colors.White1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+
             // main controls
             AddElement(new DataGridView
             {
                 Name = "dgvairplanes",
                 DataSource = bindingSource,
-                Width = 700,
-                ForeColor = colors.Black1
+                Width = 975,
+                ForeColor = colors.Black1,
+
+                DefaultCellStyle = dataGridViewCellStyle2,
+                ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2,
+                RowsDefaultCellStyle = dataGridViewCellStyle2,
+                RowHeadersDefaultCellStyle = dataGridViewCellStyle2,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells,
+                AutoSize = true,
+                BackgroundColor = colors.White1,
+                BorderStyle = System.Windows.Forms.BorderStyle.None,
+                ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single,
+                ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize,
+                GridColor = System.Drawing.SystemColors.Control,
+                RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None,
+                MultiSelect = false,
+                RowHeadersVisible = false,
+                ReadOnly = true,
             });
 
             AddElement(new FlatButton("Save tmp"));
@@ -51,31 +74,31 @@ namespace FlujoAereo.Logic.UI.Layouts
             //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-        private void Save(object sender, System.EventArgs e)
+    private void Save(object sender, System.EventArgs e)
+    {
+        try
         {
-            try
-            {
-                //RadioButton myRadio = (RadioButton)panelChild.Controls[6];
+            //RadioButton myRadio = (RadioButton)panelChild.Controls[6];
 
-                //Airline aerolinea = new Airline
-                //{
-                //    Code = panelChild.Controls[1].Controls[0].Text,
-                //    Name = panelChild.Controls[2].Controls[0].Text,
-                //    Country = panelChild.Controls[3].Controls[0].Text,
-                //    Region = panelChild.Controls[4].Controls[0].Text,
-                //    AirlineStatus = (myRadio.Checked) ? 1 : 0,
-                //};
+            //Airline aerolinea = new Airline
+            //{
+            //    Code = panelChild.Controls[1].Controls[0].Text,
+            //    Name = panelChild.Controls[2].Controls[0].Text,
+            //    Country = panelChild.Controls[3].Controls[0].Text,
+            //    Region = panelChild.Controls[4].Controls[0].Text,
+            //    AirlineStatus = (myRadio.Checked) ? 1 : 0,
+            //};
 
-                //AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
-                //dao.Save(aerolinea);
+            //AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
+            //dao.Save(aerolinea);
 
-                // Button is the last child
-               // panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
-            }
-            catch (Exception)
-            {
-                throw new OperationCanceledException("Wrong filed.");
-            }
+            // Button is the last child
+            // panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
+        }
+        catch (Exception)
+        {
+            throw new OperationCanceledException("Wrong filed.");
         }
     }
+}
 }

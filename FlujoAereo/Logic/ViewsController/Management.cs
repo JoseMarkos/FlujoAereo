@@ -17,20 +17,21 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
-            form.Width = 1000;
+            form.Width = 1300;
             form.Height = 850;
+            form.Padding = new Padding(20);
+            form.BackColor = colors.White1;
 
             // Main panel
             FlatPanel mainPanel = new FlatPanel("Main");
             form.Controls.Add(mainPanel);
             mainPanel.Dock = DockStyle.Fill;
-           
+
 
             Toolbar toolbarController = new FlujoAereo.Logic.UI.Layouts.Toolbar();
             FlatPanel toolbar = toolbarController.GetPanel("Toolbar");
-            form.Controls.Add(toolbar);
+            mainPanel.Controls.Add(toolbar);
             toolbar.Controls[0].Dock = DockStyle.None;
-            toolbar.Controls[0].Width = toolbar.Width;
             toolbar.Controls[0].Height = 70;
             toolbarController.AlignElementsRight(toolbar.Controls[0].Controls);
             toolbar.Controls[0].Controls[1].Click += new EventHandler(SetLogout);
@@ -46,14 +47,14 @@ namespace FlujoAereo.Logic.ViewsController
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
-                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                    PanelAdjustment();
                 }
                 );
             menu.Controls[0].Controls[2].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
-                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                    PanelAdjustment();
                 }
                 );
 
@@ -61,7 +62,7 @@ namespace FlujoAereo.Logic.ViewsController
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAiline);
-                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                    PanelAdjustment();
                 }
                 );
 
@@ -69,18 +70,26 @@ namespace FlujoAereo.Logic.ViewsController
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
-                    mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+                    PanelAdjustment();
                 }
                 );
 
-            mainPanel.Controls.Add(menuWrapper);
+            form.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
             menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
+            PanelAdjustment();
 
-            
-            mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
+            void PanelAdjustment()
+            {
+                mainPanel.Controls[1].Dock = DockStyle.None;
+                mainPanel.Width = form.Width - menu.Width;
+                toolbar.Controls[0].Width = mainPanel.Width;
+                mainPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
+                mainPanel.Controls[1].Width = mainPanel.Width;
+                mainPanel.Controls[1].Height = mainPanel.Height - toolbar.Height;
+            }
         }
 
         private void SetLogout(object seter, EventArgs e)

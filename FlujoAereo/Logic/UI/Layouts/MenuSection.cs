@@ -67,6 +67,7 @@ namespace FlujoAereo.Logic.UI
             LayoutsDictionary layouts = new LayoutsDictionary();
 
             panel.Controls.Add(layouts.dictionary[(int)menuType]);
+            panel.Controls[1].Left = 0;
         }
     }
 }

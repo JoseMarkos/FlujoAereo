@@ -22,6 +22,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panel.Dock = DockStyle.Right;
             panel.Padding = new Padding(40, 0, 0, 20);
+            panel.BackColor = colors.White1;
 
             // Avoid textbox auto focus
             AddElement(new FlatTextBoxAutoFocus("_"));
@@ -67,9 +68,9 @@ namespace FlujoAereo.Logic.UI.Layouts
                     Model = panelChild.Controls[1].Controls[0].Text,
                     ICAO = panelChild.Controls[2].Controls[0].Text.ToUpper(),
                     IATA = panelChild.Controls[3].Controls[0].Text,
-                    MaximunPassengers = int.Parse(panelChild.Controls[4].Controls[0].Text),
-                    MaximunCargo = int.Parse(panelChild.Controls[5].Controls[0].Text),
-                    AircraftRegistration = panelChild.Controls[6].Controls[0].Text,
+                    MaxPASS = int.Parse(panelChild.Controls[4].Controls[0].Text),
+                    MaxCargo = int.Parse(panelChild.Controls[5].Controls[0].Text),
+                    Aircraft = panelChild.Controls[6].Controls[0].Text,
                     Enabled = (myRadio.Checked) ? 1 : 0,
                 };
 
@@ -78,6 +79,22 @@ namespace FlujoAereo.Logic.UI.Layouts
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
+                FlatPanel parentPanel = (FlatPanel)panel.Parent;
+                Control toolbar = parentPanel.Controls[0];
+
+                MenuSection menuController = new MenuSection(0);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Airplanes);
+
+                PanelAdjustment();
+
+                void PanelAdjustment()
+                {
+                    parentPanel.Controls[1].Dock = DockStyle.None;
+                    toolbar.Controls[0].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
+                    parentPanel.Controls[1].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
+                }
             }
             catch (Exception)
             {

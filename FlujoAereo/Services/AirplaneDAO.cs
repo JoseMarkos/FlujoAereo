@@ -27,7 +27,7 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaximunPassengers + "', '" + airplane.MaximunCargo + "', '" + airplane.AircraftRegistration + "', '" + airplane.Enabled + "');";
+            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaxPASS + "', '" + airplane.MaxCargo + "', '" + airplane.Aircraft + "', '" + airplane.Enabled + "');";
 
             MySqlCommand insertCommnad = new MySqlCommand(sql)
             {
@@ -57,12 +57,12 @@ namespace FlujoAereo.Services
                         Model = reader.GetString(1),
                         ICAO = reader.GetString(2),
                         IATA = reader.GetString(3),
-                        MaximunPassengers = reader.GetInt32(4),
-                        MaximunCargo = reader.GetInt32(5),
-                        AircraftRegistration = reader.GetString(6),
+                        MaxPASS = reader.GetInt32(4),
+                        MaxCargo = reader.GetInt32(5),
+                        Aircraft = reader.GetString(6),
                         Enabled = reader.GetInt32(7),
                         Flights = reader.GetInt32(8),
-                        HoursCount = reader.GetInt32(9),
+                        Hours = reader.GetInt32(9),
                     };
                     list.Add(airplane);
                 }
