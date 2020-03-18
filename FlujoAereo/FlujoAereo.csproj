@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,10 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.10.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.10.9\Assemblies\v4.5.2\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,29 +52,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\TipoDeAvion.cs" />
-    <Compile Include="Enums\TipoDeGenero.cs" />
-    <Compile Include="Enums\TipoDeTicket.cs" />
-    <Compile Include="Enums\TiposDeVuelo.cs" />
-    <Compile Include="Logic\UI\FlatComboBox.cs">
+    <Compile Include="Enums\Colors.cs" />
+    <Compile Include="Enums\Airplane.cs" />
+    <Compile Include="Enums\Fields.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\ItemMenuType.cs" />
+    <Compile Include="Enums\LayoutsDictionary.cs" />
+    <Compile Include="Enums\LoginState.cs" />
+    <Compile Include="Enums\Roles.cs" />
+    <Compile Include="Enums\Server.cs" />
+    <Compile Include="Enums\Ticket.cs" />
+    <Compile Include="Enums\Flight.cs" />
+    <Compile Include="Enums\Views.cs" />
+    <Compile Include="Interfaces\IDBAdapter.cs" />
+    <Compile Include="Logic\UI\Elements\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatLabel.cs">
+    <Compile Include="Logic\UI\Elements\FlatLabelTitle.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Logic\UI\FlatTxt.cs">
+    <Compile Include="Logic\UI\Elements\FlatComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatLabelError.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatPanelTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\UI\Elements\FlatTextBoxAutoFocus.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Logic\UI\Menu.cs" />
+    <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
+    <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
+    <Compile Include="Logic\UI\Layouts\MainSection.cs" />
+    <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
+    <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
+    <Compile Include="Logic\UI\Layouts\Toolbar.cs" />
+    <Compile Include="Logic\UI\PortraitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Logic\UI\SquareForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\ViewsController\CenterElement.cs" />
+    <Compile Include="Logic\ViewsController\Management.cs" />
+    <Compile Include="Logic\ViewsController\Controller.cs" />
+    <Compile Include="Logic\ViewsController\Login.cs" />
     <Compile Include="Models\Aerolinea.cs" />
+    <Compile Include="Models\Airport.cs" />
     <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ItemMenu.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Piloto.cs" />
+    <Compile Include="Models\Pist.cs" />
+    <Compile Include="Models\UserAbstract.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Vuelo.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
@@ -79,6 +130,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AirplaneDAO.cs" />
+    <Compile Include="Services\MariaDBAdapter.cs" />
+    <Compile Include="Services\UserDAO.cs" />
+    <Compile Include="Services\DBAdapterFactory.cs" />
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,8 +160,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Logic\Fields\" />
     <Folder Include="Logic\Tasks\" />
     <Folder Include="Logic\Validations\" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

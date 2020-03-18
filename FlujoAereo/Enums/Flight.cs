@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Enums
 {
-    public class TipoDeGenero
+    public enum Flight
     {
-        public enum Genero
-        {
-            Male,
-            Famele
-        }
+        FirstClass,
+        Executive,
+        Turist,
+        EconomiPlus,
+        Economi
     }
 }

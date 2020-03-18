@@ -1,18 +1,19 @@
 ﻿using FlujoAereo.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
     public sealed class Avion
     {
-        public TipoDeAvion Model { get; set; }
-        public Piloto Piloto { get; set; }
-
-        public int Capacity { get; set; }
-        public int TotalPasangers { get; set; }
+        public int ID { get; set; }
+        public Airplane Model { get; set; }
+        public int MaximunPassengers { get; set; }
+        public int MaximunCargo { get; set; }
+        public string ICAO { get; set; }
+        public string IATA { get; set; }
+        public string AircraftRegistration { get; set; }
+        private long Flights { get; set; }
+        private long HoursCount { get; set; }
+        public Status AirplaneStatus { get; set; }
+        public int Enabled { get; set; }
     }
 }

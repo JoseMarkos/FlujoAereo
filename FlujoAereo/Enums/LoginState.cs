@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlujoAereo.Logic.UI
+namespace FlujoAereo.Enums
 {
-    public sealed class Menu
+    public enum LoginState
     {
+        Logout,
+        Login
     }
 }

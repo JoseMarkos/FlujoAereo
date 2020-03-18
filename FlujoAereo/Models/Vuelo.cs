@@ -9,9 +9,9 @@ namespace FlujoAereo.Models
 {
     public sealed class Vuelo
     {
-        public TiposDeVuelo Tipo { get; set; }
+        public Flight Type { get; set; }
 
-        public int Pista { get; set; }
+        public int AsignedPist { get; set; }
 
         public string Origin { get; set; }
 
@@ -20,5 +20,7 @@ namespace FlujoAereo.Models
         public DateTime Arrival { get; set; }
 
         public DateTime Departure { get; set; }
+
+        public Status FlightStatus { get; set; }
     }
 }
