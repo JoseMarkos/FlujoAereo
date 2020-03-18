@@ -64,7 +64,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
                 Airplane avion = new Airplane
                 {
-                    Model = (Enums.AirplaneModels)int.Parse(panelChild.Controls[1].Controls[0].Text),
+                    Model = panelChild.Controls[1].Controls[0].Text,
                     ICAO = panelChild.Controls[2].Controls[0].Text.ToUpper(),
                     IATA = panelChild.Controls[3].Controls[0].Text,
                     MaximunPassengers = int.Parse(panelChild.Controls[4].Controls[0].Text),

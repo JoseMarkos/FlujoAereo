@@ -50,7 +50,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
-
         }
 
         private void Save(object sender, System.EventArgs e)
@@ -67,12 +66,6 @@ namespace FlujoAereo.Logic.UI.Layouts
                     Region = panelChild.Controls[4].Controls[0].Text,
                     AirlineStatus = (myRadio.Checked) ? 1 : 0,
                 };
-
-                MessageBox.Show(aerolinea.Code);
-                MessageBox.Show(aerolinea.Name);
-                MessageBox.Show(aerolinea.Country);
-                MessageBox.Show(aerolinea.Region);
-                MessageBox.Show(aerolinea.AirlineStatus.ToString());
 
                 AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
                 dao.Save(aerolinea);

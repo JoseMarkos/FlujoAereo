@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using FlujoAereo.Models;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+
 namespace FlujoAereo.Services
 {
     public sealed class AirplaneDAO
@@ -27,11 +29,45 @@ namespace FlujoAereo.Services
 
             string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaximunPassengers + "', '" + airplane.MaximunCargo + "', '" + airplane.AircraftRegistration + "', '" + airplane.Enabled + "');";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql);
-
-            insertCommnad.Connection = conection;
+            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            {
+                Connection = conection
+            };
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
+        }
+
+        public List<Airplane> GetAirplanesIDs()
+        {
+            List<Airplane> list = new List<Airplane>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT * FROM `flujoaereo`.`airplane`;";
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                   // MessageBox.Show(reader.GetInt32(0).ToString());
+                    Airplane airplane = new Airplane()
+                    {
+                        ID = reader.GetInt32(0),
+                        Model = reader.GetString(1),
+                        ICAO = reader.GetString(2),
+                        IATA = reader.GetString(3),
+                        MaximunPassengers = reader.GetInt32(4),
+                        MaximunCargo = reader.GetInt32(5),
+                        AircraftRegistration = reader.GetString(6),
+                        Enabled = reader.GetInt32(7),
+                        Flights = reader.GetInt32(8),
+                        HoursCount = reader.GetInt32(9),
+                    };
+                    list.Add(airplane);
+                }
+                return list;
+            }
         }
     }
 }

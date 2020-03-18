@@ -95,6 +95,7 @@
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\UI\Layouts\AirplanesList.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreatePilotPanel.cs" />
