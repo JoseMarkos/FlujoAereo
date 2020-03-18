@@ -113,28 +113,26 @@ namespace FlujoAereo.Services
 
         public void SetLogin(int id)
         {
-            string readerString = String.Empty;
-
             MySqlConnection connection = adapter.GetConection();
             string sql = "UPDATE `flujoaereo`.`users` SET `Status`='1' WHERE  `ID`="+ id +";";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql);
-
-            insertCommnad.Connection = connection;
+            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            {
+                Connection = connection
+            };
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }
 
         public void SetLogout(int id)
         {
-            string readerString = String.Empty;
-
             MySqlConnection connection = adapter.GetConection();
             string sql = "UPDATE `flujoaereo`.`users` SET `Status`='0' WHERE  `ID`=" + id + ";";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql);
-
-            insertCommnad.Connection = connection;
+            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            {
+                Connection = connection
+            };
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }

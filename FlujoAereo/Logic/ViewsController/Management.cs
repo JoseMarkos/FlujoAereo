@@ -18,7 +18,7 @@ namespace FlujoAereo.Logic.ViewsController
             PortraitForm portraitForm = new PortraitForm("test");
             form = portraitForm;
             form.Width = 1000;
-            form.Height = 800;
+            form.Height = 850;
 
             FlatPanel mainPanel = new FlatPanel("Main");
             form.Controls.Add(mainPanel);
@@ -51,7 +51,7 @@ namespace FlujoAereo.Logic.ViewsController
 
             mainPanel.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAeroline);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAvion);
 
 
             mainPanel.Controls.Add(new FlatLabel("test", 0, 0) { 

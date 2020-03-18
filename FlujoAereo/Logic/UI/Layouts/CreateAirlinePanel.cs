@@ -44,16 +44,16 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             try
             {
-                Avion avion = new Avion
+
+                MessageBox.Show(panel.Controls[0].Controls[1].Controls[0].Text);
+
+                Aerolinea aerolinea = new Aerolinea
                 {
-                    Model = (Enums.Airplane)int.Parse(panel.Controls[1].Controls[0].Text),
-                    Capacity = int.Parse(panel.Controls[2].Controls[0].Text),
-                    ICAO = panel.Controls[3].Controls[0].Text.ToUpper(),
-                    IATA = panel.Controls[4].Controls[0].Text.ToUpper()
+                    Code = panel.Controls[0].Controls[1].Controls[0].Text,
                 };
 
-                AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
-                dao.Save(avion);
+                //AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
+                //dao.Save(avion);
 
                 // Button is the last child
                 panel.Controls[panel.Controls.Count - 1].Enabled = false;

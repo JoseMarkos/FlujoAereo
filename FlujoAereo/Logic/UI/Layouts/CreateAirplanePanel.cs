@@ -28,13 +28,30 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             // Main controls
             AddElement(new FlatPanelTextBox("Model"));
-            AddElement(new FlatPanelTextBox("Capacity"));
             AddElement(new FlatPanelTextBox("ICAO"));
             AddElement(new FlatPanelTextBox("IATA"));
+            AddElement(new FlatPanelTextBox("Maximun Passengers"));
+            AddElement(new FlatPanelTextBox("Maximun Cargo"));
+            AddElement(new FlatPanelTextBox("Aircraft Registration"));
+            AddElement(new FlatLabel("Enabeld", 0, 0));
+            AddElement(new RadioButton() 
+            { 
+                Name = "radioEnabledYES", 
+                Text = "Yes",
+                Size = new System.Drawing.Size(67, 23),
+                ForeColor = colors.Black1
+            });
+            AddElement(new RadioButton()
+            {
+                Name = "radioEnabledNo",
+                Text = "No",
+                Size = new System.Drawing.Size(67, 23),
+                ForeColor = colors.Black1
+            });
             AddElement(new FlatButton("Save"));
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 1].Width;
+            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
 
         }
 
@@ -42,19 +59,25 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             try
             {
+                // Use trim for filelds names
+                RadioButton myRadio = (RadioButton)panelChild.Controls[8];
+
                 Avion avion = new Avion
                 {
-                    Model = (Enums.Airplane)int.Parse(panel.Controls[1].Controls[0].Text),
-                    Capacity = int.Parse(panel.Controls[2].Controls[0].Text),
-                    ICAO = panel.Controls[3].Controls[0].Text.ToUpper(),
-                    IATA = panel.Controls[4].Controls[0].Text.ToUpper()
+                    Model = (Enums.Airplane)int.Parse(panelChild.Controls[1].Controls[0].Text),
+                    ICAO = panelChild.Controls[2].Controls[0].Text.ToUpper(),
+                    IATA = panelChild.Controls[3].Controls[0].Text,
+                    MaximunPassengers = int.Parse(panelChild.Controls[4].Controls[0].Text),
+                    MaximunCargo = int.Parse(panelChild.Controls[5].Controls[0].Text),
+                    AircraftRegistration = panelChild.Controls[6].Controls[0].Text,
+                    Enabled = (myRadio.Checked) ? 1 : 0,
                 };
 
                 AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
                 dao.Save(avion);
 
                 // Button is the last child
-                panel.Controls[panel.Controls.Count - 1].Enabled = false;
+                panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
             }
             catch (Exception)
             {

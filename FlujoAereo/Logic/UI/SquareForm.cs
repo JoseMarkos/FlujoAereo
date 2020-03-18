@@ -11,6 +11,8 @@ namespace FlujoAereo.Logic.UI
 {
     public partial class SquareForm : Form
     {
+        private Colors colors = new Colors();
+
         public SquareForm(string name)
         {
             SuspendLayout();
@@ -26,7 +28,9 @@ namespace FlujoAereo.Logic.UI
             Name = name;
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = name;
-            
+            Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ForeColor = colors.Black1;
+
             ResumeLayout(false);
         }
     }

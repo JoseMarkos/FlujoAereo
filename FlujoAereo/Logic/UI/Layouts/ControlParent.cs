@@ -28,6 +28,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
         public FlatPanel GetPanel(string name)
         {
+            panel.Name = name;
             return panel;
         }
 

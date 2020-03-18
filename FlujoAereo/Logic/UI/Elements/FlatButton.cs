@@ -10,16 +10,18 @@ namespace FlujoAereo.Logic.UI
 {
     public partial class FlatButton : Button
     {
+        private Colors colors = new Colors();
+
         public FlatButton(string name, bool small = false, System.Drawing.ContentAlignment texAlign = System.Drawing.ContentAlignment.MiddleCenter)
         {
             Name = "btn" + name;
             //FlatAppearance.BorderColor = System.Drawing.Color.White;
             FlatAppearance.BorderSize = 0;
 
-            FlatAppearance.MouseDownBackColor = new Colors().DarkGray1;
-            FlatAppearance.MouseOverBackColor = new Colors().DarkGray1;
+            FlatAppearance.MouseDownBackColor = colors.DarkGray1;
+            FlatAppearance.MouseOverBackColor = colors.DarkGray1;
             FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            ForeColor = System.Drawing.Color.White;
+            ForeColor = colors.White1;
             Location = new System.Drawing.Point(0, 0);
             Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 
@@ -35,7 +37,7 @@ namespace FlujoAereo.Logic.UI
             
             Text = name;
             UseVisualStyleBackColor = true;
-            BackColor = new Colors().Blue1;
+            BackColor = colors.Blue1;
            // Click += new System.EventHandler(this.btnNext_Click);
         }
     }
