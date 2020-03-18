@@ -59,7 +59,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             {
                 RadioButton myRadio = (RadioButton)panelChild.Controls[6];
 
-                Aerolinea aerolinea = new Aerolinea
+                Airline aerolinea = new Airline
                 {
                     Code = panelChild.Controls[1].Controls[0].Text,
                     Name = panelChild.Controls[2].Controls[0].Text,

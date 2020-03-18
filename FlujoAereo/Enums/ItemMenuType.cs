@@ -8,8 +8,8 @@ namespace FlujoAereo.Enums
 {
     public enum ItemMenuType
     {
-        CreateAvion,
-        CreateAeroline,
+        CreateAirplae,
+        CreateAiline,
         CreateAirport,
         CreateClient,
         CreateItemMenu,
@@ -17,6 +17,13 @@ namespace FlujoAereo.Enums
         CreatePist,
         CreateStatus,
         CreateUsuario,
-        CreateVuelo
+        CreateVuelo,
+        Airplanes,
+        Airlines,
+        Airports,
+        Clients,
+        Pilots,
+        Pists,
+        Flight
     }
 }

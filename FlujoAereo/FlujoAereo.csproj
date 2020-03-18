@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Colors.cs" />
-    <Compile Include="Enums\Airplane.cs" />
+    <Compile Include="Enums\AirplaneModels.cs" />
     <Compile Include="Enums\Fields.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ItemMenuType.cs" />
@@ -112,9 +112,9 @@
     <Compile Include="Logic\ViewsController\Management.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />
     <Compile Include="Logic\ViewsController\Login.cs" />
-    <Compile Include="Models\Aerolinea.cs" />
+    <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airport.cs" />
-    <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ItemMenu.cs" />
     <Compile Include="Models\Status.cs" />

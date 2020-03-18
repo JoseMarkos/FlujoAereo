@@ -2,10 +2,10 @@
 
 namespace FlujoAereo.Models
 {
-    public sealed class Avion
+    public sealed class Airplane
     {
         public int ID { get; set; }
-        public Airplane Model { get; set; }
+        public AirplaneModels Model { get; set; }
         public int MaximunPassengers { get; set; }
         public int MaximunCargo { get; set; }
         public string ICAO { get; set; }

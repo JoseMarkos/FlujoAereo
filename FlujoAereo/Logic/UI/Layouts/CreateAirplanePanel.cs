@@ -62,9 +62,9 @@ namespace FlujoAereo.Logic.UI.Layouts
                 // Use trim for filelds names
                 RadioButton myRadio = (RadioButton)panelChild.Controls[8];
 
-                Avion avion = new Avion
+                Airplane avion = new Airplane
                 {
-                    Model = (Enums.Airplane)int.Parse(panelChild.Controls[1].Controls[0].Text),
+                    Model = (Enums.AirplaneModels)int.Parse(panelChild.Controls[1].Controls[0].Text),
                     ICAO = panelChild.Controls[2].Controls[0].Text.ToUpper(),
                     IATA = panelChild.Controls[3].Controls[0].Text,
                     MaximunPassengers = int.Parse(panelChild.Controls[4].Controls[0].Text),

@@ -21,7 +21,7 @@ namespace FlujoAereo.Services
             adapter = fileFactory.GetAdapter(server);
         }
 
-        public void Save(Avion airplane)
+        public void Save(Models.Airplane airplane)
         {
             MySqlConnection conection = adapter.GetConection();
 

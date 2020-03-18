@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public sealed class Aerolinea
+    public sealed class Airline
     {
         public int Id { get; set; }
         public string Code { get; set; }
@@ -15,7 +15,7 @@ namespace FlujoAereo.Models
         public string Country { get; set; }
         public string Region { get; set; }
         public int AirlineStatus { get; set; }
-        private List<Avion> AircraftList { get; set; }
+        private List<Airplane> AircraftList { get; set; }
         // public Journal journal { get; set; }
     }
 }

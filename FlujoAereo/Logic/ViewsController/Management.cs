@@ -45,7 +45,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[1].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAvion);
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
                     mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
                 }
                 );
@@ -53,7 +53,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[4].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAeroline);
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAiline);
                     mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;
                 }
                 );
@@ -70,7 +70,7 @@ namespace FlujoAereo.Logic.ViewsController
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAvion);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
 
 
             mainPanel.Controls[1].Width = mainPanel.Width - menuWrapper.Width;

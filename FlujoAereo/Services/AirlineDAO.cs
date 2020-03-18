@@ -23,7 +23,7 @@ namespace FlujoAereo.Services
             adapter = fileFactory.GetAdapter(server);
         }
 
-        public void Save(Aerolinea airline)
+        public void Save(Airline airline)
         {
             try
             {
