@@ -6,9 +6,6 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-
-
-
     public sealed class CreatePilotPanel : ControlParent
     {
         public CreatePilotPanel()
@@ -27,7 +24,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Name"));
+            AddElement(new FlatPanelTextBox("Full Name"));
             AddElement(new FlatPanelTextBox("Sexo"));
             AddElement(new FlatLabel("Active", 0, 0));
             AddElement(new RadioButton()
@@ -48,7 +45,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
-
         }
 
         private void Save(object sender, System.EventArgs e)
@@ -65,8 +61,8 @@ namespace FlujoAereo.Logic.UI.Layouts
                     PilotStatus = (myRadio.Checked) ? 1 : 0,
                 };
 
-                //AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
-                //dao.Save(piloto);
+                PilotDAO dao = new PilotDAO(Enums.Server.MariaDB);
+                dao.Save(piloto);
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
