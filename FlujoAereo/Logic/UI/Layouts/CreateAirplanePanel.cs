@@ -34,6 +34,24 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatPanelTextBox("Maximun Passengers"));
             AddElement(new FlatPanelTextBox("Maximun Cargo"));
             AddElement(new FlatPanelTextBox("Aircraft Registration"));
+
+            AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
+            List<string> airlaneNames = airlineDAO.GetAllAirlinesNames();
+
+
+            ComboBox comboBox = new ComboBox
+            {
+
+                Name = "comboAirline",
+                Width = panelChild.Controls[1].Width,
+            };
+
+            foreach (string item in airlaneNames)
+            {
+                comboBox.Items.Add(item);
+            }
+
+            AddElement(comboBox);
             AddElement(new FlatLabel("Enabeld", 0, 0));
             AddElement(new RadioButton() 
             { 
@@ -61,16 +79,20 @@ namespace FlujoAereo.Logic.UI.Layouts
             try
             {
                 // Use trim for filelds names
-                RadioButton myRadio = (RadioButton)panelChild.Controls[8];
+                RadioButton myRadio = (RadioButton)panelChild.Controls[9];
+                ComboBox myCombo = (ComboBox)panelChild.Controls[7];
+
+                int airlaineID = new AirlineDAO(Enums.Server.MariaDB).GetID(myCombo.SelectedItem.ToString());
 
                 Airplane avion = new Airplane
                 {
                     Model = panelChild.Controls[1].Controls[0].Text,
-                    ICAO = panelChild.Controls[2].Controls[0].Text.ToUpper(),
+                    ICAO = panelChild.Controls[2].Controls[0].Text,
                     IATA = panelChild.Controls[3].Controls[0].Text,
                     MaxPASS = int.Parse(panelChild.Controls[4].Controls[0].Text),
                     MaxCargo = int.Parse(panelChild.Controls[5].Controls[0].Text),
                     Aircraft = panelChild.Controls[6].Controls[0].Text,
+                    AirlineID = airlaineID,
                     Enabled = (myRadio.Checked) ? 1 : 0,
                 };
 

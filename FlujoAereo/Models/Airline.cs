@@ -9,9 +9,10 @@ namespace FlujoAereo.Models
     public sealed class Airline
     {
         public int ID { get; set; }
-        public string Code { get; set; }
+        public string ICAO { get; set; }
+        public string IATA { get; set; }
         public string Name { get; set; }
-        public string Logo { get; set; }
+        //public string Logo { get; set; }
         public string Country { get; set; }
         public string Region { get; set; }
         public int AirlineStatus { get; set; }

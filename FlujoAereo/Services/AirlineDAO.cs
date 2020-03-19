@@ -29,7 +29,7 @@ namespace FlujoAereo.Services
             {
                 MySqlConnection conection = adapter.GetConection();
 
-                string sql = "INSERT INTO `flujoaereo`.`airline` (`Code`, `Name`, `Country`, `Region`, `Status`, `Aircraft`) VALUES ('" + airline.Code + "', '" + airline.Name + "', '" + airline.Country + "', '" + airline.Region + "', '" + airline.AirlineStatus + "', '" + airline.AircraftList + "');";
+                string sql = "INSERT INTO `flujoaereo`.`airline` (`Name`, `ICAO`, `IATA`,  `Country`, `Region`, `Status`, `Aircraft`) VALUES ('" + airline.Name + "', '" + airline.ICAO + "', '" + airline.IATA + "', '" + airline.Country + "', '" + airline.Region + "', '" + airline.AirlineStatus + "', '" + airline.AircraftList + "');";
 
                 MySqlCommand insertCommnad = new MySqlCommand(sql)
                 {
@@ -62,17 +62,53 @@ namespace FlujoAereo.Services
                     Airline airline = new Airline()
                     {
                         ID = reader.GetInt32(0),
-                        Code = reader.GetString(1),
-                        Name = reader.GetString(2),
-                        Country = reader.GetString(3),
-                        Region = reader.GetString(4),
-                        AirlineStatus = reader.GetInt32(5),
-                        AircraftList = reader.GetString(6)
+                        Name = reader.GetString(1),
+                        ICAO = reader.GetString(2),
+                        IATA = reader.GetString(3),
+                        Country = reader.GetString(4),
+                        Region = reader.GetString(5),
+                        AirlineStatus = reader.GetInt32(6),
+                        AircraftList = reader.GetString(7)
                     };
                     list.Add(airline);
                 }
                 return list;
             }
+        }
+
+        public int GetID(string name)
+        {
+            string readerString = String.Empty;
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT ID FROM `flujoaereo`.`airline` WHERE Name ='" + name + "';";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    readerString += reader.GetString(0);
+
+            return int.Parse(readerString);
+        }
+
+        public List<string> GetAllAirlinesNames()
+        {
+            List<string> vs = new List<string>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Name FROM `flujoaereo`.`airline`;";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    vs.Add(reader.GetString(0));
+
+
+            return vs;
         }
     }
 }

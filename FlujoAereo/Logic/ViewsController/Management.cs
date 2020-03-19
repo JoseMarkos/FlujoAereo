@@ -18,7 +18,7 @@ namespace FlujoAereo.Logic.ViewsController
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
             form.Width = 1300;
-            form.Height = 850;
+            form.Height = 900;
             form.Padding = new Padding(20);
             form.BackColor = colors.White1;
 
@@ -67,10 +67,19 @@ namespace FlujoAereo.Logic.ViewsController
                     PanelAdjustment();
                 }
                 );
+
             menu.Controls[0].Controls[3].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pists);
+                    PanelAdjustment();
+                }
+                );
+
+            menu.Controls[0].Controls[4].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airports);
                     PanelAdjustment();
                 }
                 );

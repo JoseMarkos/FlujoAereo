@@ -25,7 +25,7 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`pilot` (`Name`, `Sex`, `Status`) VALUES ('" + pilot.Name + "', '" + pilot.Sex + "', '" + pilot.PilotStatus + "');";
+            string sql = "INSERT INTO `flujoaereo`.`pilot` (`Name`, `Sex`, `Status`, `AirlineID`) VALUES ('" + pilot.Name + "', '" + pilot.Sex + "', '" + pilot.PilotStatus + "', '" + pilot.AirlineID + "');";
 
             MySqlCommand insertCommnad = new MySqlCommand(sql)
             {
@@ -54,6 +54,7 @@ namespace FlujoAereo.Services
                         Name = reader.GetString(1),
                         Sex = reader.GetString(2),
                         PilotStatus = reader.GetInt32(3),
+                        AirlineID = reader.GetInt32(4),
                     };
                     list.Add(pilot);
                 }

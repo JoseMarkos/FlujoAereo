@@ -27,9 +27,9 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaxPASS + "', '" + airplane.MaxCargo + "', '" + airplane.Aircraft + "', '" + airplane.Enabled + "');";
+            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`, `AirlineID`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaxPASS + "', '" + airplane.MaxCargo + "', '" + airplane.Aircraft + "', '" + airplane.Enabled + "', '" + airplane.AirlineID + "');";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            MySqlCommand insertCommnad = new MySqlCommand(sql)  
             {
                 Connection = conection
             };
@@ -63,6 +63,7 @@ namespace FlujoAereo.Services
                         Enabled = reader.GetInt32(7),
                         Flights = reader.GetInt32(8),
                         Hours = reader.GetInt32(9),
+                        AirlineID = reader.GetInt32(10),
                     };
                     list.Add(airplane);
                 }

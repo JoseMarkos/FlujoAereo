@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class CreatePistPanel : ControlParent
+    public sealed class CreateAirportPanel : ControlParent
     {
-        public CreatePistPanel()
+        public CreateAirportPanel()
         {
             InitializeComponent();
         }
@@ -24,7 +24,16 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Description"));
+            AddElement(new FlatPanelTextBox("Name"));
+            AddElement(new FlatPanelTextBox("Operator"));
+            AddElement(new FlatPanelTextBox("Owner"));
+            AddElement(new FlatPanelTextBox("ICAO"));
+            AddElement(new FlatPanelTextBox("IATA"));
+            AddElement(new FlatPanelTextBox("Airport Type"));
+            AddElement(new FlatPanelTextBox("Address"));
+            AddElement(new FlatPanelTextBox("Serves"));
+            AddElement(new FlatPanelTextBox("Meters Large"));
+            AddElement(new FlatPanelTextBox("Meters Elevation"));
             AddElement(new FlatLabel("Available", 0, 0));
             AddElement(new RadioButton()
             {
@@ -51,16 +60,26 @@ namespace FlujoAereo.Logic.UI.Layouts
             try
             {
                 // Use trim for filelds names
-                RadioButton myRadio = (RadioButton)panelChild.Controls[3];
+                RadioButton myRadio = (RadioButton)panelChild.Controls[12];
 
-                Pist pist = new Pist
+                Airport airport = new Airport
                 {
-                    Description = panelChild.Controls[1].Controls[0].Text,
+                    Name = panelChild.Controls[1].Controls[0].Text,
+                    Operator = panelChild.Controls[2].Controls[0].Text,
+                    Owner = panelChild.Controls[3].Controls[0].Text,
+                    ICAO = panelChild.Controls[4].Controls[0].Text,
+                    IATA = panelChild.Controls[5].Controls[0].Text,
+                    Type = panelChild.Controls[6].Controls[0].Text,
+                    Address = panelChild.Controls[7].Controls[0].Text,
+                    Serves = panelChild.Controls[8].Controls[0].Text,
+                    Large = int.Parse(panelChild.Controls[9].Controls[0].Text),
+                    Elevation = int.Parse(panelChild.Controls[10].Controls[0].Text),
                     Status = (myRadio.Checked) ? 1 : 0,
                 };
 
-                PistDAO dao = new PistDAO(Server.MariaDB);
-                dao.Save(pist);
+
+                AirportDAO dao = new AirportDAO(Server.MariaDB);
+                dao.Save(airport);
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
@@ -69,7 +88,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Pists);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Airports);
 
                 PanelAdjustment();
 

@@ -27,8 +27,9 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Code"));
             AddElement(new FlatPanelTextBox("Name"));
+            AddElement(new FlatPanelTextBox("ICAO"));
+            AddElement(new FlatPanelTextBox("IATA"));
             AddElement(new FlatPanelTextBox("Country"));
             AddElement(new FlatPanelTextBox("Region"));
             AddElement(new FlatLabel("Active", 0, 0));
@@ -56,14 +57,15 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             try
             {
-                RadioButton myRadio = (RadioButton)panelChild.Controls[6];
+                RadioButton myRadio = (RadioButton)panelChild.Controls[7];
 
                 Airline aerolinea = new Airline
                 {
-                    Code = panelChild.Controls[1].Controls[0].Text,
-                    Name = panelChild.Controls[2].Controls[0].Text,
-                    Country = panelChild.Controls[3].Controls[0].Text,
-                    Region = panelChild.Controls[4].Controls[0].Text,
+                    Name = panelChild.Controls[1].Controls[0].Text,
+                    ICAO = panelChild.Controls[2].Controls[0].Text,
+                    IATA = panelChild.Controls[3].Controls[0].Text,
+                    Country = panelChild.Controls[4].Controls[0].Text,
+                    Region = panelChild.Controls[5].Controls[0].Text,
                     AirlineStatus = (myRadio.Checked) ? 1 : 0,
                     AircraftList = ""
                 };

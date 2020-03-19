@@ -12,7 +12,7 @@ namespace FlujoAereo.Models
         public string IATA { get; set; }
         public long Flights { get; set; }
         public long Hours { get; set; }
-        public Status Status { get; set; }
+        public string Status { get; set; }
         public int Enabled { get; set; }
         public string Aircraft { get; set; }
         public int AirlineID { get; set; }
