@@ -44,7 +44,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             // main controls
             AddElement(new DataGridView
             {
-                Name = "dgvAirlines",
+                Name = "dgvPilots",
                 DataSource = bindingSource,
                 Width = 975,
                 ForeColor = colors.Black1,

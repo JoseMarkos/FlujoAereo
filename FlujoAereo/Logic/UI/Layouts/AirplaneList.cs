@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class AirplanesList : ControlParent
+    public sealed class AirplaneList : ControlParent
     {
-        public AirplanesList()
+        public AirplaneList()
         {
             InitializeComponent();
         }
