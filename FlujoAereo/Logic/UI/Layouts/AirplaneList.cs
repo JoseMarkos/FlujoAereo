@@ -20,12 +20,10 @@ namespace FlujoAereo.Logic.UI.Layouts
             panel.Padding = new Padding(40, 0, 0, 20);
             panel.BackColor = colors.White1;
 
+           
+
             // DAO
-
             AirplaneDAO airplaneDAO = new AirplaneDAO(Enums.Server.MariaDB);
-
-            // Avoid textbox auto focus
-            AddElement(new FlatTextBoxAutoFocus("_"));
 
             BindingSource bindingSource = new BindingSource
             {
@@ -42,9 +40,14 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
             // main controls
+            AddElement(new FlatLabelTitle("Airplanes", 0, 0));
+            AddElement(new FlatButton("Create Airplane"));
+            panelChild.Controls[1].Click += new EventHandler(GoToCreate);
+            panelChild.Controls[1].Width = 200;
+
             AddElement(new DataGridView
             {
-                Name = "dgvairplanes",
+                Name = "dgvAirplanes",
                 DataSource = bindingSource,
                 Width = 975,
                 ForeColor = colors.Black1,
@@ -67,38 +70,33 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersVisible = false,
                 ReadOnly = true,
             });
-
-            //AddElement(new FlatButton("Save tmp"));
-
-            //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-    private void Save(object sender, System.EventArgs e)
-    {
-        try
+        private void GoToCreate(object sender, System.EventArgs e)
         {
-            //RadioButton myRadio = (RadioButton)panelChild.Controls[6];
+            try
+            {
+                FlatPanel parentPanel = (FlatPanel)panel.Parent;
+                Control toolbar = parentPanel.Controls[0];
 
-            //Airline aerolinea = new Airline
-            //{
-            //    Code = panelChild.Controls[1].Controls[0].Text,
-            //    Name = panelChild.Controls[2].Controls[0].Text,
-            //    Country = panelChild.Controls[3].Controls[0].Text,
-            //    Region = panelChild.Controls[4].Controls[0].Text,
-            //    AirlineStatus = (myRadio.Checked) ? 1 : 0,
-            //};
+                MenuSection menuController = new MenuSection(0);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreateAirplane);
 
-            //AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
-            //dao.Save(aerolinea);
+                PanelAdjustment();
 
-            // Button is the last child
-            // panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
-        }
-        catch (Exception)
-        {
-            throw new OperationCanceledException("Wrong filed.");
+                void PanelAdjustment()
+                {
+                    parentPanel.Controls[1].Dock = DockStyle.None;
+                    toolbar.Controls[0].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
+                    parentPanel.Controls[1].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
+                }
+            }
+            catch (Exception)
+            {
+                throw new OperationCanceledException("Wrong view.");
+            }
         }
     }
-}
 }

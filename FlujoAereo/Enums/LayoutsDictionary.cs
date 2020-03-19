@@ -16,8 +16,8 @@ namespace FlujoAereo.Enums
 
         public LayoutsDictionary()
         {
-            dictionary.Add((int)ItemMenuType.CreateAiline, new CreateAirlinePanel().GetPanel("Create Airline"));
-            dictionary.Add((int)ItemMenuType.CreateAirplae, new CreateAirplanePanel().GetPanel("Create Airplane"));
+            dictionary.Add((int)ItemMenuType.CreateAirline, new CreateAirlinePanel().GetPanel("Create Airline"));
+            dictionary.Add((int)ItemMenuType.CreateAirplane, new CreateAirplanePanel().GetPanel("Create Airplane"));
             dictionary.Add((int)ItemMenuType.CreatePiloto, new CreatePilotPanel().GetPanel("Create Airplane"));
             dictionary.Add((int)ItemMenuType.Airplanes, new AirplaneList().GetPanel("Airplanes"));
             dictionary.Add((int)ItemMenuType.Airlines, new AirlineList().GetPanel("Airlines"));

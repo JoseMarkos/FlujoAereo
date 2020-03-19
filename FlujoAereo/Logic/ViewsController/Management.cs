@@ -43,14 +43,8 @@ namespace FlujoAereo.Logic.ViewsController
             menuWrapper.Dock = DockStyle.Left;
             menuWrapper.Left = 0;
 
-            menu.Controls[0].Controls[1].Click += new EventHandler(
-                (object sender, EventArgs e) =>
-                {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
-                    PanelAdjustment();
-                }
-                );
-            menu.Controls[0].Controls[2].Click += new EventHandler(
+            
+            menu.Controls[0].Controls[0].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
@@ -58,14 +52,7 @@ namespace FlujoAereo.Logic.ViewsController
                 }
                 );
 
-            menu.Controls[0].Controls[4].Click += new EventHandler(
-                (object sender, EventArgs e) =>
-                {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAiline);
-                    PanelAdjustment();
-                }
-                );
-            menu.Controls[0].Controls[5].Click += new EventHandler(
+            menu.Controls[0].Controls[1].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airlines);
@@ -73,26 +60,26 @@ namespace FlujoAereo.Logic.ViewsController
                 }
                 );
 
-            menu.Controls[0].Controls[7].Click += new EventHandler(
-                (object sender, EventArgs e) =>
-                {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
-                    PanelAdjustment();
-                }
-                );
-            menu.Controls[0].Controls[8].Click += new EventHandler(
-                (object sender, EventArgs e) =>
-                {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
-                    PanelAdjustment();
-                }
-                );
+            //menu.Controls[0].Controls[7].Click += new EventHandler(
+            //    (object sender, EventArgs e) =>
+            //    {
+            //        menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
+            //        PanelAdjustment();
+            //    }
+            //    );
+            //menu.Controls[0].Controls[8].Click += new EventHandler(
+            //    (object sender, EventArgs e) =>
+            //    {
+            //        menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
+            //        PanelAdjustment();
+            //    }
+            //    );
 
             form.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateAirplae);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
             PanelAdjustment();
 
             void PanelAdjustment()

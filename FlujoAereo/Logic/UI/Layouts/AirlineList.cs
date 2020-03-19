@@ -24,9 +24,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
 
-            // Avoid textbox auto focus
-            AddElement(new FlatTextBoxAutoFocus("_"));
-
             BindingSource bindingSource = new BindingSource
             {
                 DataSource = airlineDAO.GetAllAirlines()
@@ -42,6 +39,11 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
             // main controls
+            AddElement(new FlatLabelTitle("Airlines", 0, 0));
+            AddElement(new FlatButton("Create Airline"));
+            panelChild.Controls[1].Click += new EventHandler(GoToCreate);
+            panelChild.Controls[1].Width = 200;
+
             AddElement(new DataGridView
             {
                 Name = "dgvAirlines",
@@ -68,21 +70,32 @@ namespace FlujoAereo.Logic.UI.Layouts
                 ReadOnly = true,
             });
 
-            //AddElement(new FlatButton("Save tmp"));
-
-            //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-        private void Save(object sender, System.EventArgs e)
+        private void GoToCreate(object sender, System.EventArgs e)
         {
             try
             {
+                FlatPanel parentPanel = (FlatPanel)panel.Parent;
+                Control toolbar = parentPanel.Controls[0];
 
+                MenuSection menuController = new MenuSection(0);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreateAirline);
+
+                PanelAdjustment();
+
+                void PanelAdjustment()
+                {
+                    parentPanel.Controls[1].Dock = DockStyle.None;
+                    toolbar.Controls[0].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
+                    parentPanel.Controls[1].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
+                }
             }
             catch (Exception)
             {
-                throw new OperationCanceledException("Wrong filed.");
+                throw new OperationCanceledException("Wrong view.");
             }
         }
     }
