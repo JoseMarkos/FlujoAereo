@@ -65,11 +65,25 @@ namespace FlujoAereo.Logic.ViewsController
                     PanelAdjustment();
                 }
                 );
+            menu.Controls[0].Controls[5].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airlines);
+                    PanelAdjustment();
+                }
+                );
 
             menu.Controls[0].Controls[7].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
+                    PanelAdjustment();
+                }
+                );
+            menu.Controls[0].Controls[8].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
                     PanelAdjustment();
                 }
                 );

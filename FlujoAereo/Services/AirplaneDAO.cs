@@ -37,7 +37,7 @@ namespace FlujoAereo.Services
             insertCommnad.Connection.Close();
         }
 
-        public List<Airplane> GetAirplanesIDs()
+        public List<Airplane> GetAllAirplanes()
         {
             List<Airplane> list = new List<Airplane>();
 

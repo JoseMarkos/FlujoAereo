@@ -65,6 +65,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                     Country = panelChild.Controls[3].Controls[0].Text,
                     Region = panelChild.Controls[4].Controls[0].Text,
                     AirlineStatus = (myRadio.Checked) ? 1 : 0,
+                    AircraftList = ""
                 };
 
                 AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);

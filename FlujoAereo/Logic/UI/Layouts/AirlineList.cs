@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class AirplanesList : ControlParent
+    public sealed class AirlineList : ControlParent
     {
-        public AirplanesList()
+        public AirlineList()
         {
             InitializeComponent();
         }
@@ -22,14 +22,14 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             // DAO
 
-            AirplaneDAO airplaneDAO = new AirplaneDAO(Enums.Server.MariaDB);
+            AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
 
             // Avoid textbox auto focus
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             BindingSource bindingSource = new BindingSource
             {
-                DataSource = airplaneDAO.GetAllAirplanes()
+                DataSource = airlineDAO.GetAllAirlines()
             };
 
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -44,7 +44,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             // main controls
             AddElement(new DataGridView
             {
-                Name = "dgvairplanes",
+                Name = "dgvAirlines",
                 DataSource = bindingSource,
                 Width = 975,
                 ForeColor = colors.Black1,
@@ -74,31 +74,16 @@ namespace FlujoAereo.Logic.UI.Layouts
             //panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-    private void Save(object sender, System.EventArgs e)
-    {
-        try
+        private void Save(object sender, System.EventArgs e)
         {
-            //RadioButton myRadio = (RadioButton)panelChild.Controls[6];
+            try
+            {
 
-            //Airline aerolinea = new Airline
-            //{
-            //    Code = panelChild.Controls[1].Controls[0].Text,
-            //    Name = panelChild.Controls[2].Controls[0].Text,
-            //    Country = panelChild.Controls[3].Controls[0].Text,
-            //    Region = panelChild.Controls[4].Controls[0].Text,
-            //    AirlineStatus = (myRadio.Checked) ? 1 : 0,
-            //};
-
-            //AirlineDAO dao = new AirlineDAO(Enums.Server.MariaDB);
-            //dao.Save(aerolinea);
-
-            // Button is the last child
-            // panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
-        }
-        catch (Exception)
-        {
-            throw new OperationCanceledException("Wrong filed.");
+            }
+            catch (Exception)
+            {
+                throw new OperationCanceledException("Wrong filed.");
+            }
         }
     }
-}
 }
