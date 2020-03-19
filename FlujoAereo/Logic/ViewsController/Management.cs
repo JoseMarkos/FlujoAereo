@@ -60,20 +60,13 @@ namespace FlujoAereo.Logic.ViewsController
                 }
                 );
 
-            //menu.Controls[0].Controls[7].Click += new EventHandler(
-            //    (object sender, EventArgs e) =>
-            //    {
-            //        menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreatePiloto);
-            //        PanelAdjustment();
-            //    }
-            //    );
-            //menu.Controls[0].Controls[8].Click += new EventHandler(
-            //    (object sender, EventArgs e) =>
-            //    {
-            //        menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
-            //        PanelAdjustment();
-            //    }
-            //    );
+            menu.Controls[0].Controls[2].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
+                    PanelAdjustment();
+                }
+                );
 
             form.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
