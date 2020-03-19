@@ -67,6 +67,13 @@ namespace FlujoAereo.Logic.ViewsController
                     PanelAdjustment();
                 }
                 );
+            menu.Controls[0].Controls[3].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pists);
+                    PanelAdjustment();
+                }
+                );
 
             form.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
