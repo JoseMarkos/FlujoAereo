@@ -79,6 +79,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
+                
                 FlatPanel parentPanel = (FlatPanel)panel.Parent;
                 Control toolbar = parentPanel.Controls[0];
 

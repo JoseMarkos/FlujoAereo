@@ -73,6 +73,23 @@ namespace FlujoAereo.Logic.UI.Layouts
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
+
+                FlatPanel parentPanel = (FlatPanel)panel.Parent;
+                Control toolbar = parentPanel.Controls[0];
+
+                MenuSection menuController = new MenuSection(0);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Airlines);
+
+                PanelAdjustment();
+
+                void PanelAdjustment()
+                {
+                    parentPanel.Controls[1].Dock = DockStyle.None;
+                    toolbar.Controls[0].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
+                    parentPanel.Controls[1].Width = parentPanel.Width;
+                    parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
+                }
             }
             catch (Exception)
             {
