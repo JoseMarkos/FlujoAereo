@@ -21,6 +21,7 @@ namespace FlujoAereo.Enums
             dictionary.Add((int)ItemMenuType.CreatePiloto, new CreatePilotPanel().GetPanel("Create Airplane"));
             dictionary.Add((int)ItemMenuType.Airplanes, new AirplanesList().GetPanel("Airplanes"));
             dictionary.Add((int)ItemMenuType.Airlines, new AirlineList().GetPanel("Airlines"));
+            dictionary.Add((int)ItemMenuType.Pilots, new PilotList().GetPanel("Airlines"));
         }
     }
 }

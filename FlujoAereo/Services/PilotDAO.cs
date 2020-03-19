@@ -34,5 +34,31 @@ namespace FlujoAereo.Services
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }
+
+        public List<Piloto> GetAllPilots()
+        {
+            List<Piloto> list = new List<Piloto>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT * FROM `flujoaereo`.`pilot`;";
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Piloto pilot = new Piloto()
+                    {
+                        ID = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        Sex = reader.GetString(2),
+                        PilotStatus = reader.GetInt32(3),
+                    };
+                    list.Add(pilot);
+                }
+                return list;
+            }
+        }
     }
 }

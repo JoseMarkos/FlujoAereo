@@ -57,7 +57,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Piloto piloto = new Piloto
                 {
                     Name = panelChild.Controls[1].Controls[0].Text,
-                    Sex = (Gender)int.Parse(panelChild.Controls[2].Controls[0].Text),
+                    Sex = panelChild.Controls[2].Controls[0].Text,
                     PilotStatus = (myRadio.Checked) ? 1 : 0,
                 };
 
