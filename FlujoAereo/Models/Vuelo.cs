@@ -11,11 +11,13 @@ namespace FlujoAereo.Models
     {
         public Flight Type { get; set; }
 
-        public int AsignedPist { get; set; }
+        public FlightClass TypeClass { get; set; }
 
         public string Origin { get; set; }
 
         public string Destiny { get; set; }
+
+        public int AsignedPist { get; set; }
 
         public DateTime Arrival { get; set; }
 

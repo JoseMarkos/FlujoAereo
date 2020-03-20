@@ -55,6 +55,7 @@
     <Compile Include="Enums\Colors.cs" />
     <Compile Include="Enums\AirplaneModels.cs" />
     <Compile Include="Enums\Fields.cs" />
+    <Compile Include="Enums\Flight.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ItemMenuType.cs" />
     <Compile Include="Enums\LayoutsDictionary.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Enums\Server.cs" />
     <Compile Include="Enums\Ticket.cs" />
-    <Compile Include="Enums\Flight.cs" />
+    <Compile Include="Enums\FlightClass.cs" />
     <Compile Include="Enums\Views.cs" />
     <Compile Include="Interfaces\IDBAdapter.cs" />
     <Compile Include="Logic\UI\Elements\FlatButton.cs">
@@ -101,6 +102,7 @@
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirport.cs" />
+    <Compile Include="Logic\UI\Layouts\CreateFlightPlanPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreatePilotPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreatePistPanel.cs" />
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
