@@ -28,6 +28,7 @@ namespace FlujoAereo.Enums
             dictionary.Add((int)ItemMenuType.Airports, new AirportList().GetPanel("Airports"));
             dictionary.Add((int)ItemMenuType.Pilots, new PilotList().GetPanel("Airlines"));
             dictionary.Add((int)ItemMenuType.Pists, new PistList().GetPanel("Pists"));
+            dictionary.Add((int)ItemMenuType.Flight, new FlightList().GetPanel("Flights"));
         }
     }
 }

@@ -12,22 +12,22 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Services
 {
-    public sealed class PistDAO
+    public sealed class FlightDAO
     {
         private IDBAdapter adapter;
 
-        public PistDAO(Server server)
+        public FlightDAO(Server server)
         {
             DBAdapterFactory fileFactory = new DBAdapterFactory();
 
             adapter = fileFactory.GetAdapter(server);
         }
 
-        public void Save(Models.Pist pist)
+        public void Save(Models.Flight flight)
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`pist` (`Description`, `Status`) VALUES ('" + pist.Description + "', '" + pist.Status + "');";
+            string sql = "INSERT INTO `flujoaereo`.`flight` (`Type`, `Origin`, `Destiny`, `Pist`, `Departure`, `Arrival`, `FlightStatus`) VALUES ('" + flight.Type + "', '" + flight.Origin + "', '" + flight.Destiny + "', '" + flight.Pist + "', '" + flight.Departure + "', '" + flight.Arrival + "', '" + flight.FlightStatus + "');";
 
             try
             {
@@ -44,12 +44,12 @@ namespace FlujoAereo.Services
             }
         }
 
-        public List<Pist> GetAllPists()
+        public List<Flight> GetAllFlights()
         {
-            List<Pist> list = new List<Pist>();
+            List<Flight> list = new List<Flight>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`pist` WHERE Status ='1';";
+            string sql = "SELECT * FROM `flujoaereo`.`flight` WHERE Enabled = '1';";
 
             try
             {
@@ -59,13 +59,19 @@ namespace FlujoAereo.Services
                 {
                     while (reader.Read())
                     {
-                        Pist pist = new Pist()
+                        Flight flight = new Flight()
                         {
                             ID = reader.GetInt32(0),
-                            Description = reader.GetString(1),
-                            Status = reader.GetInt32(2),
+                            Type = reader.GetString(1),
+                            Origin = reader.GetString(3),
+                            Destiny = reader.GetString(4),
+                            Pist = reader.GetInt32(5),
+                            Departure = reader.GetDateTime(6),
+                            Arrival = reader.GetDateTime(7),
+                            FlightStatus = reader.GetString(8),
+                            Enabled = reader.GetInt32(9),
                         };
-                        list.Add(pist);
+                        list.Add(flight);
                     }
                     return list;
                 }
@@ -75,23 +81,6 @@ namespace FlujoAereo.Services
                 MessageBox.Show(e.Message);
                 return list;
             }
-        }
-
-        public List<int> GetAllID()
-        {
-            List<int> list = new List<int>();
-
-            MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT ID FROM `flujoaereo`.`pist`;";
-
-
-            using (var command = new MySqlCommand(sql, connection))
-
-            using (var reader = command.ExecuteReader())
-                while (reader.Read())
-                    list.Add(reader.GetInt32(0));
-
-            return list;
         }
     }
 }

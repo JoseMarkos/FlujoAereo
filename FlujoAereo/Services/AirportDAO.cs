@@ -51,7 +51,7 @@ namespace FlujoAereo.Services
             List<Airport> list = new List<Airport>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`airport`;";
+            string sql = "SELECT * FROM `flujoaereo`.`airport` WHERE Status ='1';";
 
             using (var command = new MySqlCommand(sql, connection))
 

@@ -1,6 +1,6 @@
 ﻿namespace FlujoAereo.Enums
 {
-    public enum Ticket
+    public enum TicketType
     {
         OneWay,
         RoundTrip,

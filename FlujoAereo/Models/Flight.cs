@@ -7,22 +7,23 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public sealed class Vuelo
+    public sealed class Flight
     {
-        public Flight Type { get; set; }
-
-        public FlightClass TypeClass { get; set; }
+        public int ID { get; set; }
+     
+        public string Type { get; set; }
 
         public string Origin { get; set; }
 
         public string Destiny { get; set; }
 
-        public int AsignedPist { get; set; }
-
-        public DateTime Arrival { get; set; }
+        public int Pist { get; set; }
 
         public DateTime Departure { get; set; }
 
-        public Status FlightStatus { get; set; }
+        public DateTime Arrival { get; set; }
+
+        public string FlightStatus { get; set; }
+        public int Enabled { get; set; }
     }
 }

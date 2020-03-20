@@ -21,7 +21,7 @@ namespace FlujoAereo.Services
             adapter = fileFactory.GetAdapter(server);
         }
 
-        public void Save(Models.Piloto pilot)
+        public void Save(Models.Pilot pilot)
         {
             MySqlConnection conection = adapter.GetConection();
 
@@ -35,12 +35,12 @@ namespace FlujoAereo.Services
             insertCommnad.Connection.Close();
         }
 
-        public List<Piloto> GetAllPilots()
+        public List<Pilot> GetAllPilots()
         {
-            List<Piloto> list = new List<Piloto>();
+            List<Pilot> list = new List<Pilot>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`pilot`;";
+            string sql = "SELECT * FROM `flujoaereo`.`pilot` WHERE Status = '1';";
 
             using (var command = new MySqlCommand(sql, connection))
 
@@ -48,7 +48,7 @@ namespace FlujoAereo.Services
             {
                 while (reader.Read())
                 {
-                    Piloto pilot = new Piloto()
+                    Pilot pilot = new Pilot()
                     {
                         ID = reader.GetInt32(0),
                         Name = reader.GetString(1),

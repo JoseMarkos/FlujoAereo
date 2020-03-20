@@ -25,7 +25,6 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatLabel("Flight", 0, 0));
 
             AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
             List<string> airlaneNames = airlineDAO.GetAllAirlinesNames();
@@ -37,30 +36,42 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Height = 600
             };
 
-            comboBox.Items.Add(Enums.Flight.Comercial);
-            comboBox.Items.Add(Enums.Flight.Cargo);
+            comboBox.Items.Add(Enums.FlightType.Comercial);
+            comboBox.Items.Add(Enums.FlightType.Cargo);
             comboBox.SelectedIndex = 0;
 
-            ComboBox comboBox2 = new ComboBox
+            //ComboBox comboBox2 = new ComboBox
+            //{
+            //    Name = "comboFlichtClass",
+            //    Width = 222,
+            //    Height = 600
+            //};
+
+            //comboBox2.Items.Add(Enums.FlightClass.Economi);
+            //comboBox2.Items.Add(Enums.FlightClass.EconomiPlus);
+            //comboBox2.Items.Add(Enums.FlightClass.Executive);
+            //comboBox2.Items.Add(Enums.FlightClass.FirstClass);
+            //comboBox2.Items.Add(Enums.FlightClass.Turist);
+            //comboBox2.SelectedIndex = 0;
+
+            ComboBox comboPist = new ComboBox
             {
-                Name = "comboFlichtClass",
+                Name = "comboPist",
                 Width = 222,
                 Height = 600
             };
 
-            comboBox2.Items.Add(Enums.FlightClass.Economi);
-            comboBox2.Items.Add(Enums.FlightClass.EconomiPlus);
-            comboBox2.Items.Add(Enums.FlightClass.Executive);
-            comboBox2.Items.Add(Enums.FlightClass.FirstClass);
-            comboBox2.Items.Add(Enums.FlightClass.Turist);
-            comboBox2.SelectedIndex = 0;
+            List<int> pistIDList = new PistDAO(Server.MariaDB).GetAllID();
+            foreach (int item in pistIDList)
+            {
+                comboPist.Items.Add(item);
+            }
+            comboPist.SelectedIndex = 0;
 
+            AddElement(new FlatLabel("Flight", 0, 0));
             AddElement(comboBox);
-            AddElement(new FlatLabel("Class", 0, 0));
-            AddElement(comboBox2);
             AddElement(new FlatPanelTextBox("Origin IATA"));
             AddElement(new FlatPanelTextBox("Destiny IATA"));
-            AddElement(new FlatPanelTextBox("No. Pist")); // validation
 
             DateTimePicker dateTimeDeparture = new DateTimePicker()
             {
@@ -73,10 +84,14 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Width = 222,
             };
 
-            AddElement(new FlatLabel("Date Departure", 0, 0));
+            AddElement(new FlatLabel("Departure Date", 0, 0));
             AddElement(dateTimeDeparture); // validation
-            AddElement(new FlatLabel("Date Arrival", 0, 0));
+            AddElement(new FlatPanelTextBox("Deperture Hour"));
+            AddElement(new FlatLabel("Arrival Date", 0, 0));
             AddElement(dateTimeArrival); // validation
+            AddElement(new FlatPanelTextBox("Arrival Hour"));
+            AddElement(new FlatLabel("Pist", 0, 0));
+            AddElement(comboPist);
             AddElement(new FlatButton("Save"));
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
@@ -89,19 +104,24 @@ namespace FlujoAereo.Logic.UI.Layouts
             {
                 // Use trim for filelds names
                 RadioButton myRadio = (RadioButton)panelChild.Controls[5];
-                ComboBox myCombo = (ComboBox)panelChild.Controls[3];
-                int airlaineID = new AirlineDAO(Enums.Server.MariaDB).GetID(myCombo.SelectedItem.ToString());
 
-                Piloto piloto = new Piloto
+                ComboBox myCombo = (ComboBox)panelChild.Controls[2];
+                ComboBox myCombo2 = (ComboBox)panelChild.Controls[4];
+                DateTime dateDeparture = DateTime.Parse(panelChild.Controls[9].Text);
+                DateTime dateArrival = DateTime.Parse(panelChild.Controls[11].Text);
+
+                Flight flight = new Flight
                 {
-                    Name = panelChild.Controls[1].Controls[0].Text,
-                    Sex = panelChild.Controls[2].Controls[0].Text,
-                    PilotStatus = (myRadio.Checked) ? 1 : 0,
-                    AirlineID = airlaineID
+                    Type = myCombo.SelectedItem.ToString(),
+                    Origin = panelChild.Controls[5].Controls[0].Text,
+                    Destiny = panelChild.Controls[6].Controls[0].Text,
+                    Pist = int.Parse(panelChild.Controls[7].Controls[0].Text),
+                    Departure = dateDeparture,
+                    Arrival = dateArrival,
                 };
 
-                PilotDAO dao = new PilotDAO(Enums.Server.MariaDB);
-                dao.Save(piloto);
+                FlightDAO dao = new FlightDAO(Enums.Server.MariaDB);
+                dao.Save(flight);
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
@@ -110,7 +130,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Pilots);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Flight);
 
                 PanelAdjustment();
 

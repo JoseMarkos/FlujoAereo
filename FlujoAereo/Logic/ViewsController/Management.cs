@@ -87,7 +87,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[5].Click += new EventHandler(
                 (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateFlightPlan);
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Flight);
                     PanelAdjustment();
                 }
                 );

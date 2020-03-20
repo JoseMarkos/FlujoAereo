@@ -42,7 +42,7 @@ namespace FlujoAereo.Services
             List<Airplane> list = new List<Airplane>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`airplane`;";
+            string sql = "SELECT * FROM `flujoaereo`.`airplane` WHERE Enabled ='1';";
 
             using (var command = new MySqlCommand(sql, connection))
 
