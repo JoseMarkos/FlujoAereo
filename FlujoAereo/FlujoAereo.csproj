@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Colors.cs" />
-    <Compile Include="Enums\Airplane.cs" />
+    <Compile Include="Enums\AirplaneModels.cs" />
     <Compile Include="Enums\Fields.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ItemMenuType.cs" />
@@ -95,11 +95,19 @@
     <Compile Include="Logic\UI\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\UI\Layouts\AirlineList.cs" />
+    <Compile Include="Logic\UI\Layouts\AirplaneList.cs" />
+    <Compile Include="Logic\UI\Layouts\AirportList.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
+    <Compile Include="Logic\UI\Layouts\CreateAirport.cs" />
+    <Compile Include="Logic\UI\Layouts\CreatePilotPanel.cs" />
+    <Compile Include="Logic\UI\Layouts\CreatePistPanel.cs" />
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
     <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
+    <Compile Include="Logic\UI\Layouts\PilotList.cs" />
+    <Compile Include="Logic\UI\Layouts\PistList.cs" />
     <Compile Include="Logic\UI\Layouts\Toolbar.cs" />
     <Compile Include="Logic\UI\PortraitForm.cs">
       <SubType>Form</SubType>
@@ -111,9 +119,9 @@
     <Compile Include="Logic\ViewsController\Management.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />
     <Compile Include="Logic\ViewsController\Login.cs" />
-    <Compile Include="Models\Aerolinea.cs" />
+    <Compile Include="Models\Airline.cs" />
     <Compile Include="Models\Airport.cs" />
-    <Compile Include="Models\Avion.cs" />
+    <Compile Include="Models\Airplane.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ItemMenu.cs" />
     <Compile Include="Models\Status.cs" />
@@ -130,8 +138,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AirlineDAO.cs" />
     <Compile Include="Services\AirplaneDAO.cs" />
+    <Compile Include="Services\AirportDAO.cs" />
     <Compile Include="Services\MariaDBAdapter.cs" />
+    <Compile Include="Services\PilotDAO.cs" />
+    <Compile Include="Services\PistDAO.cs" />
     <Compile Include="Services\UserDAO.cs" />
     <Compile Include="Services\DBAdapterFactory.cs" />
     <EmbeddedResource Include="Register.resx">

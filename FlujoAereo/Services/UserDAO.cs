@@ -29,9 +29,10 @@ namespace FlujoAereo.Services
 
             string sql = "INSERT INTO `flujoaereo`.`users` (`ID`, `Name`, `Password`, `Role`) VALUES ('5', 'JorgeAdmin', 'Change', 'Administrator');";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql);
-
-            insertCommnad.Connection = conection;
+            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            {
+                Connection = conection
+            };
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }

@@ -79,5 +79,7 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             //panel.Width = panel.Parent.Width;
         }
+
+
     }
 }

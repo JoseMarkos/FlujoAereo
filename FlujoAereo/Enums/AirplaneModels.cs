@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Enums
 {
-    public enum Airplane
+    public enum AirplaneModels
     {
         Boeing747,
         AirbusA320,

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using FlujoAereo.Models;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+
 namespace FlujoAereo.Services
 {
     public sealed class AirplaneDAO
@@ -21,51 +23,52 @@ namespace FlujoAereo.Services
             adapter = fileFactory.GetAdapter(server);
         }
 
-        public void Save(Avion airplane)
+        public void Save(Models.Airplane airplane)
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaximunPassengers + "', '" + airplane.MaximunCargo + "', '" + airplane.AircraftRegistration + "', '" + airplane.Enabled + "');";
+            string sql = "INSERT INTO `flujoaereo`.`airplane` (`Model`, `ICAO`, `IATA`, `MaximunPassengers`, `MaximunCargo`, `Code`, `Enabled`, `AirlineID`) VALUES ('" + airplane.Model + "', '" + airplane.ICAO + "', '" + airplane.IATA + "', '" + airplane.MaxPASS + "', '" + airplane.MaxCargo + "', '" + airplane.Aircraft + "', '" + airplane.Enabled + "', '" + airplane.AirlineID + "');";
 
-            MySqlCommand insertCommnad = new MySqlCommand(sql);
-
-            insertCommnad.Connection = conection;
+            MySqlCommand insertCommnad = new MySqlCommand(sql)  
+            {
+                Connection = conection
+            };
             insertCommnad.ExecuteNonQuery();
             insertCommnad.Connection.Close();
         }
 
-        //public string GetPassword(string name)
-        //{
-        //    string readerString = String.Empty;
+        public List<Airplane> GetAllAirplanes()
+        {
+            List<Airplane> list = new List<Airplane>();
 
-        //    MySqlConnection connection = adapter.GetConection();
-        //    string sql = "SELECT Password FROM `flujoaereo`.`users` WHERE Name ='" + name + "';";
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT * FROM `flujoaereo`.`airplane`;";
 
+            using (var command = new MySqlCommand(sql, connection))
 
-        //    using (var command = new MySqlCommand(sql, connection))
-
-        //    using (var reader = command.ExecuteReader())
-        //        while (reader.Read())
-        //            readerString += reader.GetString(0);
-
-        //    return readerString;
-        //}
-
-        //public int GetRole(string role)
-        //{
-        //    string readerString = String.Empty;
-
-        //    MySqlConnection connection = adapter.GetConection();
-        //    string sql = "SELECT Role FROM `flujoaereo`.`users` WHERE Name ='" + role + "';";
-
-
-        //    using (var command = new MySqlCommand(sql, connection))
-
-        //    using (var reader = command.ExecuteReader())
-        //        while (reader.Read())
-        //            readerString += reader.GetString(0);
-
-        //    return int.Parse(readerString);
-        //}
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                   // MessageBox.Show(reader.GetInt32(0).ToString());
+                    Airplane airplane = new Airplane()
+                    {
+                        ID = reader.GetInt32(0),
+                        Model = reader.GetString(1),
+                        ICAO = reader.GetString(2),
+                        IATA = reader.GetString(3),
+                        MaxPASS = reader.GetInt32(4),
+                        MaxCargo = reader.GetInt32(5),
+                        Aircraft = reader.GetString(6),
+                        Enabled = reader.GetInt32(7),
+                        Flights = reader.GetInt32(8),
+                        Hours = reader.GetInt32(9),
+                        AirlineID = reader.GetInt32(10),
+                    };
+                    list.Add(airplane);
+                }
+                return list;
+            }
+        }
     }
 }

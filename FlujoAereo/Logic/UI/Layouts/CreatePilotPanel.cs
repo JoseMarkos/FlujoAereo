@@ -1,17 +1,15 @@
-﻿using FlujoAereo.Models;
+﻿using FlujoAereo.Enums;
+using FlujoAereo.Models;
 using FlujoAereo.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class CreateAirplanePanel : ControlParent
+    public sealed class CreatePilotPanel : ControlParent
     {
-        public CreateAirplanePanel()
+        public CreatePilotPanel()
         {
             InitializeComponent();
         }
@@ -22,19 +20,13 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panel.Dock = DockStyle.Right;
             panel.Padding = new Padding(40, 0, 0, 20);
-            panel.BackColor = colors.White1;
 
             // Avoid textbox auto focus
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatPanelTextBox("Model"));
-            AddElement(new FlatPanelTextBox("ICAO"));
-            AddElement(new FlatPanelTextBox("IATA"));
-            AddElement(new FlatPanelTextBox("Maximun Passengers"));
-            AddElement(new FlatPanelTextBox("Maximun Cargo"));
-            AddElement(new FlatPanelTextBox("Aircraft Registration"));
-
+            AddElement(new FlatPanelTextBox("Full Name"));
+            AddElement(new FlatPanelTextBox("Sexo"));
             AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
             List<string> airlaneNames = airlineDAO.GetAllAirlinesNames();
 
@@ -52,10 +44,10 @@ namespace FlujoAereo.Logic.UI.Layouts
             }
 
             AddElement(comboBox);
-            AddElement(new FlatLabel("Enabeld", 0, 0));
-            AddElement(new RadioButton() 
-            { 
-                Name = "radioEnabledYES", 
+            AddElement(new FlatLabel("Active", 0, 0));
+            AddElement(new RadioButton()
+            {
+                Name = "radioEnabledYES",
                 Text = "Yes",
                 Size = new System.Drawing.Size(67, 23),
                 ForeColor = colors.Black1
@@ -71,7 +63,6 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
-
         }
 
         private void Save(object sender, System.EventArgs e)
@@ -79,34 +70,29 @@ namespace FlujoAereo.Logic.UI.Layouts
             try
             {
                 // Use trim for filelds names
-                RadioButton myRadio = (RadioButton)panelChild.Controls[9];
-                ComboBox myCombo = (ComboBox)panelChild.Controls[7];
-
+                RadioButton myRadio = (RadioButton)panelChild.Controls[5];
+                ComboBox myCombo = (ComboBox)panelChild.Controls[3];
                 int airlaineID = new AirlineDAO(Enums.Server.MariaDB).GetID(myCombo.SelectedItem.ToString());
 
-                Airplane avion = new Airplane
+                Piloto piloto = new Piloto
                 {
-                    Model = panelChild.Controls[1].Controls[0].Text,
-                    ICAO = panelChild.Controls[2].Controls[0].Text,
-                    IATA = panelChild.Controls[3].Controls[0].Text,
-                    MaxPASS = int.Parse(panelChild.Controls[4].Controls[0].Text),
-                    MaxCargo = int.Parse(panelChild.Controls[5].Controls[0].Text),
-                    Aircraft = panelChild.Controls[6].Controls[0].Text,
-                    AirlineID = airlaineID,
-                    Enabled = (myRadio.Checked) ? 1 : 0,
+                    Name = panelChild.Controls[1].Controls[0].Text,
+                    Sex = panelChild.Controls[2].Controls[0].Text,
+                    PilotStatus = (myRadio.Checked) ? 1 : 0,
+                    AirlineID = airlaineID    
                 };
 
-                AirplaneDAO dao = new AirplaneDAO(Enums.Server.MariaDB);
-                dao.Save(avion);
+                PilotDAO dao = new PilotDAO(Enums.Server.MariaDB);
+                dao.Save(piloto);
 
                 // Button is the last child
                 panelChild.Controls[panelChild.Controls.Count - 1].Enabled = false;
-                
+
                 FlatPanel parentPanel = (FlatPanel)panel.Parent;
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Airplanes);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Pilots);
 
                 PanelAdjustment();
 
@@ -126,3 +112,4 @@ namespace FlujoAereo.Logic.UI.Layouts
         }
     }
 }
+

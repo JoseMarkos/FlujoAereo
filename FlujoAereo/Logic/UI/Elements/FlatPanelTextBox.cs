@@ -17,7 +17,7 @@ namespace FlujoAereo.Logic.UI
         {
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = colors.White1;
+            BackColor = colors.LighterGray1;
             Dock = System.Windows.Forms.DockStyle.None;
             ForeColor = System.Drawing.Color.White;
             Location = new System.Drawing.Point(0, 0);
@@ -27,6 +27,7 @@ namespace FlujoAereo.Logic.UI
             Padding = new Padding(4);
 
             flatTextBox = new FlatTextBox(name, 4, 4);
+            flatTextBox.BackColor = colors.LighterGray1;
             this.Controls.Add(flatTextBox);
         }
     }
