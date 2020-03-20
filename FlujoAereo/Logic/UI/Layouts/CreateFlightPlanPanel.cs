@@ -25,7 +25,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatTextBoxAutoFocus("_"));
 
             // Main controls
-            AddElement(new FlatTextBoxAutoFocus("Tipo de vuelo"));
+            AddElement(new FlatLabel("Flight", 0, 0));
 
             AirlineDAO airlineDAO = new AirlineDAO(Enums.Server.MariaDB);
             List<string> airlaneNames = airlineDAO.GetAllAirlinesNames();
@@ -33,16 +33,19 @@ namespace FlujoAereo.Logic.UI.Layouts
             ComboBox comboBox = new ComboBox
             {
                 Name = "comboAirline",
-                Width = panelChild.Controls[3].Width,
+                Width = 222,
+                Height = 600
             };
 
             comboBox.Items.Add(Enums.Flight.Comercial);
             comboBox.Items.Add(Enums.Flight.Cargo);
+            comboBox.SelectedIndex = 0;
 
             ComboBox comboBox2 = new ComboBox
             {
                 Name = "comboFlichtClass",
-                Width = panelChild.Controls[3].Width,
+                Width = 222,
+                Height = 600
             };
 
             comboBox2.Items.Add(Enums.FlightClass.Economi);
@@ -50,34 +53,34 @@ namespace FlujoAereo.Logic.UI.Layouts
             comboBox2.Items.Add(Enums.FlightClass.Executive);
             comboBox2.Items.Add(Enums.FlightClass.FirstClass);
             comboBox2.Items.Add(Enums.FlightClass.Turist);
+            comboBox2.SelectedIndex = 0;
 
             AddElement(comboBox);
+            AddElement(new FlatLabel("Class", 0, 0));
             AddElement(comboBox2);
             AddElement(new FlatPanelTextBox("Origin IATA"));
             AddElement(new FlatPanelTextBox("Destiny IATA"));
             AddElement(new FlatPanelTextBox("No. Pist")); // validation
 
-            DateTime dateTimeArrival = new DateTime();
+            DateTimePicker dateTimeDeparture = new DateTimePicker()
+            {
+                Name = "dateDeparture",
+                Width = 222,
+            };
+            DateTimePicker dateTimeArrival = new DateTimePicker()
+            {
+                Name = "dateArrival",
+                Width = 222,
+            };
 
-            AddElement(new FlatLabel("what", 0, 0));
-            AddElement(new RadioButton()
-            {
-                Name = "radioEnabledYES",
-                Text = "Yes",
-                Size = new System.Drawing.Size(67, 23),
-                ForeColor = colors.Black1
-            });
-            AddElement(new RadioButton()
-            {
-                Name = "radioEnabledNo",
-                Text = "No",
-                Size = new System.Drawing.Size(67, 23),
-                ForeColor = colors.Black1
-            });
+            AddElement(new FlatLabel("Date Departure", 0, 0));
+            AddElement(dateTimeDeparture); // validation
+            AddElement(new FlatLabel("Date Arrival", 0, 0));
+            AddElement(dateTimeArrival); // validation
             AddElement(new FlatButton("Save"));
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
-            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
+            panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 5].Width;
         }
 
         private void Save(object sender, System.EventArgs e)

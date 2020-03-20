@@ -46,12 +46,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 element.Top = 40;
             }
 
-            else if (panelChild.Controls.Count == 2)
-            {
-                SetLocationY();
-            }
-
-            if (panelChild.Controls.Count > 2)
+            else if (panelChild.Controls.Count >= 2)
             {
                 SetLocationY();
             }
@@ -72,6 +67,11 @@ namespace FlujoAereo.Logic.UI.Layouts
                 int index = panelChild.Controls.IndexOf(element);
 
                 panelChild.Controls[index].Top = panelChild.Controls[index - 1].Top + panelChild.Controls[index - 1].ClientSize.Height + 20;
+
+                if (panelChild.Controls[index - 1].GetType().ToString() == "System.Windows.Forms.ComboBox" | panelChild.Controls[index - 1].GetType().ToString() == "System.Windows.Forms.DateTimePicker")
+                {
+                    panelChild.Controls[index].Top += 10;
+                }
             }
         }
 
