@@ -96,7 +96,7 @@ namespace FlujoAereo.Logic.ViewsController
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateFlightPlan);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
             PanelAdjustment();
 
             //TimeSpan timeSpan = new TimeSpan(0, 2, 0,0);

@@ -1,4 +1,5 @@
-﻿using FlujoAereo.Logic.ViewsController;
+﻿using FlujoAereo.Logic.UI;
+using FlujoAereo.Logic.ViewsController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace FlujoAereo.Enums
         {
             dictionary.Add((int)Roles.Administrator, new Management().GetForm());
             dictionary.Add((int)Roles.Monitor, new Management().GetForm());
-            dictionary.Add((int)Roles.FlightControl, new Management().GetForm());
+            dictionary.Add((int)Roles.FlightControl, new SquareForm("Other view"));
         }
     }
 }
