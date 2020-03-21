@@ -26,10 +26,11 @@ namespace FlujoAereo.Models
         public string ArrivalDate { get; set; }
         
         public string ArrivalHour { get; set; }
-
         public string FlightTime { get; set; }
-
         public string FlightStatus { get; set; }
         public int Enabled { get; set; }
+        public int AirlineID { get; set; }
+        public int AirplaneID { get; set; }
+        public int PilotID { get; set; }
     }
 }

@@ -205,12 +205,21 @@ namespace FlujoAereo.Logic.UI.Layouts
                 ComboBox myCombo = (ComboBox)panelChild.Controls[2];
                 ComboBox myCombo2 = (ComboBox)panelChild.Controls[12];
                 ComboBox myCombo3 = (ComboBox)panelChild.Controls[13];
+
+                ComboBox myCombo4 = (ComboBox)panelChild.Controls[16];
+                ComboBox myCombo5 = (ComboBox)panelChild.Controls[18];
+                ComboBox myCombo6 = (ComboBox)panelChild.Controls[20];
+
                 DateTime departureDate = DateTime.Parse(panelChild.Controls[6].Text);
                 DateTime arrivalDate = DateTime.Parse(panelChild.Controls[9].Text);
                 TimeSpan twentyFourHour = new TimeSpan(24,0,0);
                 TimeSpan departureHour = TimeSpan.Parse(panelChild.Controls[7].Controls[0].Text);
                 TimeSpan arrivalHour = TimeSpan.Parse(panelChild.Controls[10].Controls[0].Text);
                 TimeSpan flightHour = (departureHour > arrivalHour) ? (twentyFourHour - departureHour) + arrivalHour : arrivalHour - departureHour;
+
+                AirlineDAO airlineDAO = new AirlineDAO(Server.MariaDB);
+                AirplaneDAO airplaneDAO = new AirplaneDAO(Server.MariaDB);
+                PilotDAO pilotDAO = new PilotDAO(Server.MariaDB);
 
                 Flight flight = new Flight
                 {
@@ -224,6 +233,9 @@ namespace FlujoAereo.Logic.UI.Layouts
                     FlightTime = flightHour.ToString(),
                     Pist = int.Parse(myCombo2.SelectedItem.ToString()),
                     FlightStatus = myCombo3.SelectedItem.ToString(),
+                    AirlineID = airlineDAO.GetID(myCombo4.SelectedItem.ToString()),
+                    AirplaneID = airplaneDAO.GetID(myCombo5.SelectedItem.ToString()),
+                    PilotID = pilotDAO.GetID(myCombo6.SelectedItem.ToString()),
                 };
 
                 FlightDAO dao = new FlightDAO(Enums.Server.MariaDB);

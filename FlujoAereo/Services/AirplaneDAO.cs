@@ -105,5 +105,22 @@ namespace FlujoAereo.Services
 
             return vs;
         }
+
+        public int GetID(string name)
+        {
+            string readerString = String.Empty;
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT ID FROM `flujoaereo`.`airplane` WHERE Model ='" + name + "';";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    readerString += reader.GetString(0);
+
+            return int.Parse(readerString);
+        }
     }
 }

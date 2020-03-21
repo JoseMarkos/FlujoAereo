@@ -57,7 +57,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersDefaultCellStyle = dataGridViewCellStyle2,
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
-                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells,
+                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader,
                 AutoSize = true,
                 BackgroundColor = colors.White1,
                 BorderStyle = System.Windows.Forms.BorderStyle.None,

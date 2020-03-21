@@ -27,7 +27,7 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`flight` (`Type`, `Origin`, `Destiny`, `Pist`, `DepartureDate`, `DepartureHour`, `ArrivalDate`, `ArrivalHour`, `FlightTime` , `Status`) VALUES ('" + flight.Type + "', '" + flight.Origin + "', '" + flight.Destiny + "', '" + flight.Pist + "', '" + flight.DepartureDate + "', '" + flight.DepartureHour + "', '" + flight.ArrivalDate + "', '" + flight.ArrivalHour + "', '" + flight.FlightTime + "', '" + flight.FlightStatus + "');";
+            string sql = "INSERT INTO `flujoaereo`.`flight` (`Type`, `Origin`, `Destiny`, `Pist`, `DepartureDate`, `DepartureHour`, `ArrivalDate`, `ArrivalHour`, `FlightTime` , `Status`, `AirlineID`, `AirplaneID`, `PilotID`) VALUES ('" + flight.Type + "', '" + flight.Origin + "', '" + flight.Destiny + "', '" + flight.Pist + "', '" + flight.DepartureDate + "', '" + flight.DepartureHour + "', '" + flight.ArrivalDate + "', '" + flight.ArrivalHour + "', '" + flight.FlightTime + "', '" + flight.FlightStatus + "', '" + flight.AirlineID + "', '" + flight.AirplaneID+ "', '" + flight.PilotID+ "');";
 
             try
             {
@@ -73,6 +73,9 @@ namespace FlujoAereo.Services
                             FlightTime = reader.GetString(9),
                             FlightStatus = reader.GetString(10),
                             Enabled = reader.GetInt32(11),
+                            AirlineID = reader.GetInt32(12),
+                            AirplaneID = reader.GetInt32(13),
+                            PilotID = reader.GetInt32(14),
                         };
                         list.Add(flight);
                     }

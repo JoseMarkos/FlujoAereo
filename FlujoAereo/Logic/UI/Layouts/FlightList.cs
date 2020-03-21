@@ -38,6 +38,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
+
             // main controls
             AddElement(new FlatLabelTitle("Flights", 0, 0));
             AddElement(new FlatButton("Create Flight plan"));
@@ -57,7 +58,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersDefaultCellStyle = dataGridViewCellStyle2,
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
-                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells,
+                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader,
                 AutoSize = true,
                 BackgroundColor = colors.White1,
                 BorderStyle = System.Windows.Forms.BorderStyle.None,
