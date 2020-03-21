@@ -1,6 +1,7 @@
 ﻿using FlujoAereo.Logic.Tasks;
 using FlujoAereo.Services;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace FlujoAereo.Logic.UI.Layouts
 {
     public sealed class Monitor : ControlParent
     {
+        private Thread thread2 = null;
+
         public async Task InitializeComponentAsync()
         {
             panel.Controls.Add(panelChild);
@@ -66,12 +69,33 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             await test.SetFlightStatus();
 
-            MessageBox.Show("hola");
+            RefreshD();
         }
 
-        public void RefreshDGV(ref DataGridView dataGridView)
+        public void RefreshDGVTwo()
         {
-            dataGridView.Refresh();
+            DataGridView dta = (DataGridView)panelChild.Controls[0];
+            RefreshDGV(ref dta);
+        }
+
+        public void RefreshDGV(ref DataGridView data)
+        {
+            data.Refresh();
+        }
+
+
+        public void RefreshDGVEvent(object sender, EventArgs e)
+        {
+            thread2 = new Thread(new ThreadStart(RefreshDGVTwo));
+            thread2.Start();
+        }
+
+        public void RefreshD()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer(2000);
+            timer.AutoReset = true;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(RefreshDGVEvent);
+            timer.Start();
         }
 
     }

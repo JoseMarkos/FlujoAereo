@@ -15,8 +15,13 @@ namespace FlujoAereo.Logic.Tasks
         public async Task WaitFlightTimeAsync()
         {
             MessageBox.Show("hh1");
-            await Task.Delay(2000);
+            await Task.Delay(3000);
             MessageBox.Show("hh");
+
+            //System.Timers.Timer timer = new System.Timers.Timer(2000);
+            //timer.AutoReset = true;
+            //timer.Elapsed += new System.Timers.ElapsedEventHandler(Hola);
+            //timer.Start();
         }
 
         public async Task SetFlightStatus()
@@ -31,5 +36,7 @@ namespace FlujoAereo.Logic.Tasks
         {
             MessageBox.Show("es 0");
         }
+
+
     }
 }
