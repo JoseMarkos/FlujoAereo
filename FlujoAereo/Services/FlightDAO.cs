@@ -27,7 +27,7 @@ namespace FlujoAereo.Services
         {
             MySqlConnection conection = adapter.GetConection();
 
-            string sql = "INSERT INTO `flujoaereo`.`flight` (`Type`, `Origin`, `Destiny`, `Pist`, `Departure`, `Arrival`, `FlightStatus`) VALUES ('" + flight.Type + "', '" + flight.Origin + "', '" + flight.Destiny + "', '" + flight.Pist + "', '" + flight.Departure + "', '" + flight.Arrival + "', '" + flight.FlightStatus + "');";
+            string sql = "INSERT INTO `flujoaereo`.`flight` (`Type`, `Origin`, `Destiny`, `Pist`, `DepartureDate`, `DepartureHour`, `ArrivalDate`, `ArrivalHour`, `FlightTime`) VALUES ('" + flight.Type + "', '" + flight.Origin + "', '" + flight.Destiny + "', '" + flight.Pist + "', '" + flight.DepartureDate + "', '" + flight.DepartureHour + "', '" + flight.ArrivalDate + "', '" + flight.ArrivalHour + "', '" + flight.FlightTime + "');";
 
             try
             {
@@ -63,13 +63,16 @@ namespace FlujoAereo.Services
                         {
                             ID = reader.GetInt32(0),
                             Type = reader.GetString(1),
-                            Origin = reader.GetString(3),
-                            Destiny = reader.GetString(4),
-                            Pist = reader.GetInt32(5),
-                            Departure = reader.GetDateTime(6),
-                            Arrival = reader.GetDateTime(7),
-                            FlightStatus = reader.GetString(8),
-                            Enabled = reader.GetInt32(9),
+                            Origin = reader.GetString(2),
+                            Destiny = reader.GetString(3),
+                            Pist = reader.GetInt32(4),
+                            DepartureDate = reader.GetString(5),
+                            DepartureHour = reader.GetString(6),
+                            ArrivalDate = reader.GetString(7),
+                            ArrivalHour = reader.GetString(8),
+                            FlightTime = reader.GetString(9),
+                            FlightStatus = reader.GetString(10),
+                            Enabled = reader.GetInt32(11),
                         };
                         list.Add(flight);
                     }

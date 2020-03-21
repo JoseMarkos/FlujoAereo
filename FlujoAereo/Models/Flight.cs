@@ -19,9 +19,15 @@ namespace FlujoAereo.Models
 
         public int Pist { get; set; }
 
-        public DateTime Departure { get; set; }
+        public string DepartureDate { get; set; }
 
-        public DateTime Arrival { get; set; }
+        public string DepartureHour { get; set; }
+
+        public string ArrivalDate { get; set; }
+        
+        public string ArrivalHour { get; set; }
+
+        public string FlightTime { get; set; }
 
         public string FlightStatus { get; set; }
         public int Enabled { get; set; }

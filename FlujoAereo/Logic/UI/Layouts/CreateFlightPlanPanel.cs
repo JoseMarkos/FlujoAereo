@@ -102,22 +102,27 @@ namespace FlujoAereo.Logic.UI.Layouts
         {
             try
             {
-                // Use trim for filelds names
-                RadioButton myRadio = (RadioButton)panelChild.Controls[5];
-
                 ComboBox myCombo = (ComboBox)panelChild.Controls[2];
-                ComboBox myCombo2 = (ComboBox)panelChild.Controls[4];
-                DateTime dateDeparture = DateTime.Parse(panelChild.Controls[9].Text);
-                DateTime dateArrival = DateTime.Parse(panelChild.Controls[11].Text);
+                ComboBox myCombo2 = (ComboBox)panelChild.Controls[12];
+                DateTime departureDate = DateTime.Parse(panelChild.Controls[6].Text);
+                DateTime arrivalDate = DateTime.Parse(panelChild.Controls[9].Text);
+                TimeSpan twentyFourHour = new TimeSpan(24,0,0);
+                TimeSpan departureHour = TimeSpan.Parse(panelChild.Controls[7].Controls[0].Text);
+                TimeSpan arrivalHour = TimeSpan.Parse(panelChild.Controls[10].Controls[0].Text);
+                TimeSpan flightHour = (departureHour > arrivalHour) ? (twentyFourHour - departureHour) + arrivalHour : arrivalHour - departureHour;
+
 
                 Flight flight = new Flight
                 {
                     Type = myCombo.SelectedItem.ToString(),
-                    Origin = panelChild.Controls[5].Controls[0].Text,
-                    Destiny = panelChild.Controls[6].Controls[0].Text,
-                    Pist = int.Parse(panelChild.Controls[7].Controls[0].Text),
-                    Departure = dateDeparture,
-                    Arrival = dateArrival,
+                    Origin = panelChild.Controls[3].Controls[0].Text,
+                    Destiny = panelChild.Controls[4].Controls[0].Text,
+                    DepartureDate = departureDate.ToString(),
+                    DepartureHour = departureHour.ToString(),
+                    ArrivalDate = arrivalDate.ToString(),
+                    ArrivalHour = arrivalHour.ToString(),
+                    FlightTime = flightHour.ToString(),
+                    Pist = int.Parse(myCombo2.SelectedItem.ToString()),
                 };
 
                 FlightDAO dao = new FlightDAO(Enums.Server.MariaDB);
@@ -143,9 +148,9 @@ namespace FlujoAereo.Logic.UI.Layouts
                     parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
                 }
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                throw new OperationCanceledException("Wrong filed.");
+                MessageBox.Show(error.Message);
             }
         }
     }
