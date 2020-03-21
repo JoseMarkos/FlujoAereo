@@ -78,5 +78,23 @@ namespace FlujoAereo.Services
 
             return vs;
         }
+
+        public List<string> GetAllNamesFromAirline(string airlineName)
+        {
+            List<string> vs = new List<string>();
+            AirlineDAO airlineDAO = new AirlineDAO(Server.MariaDB);
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Name FROM `flujoaereo`.`pilot` WHERE AirlineID = '" + airlineDAO.GetID(airlineName) + "';";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    vs.Add(reader.GetString(0));
+
+            return vs;
+        }
     }
 }

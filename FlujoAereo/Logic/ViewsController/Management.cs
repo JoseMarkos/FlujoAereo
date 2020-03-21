@@ -17,7 +17,7 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
-            form.Width = 1410;
+            form.Width = 1500;
             form.Height = 900;
             form.Padding = new Padding(20);
             form.BackColor = colors.White1;

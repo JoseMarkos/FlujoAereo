@@ -167,8 +167,35 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panelChild.Controls.Add(comboAircraft);
             secondColumntY += comboAircraft.Height + 20;
-            comboAirline.SelectedIndexChanged += new EventHandler(UpdateAirplaneCombo);
 
+
+            // Pilot
+
+            FlatLabel PilotLabel = new FlatLabel("Pilot", secondColumntX, secondColumntY);
+            secondColumntY += PilotLabel.Height + 16;
+            panelChild.Controls.Add(PilotLabel);
+
+            ComboBox comboPilot = new ComboBox
+            {
+                Name = "comboPilot",
+                Width = 222,
+                Height = 600,
+                Top = secondColumntY,
+                Left = panelChild.Controls[2].Width + panelChild.Controls[2].Left + 100,
+            };
+
+            UpdatePilotFromAirline(comboAirline.SelectedItem.ToString(), ref comboPilot);
+
+            if (comboPilot.Items.Count > 0)
+            {
+                comboPilot.SelectedIndex = 0;
+            }
+
+            panelChild.Controls.Add(comboPilot);
+            secondColumntY += comboAircraft.Height + 20;
+
+            comboAirline.SelectedIndexChanged += new EventHandler(UpdateAirplaneCombo);
+            comboAirline.SelectedIndexChanged += new EventHandler(UpdatePilotCombo);
         }
 
         private void Save(object sender, System.EventArgs e)
@@ -184,7 +211,6 @@ namespace FlujoAereo.Logic.UI.Layouts
                 TimeSpan departureHour = TimeSpan.Parse(panelChild.Controls[7].Controls[0].Text);
                 TimeSpan arrivalHour = TimeSpan.Parse(panelChild.Controls[10].Controls[0].Text);
                 TimeSpan flightHour = (departureHour > arrivalHour) ? (twentyFourHour - departureHour) + arrivalHour : arrivalHour - departureHour;
-
 
                 Flight flight = new Flight
                 {
@@ -245,6 +271,22 @@ namespace FlujoAereo.Logic.UI.Layouts
             UpdateAirlineFromAirline(combo.SelectedItem.ToString(), ref combo2);
         }
 
+        private void UpdatePilotCombo(object sender, System.EventArgs e)
+        {
+            ComboBox combo = (ComboBox)sender;
+            ComboBox combo2 = (ComboBox)panelChild.Controls[20];
+
+            int i = combo2.Items.Count - 1;
+
+            while (combo2.Items.Count > 0)
+            {
+                combo2.Items.RemoveAt(i);
+                i--;
+            }
+
+            UpdatePilotFromAirline(combo.SelectedItem.ToString(), ref combo2);
+        }
+
         private void UpdateAirlineFromAirline(string name, ref ComboBox combo)
         {
             List<string> airplaneNames = new AirplaneDAO(Server.MariaDB).GetAllNamesFromAirline(name);
@@ -254,9 +296,26 @@ namespace FlujoAereo.Logic.UI.Layouts
                 combo.Items.Add(item);
             }
 
-            combo.SelectedIndex = 0;
+            if (combo.Items.Count > 1)
+            {
+                combo.SelectedIndex = 0;
+            }
         }
 
+        private void UpdatePilotFromAirline(string name, ref ComboBox combo)
+        {
+            List<string> pilotNames = new PilotDAO(Server.MariaDB).GetAllNamesFromAirline(name);
+
+            foreach (string item in pilotNames)
+            {
+                combo.Items.Add(item);
+            }
+
+            if (combo.Items.Count > 1)
+            {
+                combo.SelectedIndex = 0;
+            }
+        }
     }
 }
 
