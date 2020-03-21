@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Models
 {
-    public sealed class Client : UserAbstract
+    public sealed class Ticket
     {
-        public Flight Flight;
+        public int ID { get; set; }
+        public string TypeClass { get; set; }
     }
 }

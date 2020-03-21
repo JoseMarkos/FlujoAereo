@@ -14,8 +14,8 @@ namespace FlujoAereo.Enums
 
         public Views()
         {
-            dictionary.Add((int)Roles.Administrator, new Form());
-            dictionary.Add((int)Roles.FlightPlan, new Management().GetForm());
+            dictionary.Add((int)Roles.Administrator, new Management().GetForm());
+            dictionary.Add((int)Roles.Monitor, new Management().GetForm());
             dictionary.Add((int)Roles.FlightControl, new Management().GetForm());
         }
     }

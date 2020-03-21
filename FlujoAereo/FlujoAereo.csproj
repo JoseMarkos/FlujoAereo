@@ -55,14 +55,15 @@
     <Compile Include="Enums\Colors.cs" />
     <Compile Include="Enums\AirplaneModels.cs" />
     <Compile Include="Enums\Fields.cs" />
+    <Compile Include="Enums\FlightType.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ItemMenuType.cs" />
     <Compile Include="Enums\LayoutsDictionary.cs" />
     <Compile Include="Enums\LoginState.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="Enums\Server.cs" />
-    <Compile Include="Enums\Ticket.cs" />
-    <Compile Include="Enums\Flight.cs" />
+    <Compile Include="Enums\TicketType.cs" />
+    <Compile Include="Enums\FlightClass.cs" />
     <Compile Include="Enums\Views.cs" />
     <Compile Include="Interfaces\IDBAdapter.cs" />
     <Compile Include="Logic\UI\Elements\FlatButton.cs">
@@ -101,8 +102,10 @@
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirport.cs" />
+    <Compile Include="Logic\UI\Layouts\CreateFlightPlanPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreatePilotPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreatePistPanel.cs" />
+    <Compile Include="Logic\UI\Layouts\FlightList.cs" />
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
     <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
@@ -125,11 +128,12 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ItemMenu.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\Piloto.cs" />
+    <Compile Include="Models\Pilot.cs" />
     <Compile Include="Models\Pist.cs" />
+    <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\UserAbstract.cs" />
     <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\Vuelo.cs" />
+    <Compile Include="Models\Flight.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +145,8 @@
     <Compile Include="Services\AirlineDAO.cs" />
     <Compile Include="Services\AirplaneDAO.cs" />
     <Compile Include="Services\AirportDAO.cs" />
+    <Compile Include="Services\FlightDAO.cs" />
+    <Compile Include="Services\FlightStatusDAO.cs" />
     <Compile Include="Services\MariaDBAdapter.cs" />
     <Compile Include="Services\PilotDAO.cs" />
     <Compile Include="Services\PistDAO.cs" />

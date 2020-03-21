@@ -74,7 +74,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 ComboBox myCombo = (ComboBox)panelChild.Controls[3];
                 int airlaineID = new AirlineDAO(Enums.Server.MariaDB).GetID(myCombo.SelectedItem.ToString());
 
-                Piloto piloto = new Piloto
+                Pilot piloto = new Pilot
                 {
                     Name = panelChild.Controls[1].Controls[0].Text,
                     Sex = panelChild.Controls[2].Controls[0].Text,

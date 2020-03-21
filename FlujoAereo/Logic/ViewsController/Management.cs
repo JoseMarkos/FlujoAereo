@@ -17,7 +17,7 @@ namespace FlujoAereo.Logic.ViewsController
         {
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
-            form.Width = 1300;
+            form.Width = 1500;
             form.Height = 900;
             form.Padding = new Padding(20);
             form.BackColor = colors.White1;
@@ -84,12 +84,24 @@ namespace FlujoAereo.Logic.ViewsController
                 }
                 );
 
+            menu.Controls[0].Controls[5].Click += new EventHandler(
+                (object sender, EventArgs e) =>
+                {
+                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Flight);
+                    PanelAdjustment();
+                }
+                );
+
             form.Controls.Add(menuWrapper);
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
+            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.CreateFlightPlan);
             PanelAdjustment();
+
+            //TimeSpan timeSpan = new TimeSpan(0, 2, 0,0);
+            //TimeSpan timeSpan2 = TimeSpan.Parse("20:00");
+            //MessageBox.Show(timeSpan2.ToString());
 
             void PanelAdjustment()
             {

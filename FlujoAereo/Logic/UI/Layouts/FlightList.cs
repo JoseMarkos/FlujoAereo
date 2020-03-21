@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class PistList : ControlParent
+    public sealed class FlightList : ControlParent
     {
-        public PistList()
+        public FlightList()
         {
             InitializeComponent();
         }
@@ -22,11 +22,11 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             // DAO
 
-            PistDAO pistDAO = new PistDAO(Enums.Server.MariaDB);
+            FlightDAO airlineDAO = new FlightDAO(Enums.Server.MariaDB);
 
             BindingSource bindingSource = new BindingSource
             {
-                DataSource = pistDAO.GetAllPists()
+                DataSource = airlineDAO.GetAllFlights()
             };
 
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -38,15 +38,16 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
+
             // main controls
-            AddElement(new FlatLabelTitle("Pists", 0, 0));
-            AddElement(new FlatButton("Create Pist"));
+            AddElement(new FlatLabelTitle("Flights", 0, 0));
+            AddElement(new FlatButton("Create Flight plan"));
             panelChild.Controls[1].Click += new EventHandler(GoToCreate);
             panelChild.Controls[1].Width = 200;
 
             AddElement(new DataGridView
             {
-                Name = "dgvPists",
+                Name = "dgvFlights",
                 DataSource = bindingSource,
                 Width = 975,
                 ForeColor = colors.Black1,
@@ -69,6 +70,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersVisible = false,
                 ReadOnly = true,
             });
+
         }
 
         private void GoToCreate(object sender, System.EventArgs e)
@@ -79,7 +81,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreatePist);
+                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreateFlightPlan);
 
                 PanelAdjustment();
 

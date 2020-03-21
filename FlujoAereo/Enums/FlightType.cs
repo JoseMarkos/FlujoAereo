@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace FlujoAereo.Enums
 {
-    public enum Roles
+    public enum FlightType
     {
-        Administrator,
-        Monitor,
-        FlightControl,
-        Client
+        Comercial,
+        Cargo,
     }
 }
