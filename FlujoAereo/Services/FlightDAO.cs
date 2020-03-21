@@ -88,5 +88,18 @@ namespace FlujoAereo.Services
                 return list;
             }
         }
+
+        public void SetStatus(int id, FlightStatus status)
+        {
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "UPDATE `flujoaereo`.`flight` SET `Enabled`='0' `FlightStatus` ='" + status.ToString() + "'  WHERE  `ID`=" + id + ";";
+
+            MySqlCommand insertCommnad = new MySqlCommand(sql)
+            {
+                Connection = connection
+            };
+            insertCommnad.ExecuteNonQuery();
+            insertCommnad.Connection.Close();
+        }
     }
 }

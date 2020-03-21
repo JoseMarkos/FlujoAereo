@@ -107,7 +107,7 @@ namespace FlujoAereo.Logic.ViewsController
 
             button.Width = panelTxtName.Width;
             button.Location = new Point(20, button.Parent.Height + 20);
-            button.Click += new System.EventHandler(TryLogin);
+            button.Click += new System.EventHandler(TryLoginAsync);
 
             panelLogin.Height += button.Height + 30;
 
@@ -126,7 +126,7 @@ namespace FlujoAereo.Logic.ViewsController
               );
         }
 
-        private void TryLogin(object sender, System.EventArgs e)
+        private async void TryLoginAsync(object sender, System.EventArgs e)
         {
             FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
             FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[3];
@@ -146,6 +146,7 @@ namespace FlujoAereo.Logic.ViewsController
                 userDAO.SetLogin(userDAO.GetID(user.Name));
 
                 Views views = new Views();
+                await views.Inicialize();
                 form.Hide();
                 views.dictionary[userDAO.GetRole(user.Name)].Show();
             }

@@ -198,7 +198,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             comboAirline.SelectedIndexChanged += new EventHandler(UpdatePilotCombo);
         }
 
-        private void Save(object sender, System.EventArgs e)
+        private async void Save(object sender, System.EventArgs e)
         {
             try
             {
@@ -248,7 +248,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Flight);
+                await menuController.ShowPanelAsync(Enums.ItemMenuType.Flight);
 
                 PanelAdjustment();
 

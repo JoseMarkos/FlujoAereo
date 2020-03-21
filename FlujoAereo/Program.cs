@@ -15,7 +15,7 @@ namespace FlujoAereo
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static async Task Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -24,9 +24,10 @@ namespace FlujoAereo
             //Form form = login.GetForm();
             //Application.Run(form);
 
-            Management clientService = new Management();
+            Management management = new Management();
+            await management.InitializeComponentAsync();
 
-            Application.Run(clientService.GetForm());
+            Application.Run(management.GetForm());
         }
     }
 }

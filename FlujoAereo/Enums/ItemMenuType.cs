@@ -24,6 +24,7 @@ namespace FlujoAereo.Enums
         Clients,
         Pilots,
         Pists,
-        Flight
+        Flight,
+        Monitor
     }
 }

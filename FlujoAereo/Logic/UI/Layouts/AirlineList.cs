@@ -72,7 +72,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
         }
 
-        private void GoToCreate(object sender, System.EventArgs e)
+        private async void GoToCreate(object sender, System.EventArgs e)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreateAirline);
+                await menuController.ShowPanelAsync(Enums.ItemMenuType.CreateAirline);
 
                 PanelAdjustment();
 

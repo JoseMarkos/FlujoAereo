@@ -55,6 +55,7 @@
     <Compile Include="Enums\Colors.cs" />
     <Compile Include="Enums\AirplaneModels.cs" />
     <Compile Include="Enums\Fields.cs" />
+    <Compile Include="Enums\FlightStatus.cs" />
     <Compile Include="Enums\FlightType.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\ItemMenuType.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Enums\FlightClass.cs" />
     <Compile Include="Enums\Views.cs" />
     <Compile Include="Interfaces\IDBAdapter.cs" />
+    <Compile Include="Logic\Tasks\Test.cs" />
     <Compile Include="Logic\UI\Elements\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +111,7 @@
     <Compile Include="Logic\UI\Layouts\MainSection.cs" />
     <Compile Include="Logic\UI\Layouts\MenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\ControlParent.cs" />
+    <Compile Include="Logic\UI\Layouts\Monitor.cs" />
     <Compile Include="Logic\UI\Layouts\PilotList.cs" />
     <Compile Include="Logic\UI\Layouts\PistList.cs" />
     <Compile Include="Logic\UI\Layouts\Toolbar.cs" />
@@ -179,7 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Fields\" />
-    <Folder Include="Logic\Tasks\" />
     <Folder Include="Logic\Validations\" />
     <Folder Include="Media\" />
   </ItemGroup>

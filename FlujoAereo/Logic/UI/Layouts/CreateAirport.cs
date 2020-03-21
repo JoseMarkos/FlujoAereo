@@ -55,7 +55,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-        private void Save(object sender, System.EventArgs e)
+        private async void Save(object sender, System.EventArgs e)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.Airports);
+                await menuController.ShowPanelAsync(Enums.ItemMenuType.Airports);
 
                 PanelAdjustment();
 

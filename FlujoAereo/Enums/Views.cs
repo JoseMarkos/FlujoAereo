@@ -12,11 +12,14 @@ namespace FlujoAereo.Enums
     {
         public Dictionary<int, Form> dictionary = new Dictionary<int, Form>();
 
-        public Views()
+        public async Task Inicialize()
         {
-            dictionary.Add((int)Roles.Administrator, new Management().GetForm());
-            dictionary.Add((int)Roles.Monitor, new Management().GetForm());
-            dictionary.Add((int)Roles.FlightControl, new Management().GetForm());
+            Management management = new Management();
+            await management.InitializeComponentAsync();
+
+            dictionary.Add((int)Roles.Administrator, management.GetForm());
+            dictionary.Add((int)Roles.Monitor, management.GetForm());
+            dictionary.Add((int)Roles.FlightControl, management.GetForm());
         }
     }
 }

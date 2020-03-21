@@ -1,18 +1,14 @@
-﻿using FlujoAereo.Services;
+﻿using FlujoAereo.Logic.Tasks;
+using FlujoAereo.Services;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    public sealed class PilotList : ControlParent
+    public sealed class Monitor : ControlParent
     {
-        public PilotList()
-        {
-            InitializeComponent();
-        }
-
-
-        private new void InitializeComponent()
+        public async Task InitializeComponentAsync()
         {
             panel.Controls.Add(panelChild);
 
@@ -20,13 +16,13 @@ namespace FlujoAereo.Logic.UI.Layouts
             panel.Padding = new Padding(40, 0, 0, 20);
             panel.BackColor = colors.White1;
 
-            // DAO
 
-            PilotDAO pilotDAO = new PilotDAO(Enums.Server.MariaDB);
+            // DAO
+            AirportDAO airportDAO = new AirportDAO(Enums.Server.MariaDB);
 
             BindingSource bindingSource = new BindingSource
             {
-                DataSource = pilotDAO.GetAllPilots()
+                DataSource = airportDAO.GetAllAirports()
             };
 
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -39,14 +35,11 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
             // main controls
-            AddElement(new FlatLabelTitle("Pilots", 0, 0));
-            AddElement(new FlatButton("Create Pilot"));
-            panelChild.Controls[1].Click += new EventHandler(GoToCreate);
-            panelChild.Controls[1].Width = 200;
+           
 
             AddElement(new DataGridView
             {
-                Name = "dgvPilots",
+                Name = "dgvAirports",
                 DataSource = bindingSource,
                 Width = 975,
                 ForeColor = colors.Black1,
@@ -57,7 +50,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersDefaultCellStyle = dataGridViewCellStyle2,
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
-                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells,
+                AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader,
                 AutoSize = true,
                 BackgroundColor = colors.White1,
                 BorderStyle = System.Windows.Forms.BorderStyle.None,
@@ -69,33 +62,14 @@ namespace FlujoAereo.Logic.UI.Layouts
                 RowHeadersVisible = false,
                 ReadOnly = true,
             });
+
+            Test test = new Test();
+
+
+            await test.CountHour(new TimeSpan(0, 0, 2));
+
+            MessageBox.Show("wth");
         }
 
-        private async void GoToCreate(object sender, System.EventArgs e)
-        {
-            try
-            {
-                FlatPanel parentPanel = (FlatPanel)panel.Parent;
-                Control toolbar = parentPanel.Controls[0];
-
-                MenuSection menuController = new MenuSection(0);
-                await menuController.ShowPanelAsync(Enums.ItemMenuType.CreatePiloto);
-
-                PanelAdjustment();
-
-                void PanelAdjustment()
-                {
-                    parentPanel.Controls[1].Dock = DockStyle.None;
-                    toolbar.Controls[0].Width = parentPanel.Width;
-                    parentPanel.Controls[1].Top = toolbar.Top + toolbar.Height;
-                    parentPanel.Controls[1].Width = parentPanel.Width;
-                    parentPanel.Controls[1].Height = parentPanel.Height - toolbar.Height;
-                }
-            }
-            catch (Exception)
-            {
-                throw new OperationCanceledException("Wrong view.");
-            }
-        }
     }
 }

@@ -3,17 +3,15 @@ using FlujoAereo.Logic.UI.Layouts;
 using FlujoAereo.Services;
 using System;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FlujoAereo.Logic.ViewsController
 {
     public sealed class Management : Controller
     {
-        public Management()
-        {
-            InitializeComponent();
-        }
-
-        protected override void InitializeComponent()
+        
+        public async Task InitializeComponentAsync()
         {
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
@@ -45,49 +43,49 @@ namespace FlujoAereo.Logic.ViewsController
 
             
             menu.Controls[0].Controls[0].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airplanes);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airplanes);
                     PanelAdjustment();
                 }
                 );
 
             menu.Controls[0].Controls[1].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airlines);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airlines);
                     PanelAdjustment();
                 }
                 );
 
             menu.Controls[0].Controls[2].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pilots);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Pilots);
                     PanelAdjustment();
                 }
                 );
 
             menu.Controls[0].Controls[3].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Pists);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Pists);
                     PanelAdjustment();
                 }
                 );
 
             menu.Controls[0].Controls[4].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Airports);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airports);
                     PanelAdjustment();
                 }
                 );
 
             menu.Controls[0].Controls[5].Click += new EventHandler(
-                (object sender, EventArgs e) =>
+                async (object sender, EventArgs e) =>
                 {
-                    menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Flight);
+                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Flight);
                     PanelAdjustment();
                 }
                 );
@@ -96,7 +94,7 @@ namespace FlujoAereo.Logic.ViewsController
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            menuController.ShowPanel(ref mainPanel, Enums.ItemMenuType.Flight);
+            await menuController.ShowPanelAsync(Enums.ItemMenuType.Monitor);
             PanelAdjustment();
 
             //TimeSpan timeSpan = new TimeSpan(0, 2, 0,0);
@@ -112,6 +110,11 @@ namespace FlujoAereo.Logic.ViewsController
                 mainPanel.Controls[1].Width = mainPanel.Width;
                 mainPanel.Controls[1].Height = mainPanel.Height - toolbar.Height;
             }
+        }
+
+        protected override void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
 
         private void SetLogout(object seter, EventArgs e)

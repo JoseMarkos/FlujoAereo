@@ -42,7 +42,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             // main controls
             AddElement(new FlatLabelTitle("Airplanes", 0, 0));
             AddElement(new FlatButton("Create Airplane"));
-            panelChild.Controls[1].Click += new EventHandler(GoToCreate);
+            panelChild.Controls[1].Click += new EventHandler(GoToCreateAsync);
             panelChild.Controls[1].Width = 200;
 
             AddElement(new DataGridView
@@ -72,7 +72,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             });
         }
 
-        private void GoToCreate(object sender, System.EventArgs e)
+        private async void GoToCreateAsync(object sender, System.EventArgs e)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                menuController.ShowPanel(ref parentPanel, Enums.ItemMenuType.CreateAirplane);
+                await menuController.ShowPanelAsync(Enums.ItemMenuType.CreateAirplane);
 
                 PanelAdjustment();
 
