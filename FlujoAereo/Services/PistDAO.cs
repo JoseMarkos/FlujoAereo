@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using FlujoAereo.Models;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+
 namespace FlujoAereo.Services
 {
     public sealed class PistDAO
@@ -47,7 +49,7 @@ namespace FlujoAereo.Services
             List<Pist> list = new List<Pist>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`pist`;";
+            string sql = "SELECT * FROM `flujoaereo`.`pist` WHERE Status ='1';";
 
             try
             {
@@ -68,11 +70,28 @@ namespace FlujoAereo.Services
                     return list;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw new InvalidCastException("Wrong data.");
+                MessageBox.Show(e.Message);
+                return list;
             }
+        }
+
+        public List<int> GetAllID()
+        {
+            List<int> list = new List<int>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT ID FROM `flujoaereo`.`pist`;";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    list.Add(reader.GetInt32(0));
+
+            return list;
         }
     }
 }

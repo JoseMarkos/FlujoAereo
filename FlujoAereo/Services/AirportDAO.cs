@@ -51,7 +51,7 @@ namespace FlujoAereo.Services
             List<Airport> list = new List<Airport>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`airport`;";
+            string sql = "SELECT * FROM `flujoaereo`.`airport` WHERE Status ='1';";
 
             using (var command = new MySqlCommand(sql, connection))
 
@@ -78,6 +78,23 @@ namespace FlujoAereo.Services
                 }
                 return list;
             }
+        }
+
+
+        public List<string> GetAllNames()
+        {
+            List<string> vs = new List<string>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Name FROM `flujoaereo`.`airport` WHERE Status = '1';";
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    vs.Add(reader.GetString(0));
+
+            return vs;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace FlujoAereo.Services
             List<Airplane> list = new List<Airplane>();
 
             MySqlConnection connection = adapter.GetConection();
-            string sql = "SELECT * FROM `flujoaereo`.`airplane`;";
+            string sql = "SELECT * FROM `flujoaereo`.`airplane` WHERE Enabled ='1';";
 
             using (var command = new MySqlCommand(sql, connection))
 
@@ -69,6 +69,58 @@ namespace FlujoAereo.Services
                 }
                 return list;
             }
+        }
+
+        public List<string> GetAllNames()
+        {
+            List<string> vs = new List<string>();
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Model FROM `flujoaereo`.`airplane` WHERE Enabled = '1';";
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    vs.Add(reader.GetString(0));
+
+            return vs;
+        }
+
+
+        public List<string> GetAllNamesFromAirline(string airlineName)
+        {
+            List<string> vs = new List<string>();
+            AirlineDAO airlineDAO = new AirlineDAO(Server.MariaDB);
+
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT Model FROM `flujoaereo`.`airplane` WHERE AirlineID = '" + airlineDAO.GetID(airlineName) + "';";
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    vs.Add(reader.GetString(0));
+
+            return vs;
+        }
+
+        public int GetID(string name)
+        {
+            string readerString = String.Empty;
+
+            MySqlConnection connection = adapter.GetConection();
+            string sql = "SELECT ID FROM `flujoaereo`.`airplane` WHERE Model ='" + name + "';";
+
+
+            using (var command = new MySqlCommand(sql, connection))
+
+            using (var reader = command.ExecuteReader())
+                while (reader.Read())
+                    readerString += reader.GetString(0);
+
+            return int.Parse(readerString);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace FlujoAereo.Enums
         CreatePist,
         CreateStatus,
         CreateUsuario,
-        CreateVuelo,
+        CreateFlightPlan,
         Airplanes,
         Airlines,
         Airports,
