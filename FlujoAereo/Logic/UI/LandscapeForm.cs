@@ -29,6 +29,7 @@ namespace FlujoAereo.Logic.UI
             Padding = new Padding(0);
             Font = new System.Drawing.Font("Microsoft YaHei UI", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ForeColor = colors.Black1;
+            ShowIcon = false;
 
             ResumeLayout(false);
         }

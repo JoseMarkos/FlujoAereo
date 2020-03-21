@@ -113,6 +113,62 @@ namespace FlujoAereo.Logic.UI.Layouts
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 5].Width;
+
+
+            // Second Column
+
+            int secondColumntX = panelChild.Controls[2].Width + panelChild.Controls[2].Left + 100;
+            int secondColumntY = panelChild.Controls[1].Top;
+
+            FlatLabel AirlineLabel = new FlatLabel("Airline", secondColumntX, secondColumntY);
+            secondColumntY += AirlineLabel.Height + 16;
+            panelChild.Controls.Add(AirlineLabel);
+
+
+            ComboBox comboAirline = new ComboBox
+            {
+                Name = "comboAirline",
+                Width = 222,
+                Height = 600,
+                Top = secondColumntY,
+                Left = panelChild.Controls[2].Width + panelChild.Controls[2].Left + 100,
+                
+            };
+
+
+            List<string> airlineNames = new AirlineDAO(Server.MariaDB).GetAllAirlinesNames();
+
+            foreach (string item in airlineNames)
+            {
+                comboAirline.Items.Add(item);
+            }
+            comboAirline.SelectedIndex = 0;
+
+            panelChild.Controls.Add(comboAirline);
+            secondColumntY += comboAirline.Height + 20;
+
+            // Airplane
+            FlatLabel AirplaneLabel = new FlatLabel("Airplane", secondColumntX, secondColumntY);
+            secondColumntY += AirplaneLabel.Height + 16;
+            panelChild.Controls.Add(AirplaneLabel);
+
+            ComboBox comboAircraft = new ComboBox
+            {
+                Name = "comboAircraft",
+                Width = 222,
+                Height = 600,
+                Top = secondColumntY,
+                Left = panelChild.Controls[2].Width + panelChild.Controls[2].Left + 100,
+            };
+
+            UpdateAirlineFromAirline(comboAirline.SelectedItem.ToString(), ref comboAircraft);
+
+            comboAircraft.SelectedIndex = 0;
+
+            panelChild.Controls.Add(comboAircraft);
+            secondColumntY += comboAircraft.Height + 20;
+            comboAirline.SelectedIndexChanged += new EventHandler(UpdateAirplaneCombo);
+
         }
 
         private void Save(object sender, System.EventArgs e)
@@ -172,6 +228,35 @@ namespace FlujoAereo.Logic.UI.Layouts
                 MessageBox.Show(error.Message);
             }
         }
+
+        private void UpdateAirplaneCombo(object sender, System.EventArgs e)
+        {
+            ComboBox combo = (ComboBox)sender;
+            ComboBox combo2 = (ComboBox)panelChild.Controls[18];
+
+            int i = combo2.Items.Count - 1;
+
+            while (combo2.Items.Count > 0)
+            {
+                combo2.Items.RemoveAt(i);
+                i--;
+            }
+
+            UpdateAirlineFromAirline(combo.SelectedItem.ToString(), ref combo2);
+        }
+
+        private void UpdateAirlineFromAirline(string name, ref ComboBox combo)
+        {
+            List<string> airplaneNames = new AirplaneDAO(Server.MariaDB).GetAllNamesFromAirline(name);
+ 
+            foreach (string item in airplaneNames)
+            {
+                combo.Items.Add(item);
+            }
+
+            combo.SelectedIndex = 0;
+        }
+
     }
 }
 
