@@ -146,6 +146,7 @@
     <Compile Include="Services\AirplaneDAO.cs" />
     <Compile Include="Services\AirportDAO.cs" />
     <Compile Include="Services\FlightDAO.cs" />
+    <Compile Include="Services\FlightStatusDAO.cs" />
     <Compile Include="Services\MariaDBAdapter.cs" />
     <Compile Include="Services\PilotDAO.cs" />
     <Compile Include="Services\PistDAO.cs" />

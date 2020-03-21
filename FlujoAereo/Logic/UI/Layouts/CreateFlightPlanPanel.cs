@@ -84,14 +84,31 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Width = 222,
             };
 
+
             AddElement(new FlatLabel("Departure Date", 0, 0));
             AddElement(dateTimeDeparture); // validation
-            AddElement(new FlatPanelTextBox("Deperture Hour"));
+            AddElement(new FlatPanelTextBox("Deperture 00:00:00"));
             AddElement(new FlatLabel("Arrival Date", 0, 0));
             AddElement(dateTimeArrival); // validation
-            AddElement(new FlatPanelTextBox("Arrival Hour"));
+            AddElement(new FlatPanelTextBox("Arrival 00:00:00"));
             AddElement(new FlatLabel("Pist", 0, 0));
             AddElement(comboPist);
+
+            ComboBox comboStatus = new ComboBox
+            {
+                Name = "comboStatus",
+                Width = 222,
+                Height = 600
+            };
+
+            List<string> flightStatusNames = new FlightStatusDAO(Server.MariaDB).GetAllFlightStatusNames();
+
+            foreach (string item in flightStatusNames)
+            {
+                comboStatus.Items.Add(item);
+            }
+            comboStatus.SelectedIndex = 0;
+            AddElement(comboStatus);
             AddElement(new FlatButton("Save"));
 
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Click += new EventHandler(Save);
@@ -104,6 +121,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             {
                 ComboBox myCombo = (ComboBox)panelChild.Controls[2];
                 ComboBox myCombo2 = (ComboBox)panelChild.Controls[12];
+                ComboBox myCombo3 = (ComboBox)panelChild.Controls[13];
                 DateTime departureDate = DateTime.Parse(panelChild.Controls[6].Text);
                 DateTime arrivalDate = DateTime.Parse(panelChild.Controls[9].Text);
                 TimeSpan twentyFourHour = new TimeSpan(24,0,0);
@@ -123,6 +141,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                     ArrivalHour = arrivalHour.ToString(),
                     FlightTime = flightHour.ToString(),
                     Pist = int.Parse(myCombo2.SelectedItem.ToString()),
+                    FlightStatus = myCombo3.SelectedItem.ToString(),
                 };
 
                 FlightDAO dao = new FlightDAO(Enums.Server.MariaDB);
