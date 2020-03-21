@@ -106,7 +106,7 @@ namespace FlujoAereo.Logic.UI.Layouts
                 Control toolbar = parentPanel.Controls[0];
 
                 MenuSection menuController = new MenuSection(0);
-                await menuController.ShowPanelAsync(Enums.ItemMenuType.Airplanes);
+                menuController.ShowPanel(Enums.ItemMenuType.Airplanes);
 
                 PanelAdjustment();
 

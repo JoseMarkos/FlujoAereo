@@ -67,7 +67,7 @@
     <Compile Include="Enums\FlightClass.cs" />
     <Compile Include="Enums\Views.cs" />
     <Compile Include="Interfaces\IDBAdapter.cs" />
-    <Compile Include="Logic\Tasks\Test.cs" />
+    <Compile Include="Logic\Tasks\Watcher.cs" />
     <Compile Include="Logic\UI\Elements\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>

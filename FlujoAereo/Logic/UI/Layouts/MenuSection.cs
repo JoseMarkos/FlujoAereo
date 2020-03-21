@@ -40,17 +40,15 @@ namespace FlujoAereo.Logic.UI
             }
         }
 
-        public async Task ShowPanelAsync(ItemMenuType menuType)
+        public void ShowPanel(ItemMenuType menuType)
         {
-            MessageBox.Show(panel.Parent.Parent.Controls[0].Name);
-
             if (panel.Parent.Parent.Controls[0].Controls.Count > 1)
             {
                 panel.Parent.Parent.Controls[0].Controls.RemoveAt(1);
             }
 
             LayoutsDictionary layouts = new LayoutsDictionary();
-            await layouts.Inicialize();
+            layouts.Inicialize();
 
             panel.Parent.Parent.Controls[0].Controls.Add(layouts.dictionary[(int)menuType]);
             panel.Parent.Parent.Controls[0].Controls[1].Left = 0;

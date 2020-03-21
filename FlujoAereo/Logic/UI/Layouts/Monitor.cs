@@ -18,11 +18,11 @@ namespace FlujoAereo.Logic.UI.Layouts
 
 
             // DAO
-            AirportDAO airportDAO = new AirportDAO(Enums.Server.MariaDB);
+            FlightDAO airlineDAO = new FlightDAO(Enums.Server.MariaDB);
 
             BindingSource bindingSource = new BindingSource
             {
-                DataSource = airportDAO.GetAllAirports()
+                DataSource = airlineDAO.GetAllFlights()
             };
 
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -35,7 +35,6 @@ namespace FlujoAereo.Logic.UI.Layouts
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
 
             // main controls
-           
 
             AddElement(new DataGridView
             {
@@ -63,12 +62,16 @@ namespace FlujoAereo.Logic.UI.Layouts
                 ReadOnly = true,
             });
 
-            Test test = new Test();
+            Watcher test = new Watcher();
 
+            await test.SetFlightStatus();
 
-            await test.CountHour(new TimeSpan(0, 0, 2));
+            MessageBox.Show("hola");
+        }
 
-            MessageBox.Show("wth");
+        public void RefreshDGV(ref DataGridView dataGridView)
+        {
+            dataGridView.Refresh();
         }
 
     }

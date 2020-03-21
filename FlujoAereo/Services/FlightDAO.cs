@@ -92,7 +92,7 @@ namespace FlujoAereo.Services
         public void SetStatus(int id, FlightStatus status)
         {
             MySqlConnection connection = adapter.GetConection();
-            string sql = "UPDATE `flujoaereo`.`flight` SET `Enabled`='0' `FlightStatus` ='" + status.ToString() + "'  WHERE  `ID`=" + id + ";";
+            string sql = "UPDATE `flujoaereo`.`flight` SET `Status` ='" + status.ToString() + "' WHERE  `ID`=" + id + ";";
 
             MySqlCommand insertCommnad = new MySqlCommand(sql)
             {

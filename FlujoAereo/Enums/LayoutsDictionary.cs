@@ -15,7 +15,7 @@ namespace FlujoAereo.Enums
         public Dictionary<int, FlatPanel> dictionary = new Dictionary<int, FlatPanel>();
 
 
-        public async Task Inicialize()
+        public void Inicialize()
         {
             dictionary.Add((int)ItemMenuType.CreateAirline, new CreateAirlinePanel().GetPanel("Create Airline"));
             dictionary.Add((int)ItemMenuType.CreateAirplane, new CreateAirplanePanel().GetPanel("Create Airplane"));
@@ -30,8 +30,8 @@ namespace FlujoAereo.Enums
             dictionary.Add((int)ItemMenuType.Pilots, new PilotList().GetPanel("Airlines"));
             dictionary.Add((int)ItemMenuType.Pists, new PistList().GetPanel("Pists"));
             dictionary.Add((int)ItemMenuType.Flight, new FlightList().GetPanel("Flights"));
-            Monitor monitor =  new Monitor();
-            await monitor.InitializeComponentAsync();
+            Monitor monitor = new Monitor();
+            monitor.InitializeComponentAsync();
             dictionary.Add((int)ItemMenuType.Monitor, monitor.GetPanel("Monitor"));
         }
     }

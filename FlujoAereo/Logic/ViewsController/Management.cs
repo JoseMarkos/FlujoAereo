@@ -45,7 +45,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[0].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airplanes);
+                    menuController.ShowPanel(Enums.ItemMenuType.Airplanes);
                     PanelAdjustment();
                 }
                 );
@@ -53,7 +53,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[1].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airlines);
+                    menuController.ShowPanel(Enums.ItemMenuType.Airlines);
                     PanelAdjustment();
                 }
                 );
@@ -61,7 +61,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[2].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Pilots);
+                    menuController.ShowPanel(Enums.ItemMenuType.Pilots);
                     PanelAdjustment();
                 }
                 );
@@ -69,7 +69,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[3].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Pists);
+                    menuController.ShowPanel(Enums.ItemMenuType.Pists);
                     PanelAdjustment();
                 }
                 );
@@ -77,7 +77,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[4].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Airports);
+                    menuController.ShowPanel(Enums.ItemMenuType.Airports);
                     PanelAdjustment();
                 }
                 );
@@ -85,7 +85,7 @@ namespace FlujoAereo.Logic.ViewsController
             menu.Controls[0].Controls[5].Click += new EventHandler(
                 async (object sender, EventArgs e) =>
                 {
-                    await menuController.ShowPanelAsync(Enums.ItemMenuType.Flight);
+                    menuController.ShowPanel(Enums.ItemMenuType.Flight);
                     PanelAdjustment();
                 }
                 );
@@ -94,7 +94,7 @@ namespace FlujoAereo.Logic.ViewsController
             menuController.SetMenuItemsWidth(menuWrapper.Width);
 
             // Default panel
-            await menuController.ShowPanelAsync(Enums.ItemMenuType.Monitor);
+            menuController.ShowPanel(Enums.ItemMenuType.Monitor);
             PanelAdjustment();
 
             //TimeSpan timeSpan = new TimeSpan(0, 2, 0,0);
