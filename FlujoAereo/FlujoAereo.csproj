@@ -99,6 +99,7 @@
     <Compile Include="Logic\UI\Layouts\AirlineList.cs" />
     <Compile Include="Logic\UI\Layouts\AirplaneList.cs" />
     <Compile Include="Logic\UI\Layouts\AirportList.cs" />
+    <Compile Include="Logic\UI\Layouts\CalculatorPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirport.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Logic\UI\SquareForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Logic\ViewsController\Calculator.cs" />
     <Compile Include="Logic\ViewsController\CenterElement.cs" />
     <Compile Include="Logic\ViewsController\Management.cs" />
     <Compile Include="Logic\ViewsController\Controller.cs" />

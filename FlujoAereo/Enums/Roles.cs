@@ -11,6 +11,7 @@ namespace FlujoAereo.Enums
         Administrator,
         Monitor,
         FlightControl,
-        Client
+        Client,
+        Calculator
     }
 }

@@ -18,9 +18,10 @@ namespace FlujoAereo.Logic.ViewsController
 
         protected override void InitializeComponent()
         {
-            form = new SquareForm("Login shit");
+            form = new SquareForm("Login");
             form.Height = 599;
             form.Width = 750;
+            form.FormClosed += new FormClosedEventHandler(Exit);
 
             Panel panel = new Panel
             {
