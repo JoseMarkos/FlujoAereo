@@ -24,6 +24,8 @@ namespace FlujoAereo.Enums
         Clients,
         Pilots,
         Pists,
-        Flight
+        Flight,
+        CalculatorAverageLandingTimeFlight,
+        CalculatorAverageBrakingTime,
     }
 }

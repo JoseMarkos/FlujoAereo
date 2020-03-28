@@ -99,6 +99,7 @@
     <Compile Include="Logic\UI\Layouts\AirlineList.cs" />
     <Compile Include="Logic\UI\Layouts\AirplaneList.cs" />
     <Compile Include="Logic\UI\Layouts\AirportList.cs" />
+    <Compile Include="Logic\UI\Layouts\CalculatorMenuSection.cs" />
     <Compile Include="Logic\UI\Layouts\CalculatorPanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirlinePanel.cs" />
     <Compile Include="Logic\UI\Layouts\CreateAirplanePanel.cs" />
