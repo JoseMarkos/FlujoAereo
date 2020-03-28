@@ -26,9 +26,9 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatButton("Calculate"));
             AddElement(new FlatLabel("resultado", 0, 0));
 
-            panelChild.Controls[7].Width = panelChild.Controls[5].Width;
-            panelChild.Controls[7].Click += new System.EventHandler(Calculate);
-            panelChild.Controls[8].Text = "";
+            panelChild.Controls[8].Width = panelChild.Controls[5].Width;
+            panelChild.Controls[8].Click += new System.EventHandler(Calculate);
+            panelChild.Controls[9].Text = "";
 
         }
 

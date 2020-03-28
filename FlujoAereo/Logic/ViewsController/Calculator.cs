@@ -19,7 +19,7 @@ namespace FlujoAereo.Logic.ViewsController
         protected override void InitializeComponent()
         {
             form = new SquareForm("Calculator");
-            form.Height = 599;
+            form.Height = 699;
             form.Width = 766;
 
             FlatPanel mainPanel = new FlatPanel("Main");
