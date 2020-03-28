@@ -2,9 +2,9 @@
 
 namespace FlujoAereo.Logic.UI.Layouts
 {
-    class CalculatorPanel : ControlParent
+    class CalculatorBreakingTime : ControlParent
     {
-        public CalculatorPanel()
+        public CalculatorBreakingTime()
         {
             InitializeComponent();
         }
@@ -22,6 +22,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             AddElement(new FlatPanelTextBox("Average Mass"));
             AddElement(new FlatPanelTextBox("Average Speed"));
             AddElement(new FlatPanelTextBox("altura avion"));
+            AddElement(new FlatPanelTextBox("Pist Large"));
             AddElement(new FlatButton("Calculate"));
             AddElement(new FlatLabel("resultado", 0, 0));
 
@@ -36,19 +37,21 @@ namespace FlujoAereo.Logic.UI.Layouts
             try
             {
                 const int persongAverageW = 70;
+                const int VFinal = 0;
 
                 int pilots = int.Parse(panelChild.Controls[2].Controls[0].Text);
                 int passengers = int.Parse(panelChild.Controls[3].Controls[0].Text);
                 int mass = int.Parse(panelChild.Controls[4].Controls[0].Text);
-                int speed = int.Parse(panelChild.Controls[5].Controls[0].Text);
+                int vInicial = int.Parse(panelChild.Controls[5].Controls[0].Text);
                 int altura = int.Parse(panelChild.Controls[6].Controls[0].Text);
+                int distancia = int.Parse(panelChild.Controls[7].Controls[0].Text);
 
                 int persons = pilots + passengers;
 
                 int totalPersonW = persongAverageW * persons;
                 int totalW = totalPersonW + mass;
 
-                int time = altura / speed;
+                int time = distancia / (vInicial - 0);
 
                 panelChild.Controls[panelChild.Controls.Count - 1].Text = time.ToString() + " s.";
             }

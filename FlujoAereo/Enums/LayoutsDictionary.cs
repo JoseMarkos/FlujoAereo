@@ -31,7 +31,7 @@ namespace FlujoAereo.Enums
             dictionary.Add((int)ItemMenuType.Flight, new FlightList().GetPanel("Flights"));
 
             dictionary.Add((int)ItemMenuType.CalculatorAverageLandingTimeFlight, new CalculatorPanel().GetPanel("Flights"));
-            dictionary.Add((int)ItemMenuType.CalculatorAverageBrakingTime, new FlightList().GetPanel("Flights"));
+            dictionary.Add((int)ItemMenuType.CalculatorAverageBrakingTime, new CalculatorBreakingTime().GetPanel("Flights"));
         }
     }
 }

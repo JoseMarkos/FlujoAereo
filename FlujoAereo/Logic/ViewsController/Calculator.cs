@@ -75,17 +75,8 @@ namespace FlujoAereo.Logic.ViewsController
                 mainPanel.Controls[1].Width = mainPanel.Width;
                 mainPanel.Controls[1].Height = mainPanel.Height - toolbar.Height;
             }
-
         }
 
-        private void Calculate(object sender, System.EventArgs e)
-        {
-            FlatPanel panelName = (FlatPanel)form.Controls[1].Controls[0].Controls[2];
-            FlatPanel panelPass = (FlatPanel)form.Controls[1].Controls[0].Controls[3];
-
-            int index = panelName.Controls.IndexOfKey("Name");
-            int indexPass = panelPass.Controls.IndexOfKey("Password");
-        }
 
         private void SetLogout(object seter, EventArgs e)
         {
