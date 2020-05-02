@@ -14,29 +14,19 @@ namespace FlujoAereo.Logic.Tasks
 
         public async Task WaitFlightTimeAsync()
         {
-            MessageBox.Show("hh1");
-            await Task.Delay(3000);
-            MessageBox.Show("hh");
-
-            //System.Timers.Timer timer = new System.Timers.Timer(2000);
-            //timer.AutoReset = true;
-            //timer.Elapsed += new System.Timers.ElapsedEventHandler(Hola);
-            //timer.Start();
+            System.Timers.Timer timer = new System.Timers.Timer(2000);
+            timer.AutoReset = true;
+            timer.Elapsed += SetFlightStatus;
+            timer.Start();
         }
 
-        public async Task SetFlightStatus()
-        {
-            await WaitFlightTimeAsync();
 
-            flightDAO.SetStatus(1, Enums.FlightStatus.Filling);
+        private void SetFlightStatus(object sender, EventArgs e)
+        {
+                
+            // change the status once the sync works
+            //flightDAO.SetStatus(1, Enums.FlightStatus.Filling);
             MessageBox.Show("dos");
         }
-
-        public void Hola(object sender, EventArgs e)
-        {
-            MessageBox.Show("es 0");
-        }
-
-
     }
 }

@@ -9,9 +9,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 {
     public sealed class Monitor : ControlParent
     {
-        private Thread thread2 = null;
-
-        public async Task InitializeComponentAsync()
+        public void InitializeComponentAsync()
         {
             panel.Controls.Add(panelChild);
 
@@ -65,11 +63,10 @@ namespace FlujoAereo.Logic.UI.Layouts
                 ReadOnly = true,
             });
 
-            Watcher test = new Watcher();
+            FlatButton btnWatch = new FlatButton("Watch");
+            btnWatch.Click += RefreshDGVEvent;
 
-            await test.SetFlightStatus();
-
-            RefreshD();
+            AddElement(btnWatch);
         }
 
         public void RefreshDGVTwo()
@@ -83,11 +80,11 @@ namespace FlujoAereo.Logic.UI.Layouts
             data.Refresh();
         }
 
-
-        public void RefreshDGVEvent(object sender, EventArgs e)
+        public async void RefreshDGVEvent(object sender, EventArgs e)
         {
-            thread2 = new Thread(new ThreadStart(RefreshDGVTwo));
-            thread2.Start();
+            Watcher test = new Watcher();
+
+            await Task.WhenAll(test.WaitFlightTimeAsync());
         }
 
         public void RefreshD()
@@ -97,6 +94,5 @@ namespace FlujoAereo.Logic.UI.Layouts
             timer.Elapsed += new System.Timers.ElapsedEventHandler(RefreshDGVEvent);
             timer.Start();
         }
-
     }
 }

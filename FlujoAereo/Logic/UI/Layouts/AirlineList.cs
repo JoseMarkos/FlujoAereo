@@ -72,7 +72,7 @@ namespace FlujoAereo.Logic.UI.Layouts
 
         }
 
-        private async void GoToCreate(object sender, System.EventArgs e)
+        private void GoToCreate(object sender, System.EventArgs e)
         {
             try
             {
