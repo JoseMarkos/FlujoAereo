@@ -198,7 +198,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             comboAirline.SelectedIndexChanged += new EventHandler(UpdatePilotCombo);
         }
 
-        private async void Save(object sender, System.EventArgs e)
+        private void Save(object sender, System.EventArgs e)
         {
             try
             {

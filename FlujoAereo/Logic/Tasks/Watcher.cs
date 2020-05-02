@@ -14,10 +14,16 @@ namespace FlujoAereo.Logic.Tasks
 
         public async Task WaitFlightTimeAsync()
         {
-            System.Timers.Timer timer = new System.Timers.Timer(2000);
-            timer.AutoReset = true;
+            System.Timers.Timer timer = new System.Timers.Timer(2000)
+            {
+                AutoReset = true
+            };
             timer.Elapsed += SetFlightStatus;
-            timer.Start();
+
+            await Task.Run(() =>
+            {
+                timer.Start();
+            });
         }
 
 

@@ -26,14 +26,16 @@ namespace FlujoAereo.Logic.UI.Layouts
                 DataSource = airlineDAO.GetAllFlights()
             };
 
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = colors.White1;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle
+            {
+                Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft,
+                BackColor = colors.White1,
+                Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                ForeColor = System.Drawing.Color.Black,
+                SelectionBackColor = System.Drawing.Color.WhiteSmoke,
+                SelectionForeColor = System.Drawing.Color.Black,
+                WrapMode = System.Windows.Forms.DataGridViewTriState.False
+            };
 
             // main controls
 
@@ -89,8 +91,10 @@ namespace FlujoAereo.Logic.UI.Layouts
 
         public void RefreshD()
         {
-            System.Timers.Timer timer = new System.Timers.Timer(2000);
-            timer.AutoReset = true;
+            System.Timers.Timer timer = new System.Timers.Timer(2000)
+            {
+                AutoReset = true
+            };
             timer.Elapsed += new System.Timers.ElapsedEventHandler(RefreshDGVEvent);
             timer.Start();
         }

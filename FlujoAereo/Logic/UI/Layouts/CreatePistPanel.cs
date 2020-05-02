@@ -46,7 +46,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave")].Width = panelChild.Controls[panelChild.Controls.IndexOfKey("btnSave") - 4].Width;
         }
 
-        private async void SaveAsync(object sender, System.EventArgs e)
+        private void SaveAsync(object sender, System.EventArgs e)
         {
             try
             {

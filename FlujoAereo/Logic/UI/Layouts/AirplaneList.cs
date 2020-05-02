@@ -30,19 +30,21 @@ namespace FlujoAereo.Logic.UI.Layouts
                 DataSource = airplaneDAO.GetAllAirplanes()
             };
 
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = colors.White1;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle
+            {
+                Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft,
+                BackColor = colors.White1,
+                Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                ForeColor = System.Drawing.Color.Black,
+                SelectionBackColor = System.Drawing.Color.WhiteSmoke,
+                SelectionForeColor = System.Drawing.Color.Black,
+                WrapMode = System.Windows.Forms.DataGridViewTriState.False
+            };
 
             // main controls
             AddElement(new FlatLabelTitle("Airplanes", 0, 0));
             AddElement(new FlatButton("Create Airplane"));
-            panelChild.Controls[1].Click += new EventHandler(GoToCreateAsync);
+            panelChild.Controls[1].Click += new EventHandler(GoToCreate);
             panelChild.Controls[1].Width = 200;
 
             AddElement(new DataGridView
@@ -72,7 +74,7 @@ namespace FlujoAereo.Logic.UI.Layouts
             });
         }
 
-        private async void GoToCreateAsync(object sender, System.EventArgs e)
+        private void GoToCreate(object sender, System.EventArgs e)
         {
             try
             {

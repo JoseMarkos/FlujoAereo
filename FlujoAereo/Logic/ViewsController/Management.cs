@@ -11,7 +11,7 @@ namespace FlujoAereo.Logic.ViewsController
     public sealed class Management : Controller
     {
         
-        public async Task InitializeComponentAsync()
+        public void InitializeComponentAsync()
         {
             PortraitForm portraitForm = new PortraitForm("Management");
             form = portraitForm;
@@ -43,7 +43,7 @@ namespace FlujoAereo.Logic.ViewsController
 
             
             menu.Controls[0].Controls[0].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Airplanes);
                     PanelAdjustment();
@@ -51,7 +51,7 @@ namespace FlujoAereo.Logic.ViewsController
                 );
 
             menu.Controls[0].Controls[1].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Airlines);
                     PanelAdjustment();
@@ -59,7 +59,7 @@ namespace FlujoAereo.Logic.ViewsController
                 );
 
             menu.Controls[0].Controls[2].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Pilots);
                     PanelAdjustment();
@@ -67,7 +67,7 @@ namespace FlujoAereo.Logic.ViewsController
                 );
 
             menu.Controls[0].Controls[3].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Pists);
                     PanelAdjustment();
@@ -75,7 +75,7 @@ namespace FlujoAereo.Logic.ViewsController
                 );
 
             menu.Controls[0].Controls[4].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Airports);
                     PanelAdjustment();
@@ -83,7 +83,7 @@ namespace FlujoAereo.Logic.ViewsController
                 );
 
             menu.Controls[0].Controls[5].Click += new EventHandler(
-                async (object sender, EventArgs e) =>
+                (object sender, EventArgs e) =>
                 {
                     menuController.ShowPanel(Enums.ItemMenuType.Flight);
                     PanelAdjustment();

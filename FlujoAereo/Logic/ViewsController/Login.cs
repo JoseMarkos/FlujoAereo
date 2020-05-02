@@ -146,7 +146,7 @@ namespace FlujoAereo.Logic.ViewsController
                 userDAO.SetLogin(userDAO.GetID(user.Name));
 
                 Views views = new Views();
-                await views.Inicialize();
+                views.Inicialize();
                 form.Hide();
                 views.dictionary[userDAO.GetRole(user.Name)].Show();
             }

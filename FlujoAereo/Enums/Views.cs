@@ -12,10 +12,10 @@ namespace FlujoAereo.Enums
     {
         public Dictionary<int, Form> dictionary = new Dictionary<int, Form>();
 
-        public async Task Inicialize()
+        public void Inicialize()
         {
             Management management = new Management();
-            await management.InitializeComponentAsync();
+            management.InitializeComponentAsync();
 
             dictionary.Add((int)Roles.Administrator, management.GetForm());
             dictionary.Add((int)Roles.Monitor, management.GetForm());
